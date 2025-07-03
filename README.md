@@ -17,7 +17,7 @@ git clone git@github.com:GaTechBrownLab/Mutant-Calling.git
 
 **Via nextflow:** 
 ```bash 
-nextflow pull GaTechBrownLab/PyocinTyper
+nextflow pull GaTechBrownLab/Mutant-Calling
 ```
 
 ## Usage

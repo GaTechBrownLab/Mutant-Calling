@@ -1,0 +1,11 @@
+name: mutant_calling_genomics
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - bedtools
+  - blast
+  - cd-hit
+  - clustalo
+  - emboss

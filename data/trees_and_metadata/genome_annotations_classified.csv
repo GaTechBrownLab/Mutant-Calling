@@ -1,0 +1,960 @@
+Genome,Accession,Host Disease,Isolation Source,Group
+GCA_000006765_1_ASM676v1_genomic,GCA_000006765.1,CF,CF sputum,CF
+GCA_000014625_1_ASM1462v1_genomic,GCA_000014625.1,Burned,"Clinical, Unkown of human burn patient",Clinical
+GCA_000017205_1_ASM1720v1_genomic,GCA_000017205.1,"Clinical, Unkown","non-respiratory Clinical, Unkown","Clinical, Unknown"
+GCA_000026645_1_ASM2664v1_genomic,GCA_000026645.1,CF,CF isolate,CF
+GCA_000168335_1_ASM16833v1_genomic,GCA_000168335.1,CF,Composite of two CF isolates,CF
+GCA_000223945_2_ASM22394v2_genomic,GCA_000223945.2,missing,missing,Missing
+GCA_000223965_2_ASM22396v2_genomic,GCA_000223965.2,missing,missing,Missing
+GCA_000226155_1_ASM22615v1_genomic,GCA_000226155.1,N.A.,sweet mellon rhizosphere,Environmental
+GCA_000271365_1_ASM27136v1_genomic,GCA_000271365.1,CF,CF isolate,CF
+GCA_000271985_2_ASM27198v2_genomic,GCA_000271985.2,N.A.,soil,Environmental
+GCA_000284555_1_ASM28455v1_genomic,GCA_000284555.1,urinary tract infection,urine,Clinical
+GCA_000359505_1_ASM35950v1_genomic,GCA_000359505.1,"Clinical, Unknown",infant with community-acquired diarrhea,"Clinical, Unknown"
+GCA_000414035_1_ASM41403v1_genomic,GCA_000414035.1,CF,CF isolate,CF
+GCA_000473745_3_ASM47374v3_genomic,GCA_000473745.3,corneal keratitis,Corneal button from patient with corneal keratitis,Clinical
+GCA_000496455_2_ASM49645v2_genomic,GCA_000496455.2,Assymptomatic carrier,Patient (nose),Clinical
+GCA_000496605_2_ASM49660v2_genomic,GCA_000496605.2,respiratory tract infection,"Clinical, Unkown","Clinical, Unknown"
+GCA_000496645_1_ASM49664v1_genomic,GCA_000496645.1,missing,missing,Missing
+GCA_000504045_1_ASM50404v1_genomic,GCA_000504045.1,N.A.,t-HCH contaminated soil,Environmental
+GCA_000508765_1_ASM50876v1_genomic,GCA_000508765.1,missing,missing,Missing
+GCA_000510305_1_ASM51030v1_genomic,GCA_000510305.1,CF,CF isolate,CF
+GCA_000524595_1_ASM52459v1_genomic,GCA_000524595.1,N.A.,compost,Environmental
+GCA_000568855_2_ASM56885v2_genomic,GCA_000568855.2,missing,missing,Missing
+GCA_000763245_3_ASM76324v3_genomic,GCA_000763245.3,"Clinical, Unkown",catheter tip,Clinical
+GCA_000816985_1_ASM81698v1_genomic,GCA_000816985.1,cancer,pubic bone,Clinical
+GCA_000829255_1_ASM82925v1_genomic,GCA_000829255.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_000829275_1_ASM82927v1_genomic,GCA_000829275.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_000829885_1_ASM82988v1_genomic,GCA_000829885.1,CF,CF isolate,CF
+GCA_000981825_1_ASM98182v1_genomic,GCA_000981825.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_001045685_1_ASM104568v1_genomic,GCA_001045685.1,missing,missing,Missing
+GCA_001077475_1_ASM107747v1_genomic,GCA_001077475.1,N.A.,diseased rice sample,Environmental
+GCA_001293085_1_ASM129308v1_genomic,GCA_001293085.1,Human-associated environmental,hospital sewage,Human-associated environmental
+GCA_001447845_1_ASM144784v1_genomic,GCA_001447845.1,burn infection,Skin wound of burn human patient,Clinical
+GCA_001457615_1_NCTC10332_genomic,GCA_001457615.1,CF,sputum,CF
+GCA_001465155_1_ASM146515v1_genomic,GCA_001465155.1,N.A.,wastewater,Environmental
+GCA_001482325_1_ASM148232v1_genomic,GCA_001482325.1,Wound/Abscess,Blood culture of burn human patient,Clinical
+GCA_001515845_2_ASM151584v2_genomic,GCA_001515845.2,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_001515915_2_ASM151591v2_genomic,GCA_001515915.2,Cancer,missing,Clinical
+GCA_001516005_1_ASM151600v1_genomic,GCA_001516005.1,Cancer,missing,Clinical
+GCA_001516105_1_ASM151610v1_genomic,GCA_001516105.1,Cancer,missing,Clinical
+GCA_001516165_2_ASM151616v2_genomic,GCA_001516165.2,Cancer,missing,Clinical
+GCA_001516185_2_ASM151618v2_genomic,GCA_001516185.2,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_001516205_2_ASM151620v2_genomic,GCA_001516205.2,Cancer,missing,Clinical
+GCA_001516225_2_ASM151622v2_genomic,GCA_001516225.2,Other infection,missing,Clinical
+GCA_001516245_2_ASM151624v2_genomic,GCA_001516245.2,Cancer,missing,Clinical
+GCA_001516265_1_ASM151626v1_genomic,GCA_001516265.1,Cancer,missing,Clinical
+GCA_001516305_2_ASM151630v2_genomic,GCA_001516305.2,Cancer,missing,Clinical
+GCA_001516325_2_ASM151632v2_genomic,GCA_001516325.2,Cancer,missing,Clinical
+GCA_001516345_1_ASM151634v1_genomic,GCA_001516345.1,Cancer,missing,Clinical
+GCA_001516385_1_ASM151638v1_genomic,GCA_001516385.1,Cancer,missing,Clinical
+GCA_001518975_1_ASM151897v1_genomic,GCA_001518975.1,missing,nasopharynx,Missing
+GCA_001542795_2_ASM154279v2_genomic,GCA_001542795.2,Cancer,missing,Clinical
+GCA_001542835_1_ASM154283v1_genomic,GCA_001542835.1,Cancer,missing,Clinical
+GCA_001547955_1_ASM154795v1_genomic,GCA_001547955.1,nosocomial infection,missing,"Clinical, Unknown"
+GCA_001548135_1_ASM154813v1_genomic,GCA_001548135.1,missing,"Clinical, Unkown","Clinical, Unknown"
+GCA_001548335_1_ASM154833v1_genomic,GCA_001548335.1,missing,"Clinical, Unkown","Clinical, Unknown"
+GCA_001594325_2_ASM159432v2_genomic,GCA_001594325.2,Other infection,missing,"Clinical, Unknown"
+GCA_001606045_1_ASM160604v1_genomic,GCA_001606045.1,N.A.,soil,Environmental
+GCA_001618925_1_ASM161892v1_genomic,GCA_001618925.1,missing,missing,Missing
+GCA_001632245_1_ASM163224v1_genomic,GCA_001632245.1,Wound/Abscess,combat injury wound,Clinical
+GCA_001679685_1_ASM167968v1_genomic,GCA_001679685.1,Respiratory disease,sputum,"Clinical, Unknown"
+GCA_001687285_1_ASM168728v1_genomic,GCA_001687285.1,"Clinical, unknown",sputum,"Clinical, Unknown"
+GCA_001721745_1_ASM172174v1_genomic,GCA_001721745.1,Ventilator associated pneumonia,Sputum; Early isolate from VAP patient 1,Clinical
+GCA_001721765_1_ASM172176v1_genomic,GCA_001721765.1,Ventilator associated pneumonia,Sputum; Early isolate from VAP patient 2,Clinical
+GCA_001721785_1_ASM172178v1_genomic,GCA_001721785.1,Ventilator associated pneumonia,Sputum; Late isolate from VAP patient 1,Clinical
+GCA_001721805_1_ASM172180v1_genomic,GCA_001721805.1,Ventilator associated pneumonia,Sputum; Early isolate from VAP patient 4,Clinical
+GCA_001721825_1_ASM172182v1_genomic,GCA_001721825.1,Ventilator associated pneumonia,Sputum; Late isolate from VAP patient 3,Clinical
+GCA_001721845_1_ASM172184v1_genomic,GCA_001721845.1,Ventilator associated pneumonia,Sputum; Late isolate from VAP patient 4,Clinical
+GCA_001722005_2_ASM172200v2_genomic,GCA_001722005.2,N.A.,soil,Environmental
+GCA_001722025_1_ASM172202v1_genomic,GCA_001722025.1,Ventilator associated pneumonia,Sputum; Early isolate from VAP patient 3,Clinical
+GCA_001722045_1_ASM172204v1_genomic,GCA_001722045.1,Ventilator associated pneumonia,Sputum; Late isolate from VAP patient 2,Clinical
+GCA_001729505_1_ASM172950v1_genomic,GCA_001729505.1,Wound,Infected wound,Clinical
+GCA_001750705_1_ASM175070v1_genomic,GCA_001750705.1,N.A.,wastewater,Environmental
+GCA_001792835_1_ASM179283v1_genomic,GCA_001792835.1,Other infection,urine,Clinical
+GCA_001792855_1_ASM179285v1_genomic,GCA_001792855.1,"Clinical, Unkown",tracheal aspirate,"Clinical, Unknown"
+GCA_001792875_1_ASM179287v1_genomic,GCA_001792875.1,"Clinical, Unkown",bloodstream,"Clinical, Unknown"
+GCA_001870265_1_ASM187026v1_genomic,GCA_001870265.1,"Clinical, Unkown",tracheal aspirate,"Clinical, Unknown"
+GCA_001874465_1_ASM187446v1_genomic,GCA_001874465.1,N.A.,wastewater,Human-associated environmental
+GCA_001879525_1_ASM187952v1_genomic,GCA_001879525.1,missing,Lindberg collection,Lab
+GCA_001900195_1_ASM190019v1_genomic,GCA_001900195.1,CF,murine model,CF
+GCA_001900225_1_ASM190022v1_genomic,GCA_001900225.1,CF,murine model,CF
+GCA_001900265_1_ASM190026v1_genomic,GCA_001900265.1,CF,"Clinical, Unkown",CF
+GCA_002075065_1_ASM207506v1_genomic,GCA_002075065.1,missing,missing,Missing
+GCA_002085605_1_ASM208560v1_genomic,GCA_002085605.1,unavailable,unavailable,Missing
+GCA_002085755_1_ASM208575v1_genomic,GCA_002085755.1,respiratory failure,sputum,"Clinical, Unknown"
+GCA_002104595_1_ASM210459v1_genomic,GCA_002104595.1,N.A.,sputum,"Clinical, Unknown"
+GCA_002104615_1_ASM210461v1_genomic,GCA_002104615.1,N.A.,sputum,"Clinical, Unknown"
+GCA_002192475_1_ASM219247v1_genomic,GCA_002192475.1,ventilator-associated pneumonia,bronchial washing,Clinical
+GCA_002192495_1_ASM219249v1_genomic,GCA_002192495.1,ventilator-associated pneumonia,bronchial washing,Clinical
+GCA_002205335_1_ASM220533v1_genomic,GCA_002205335.1,ventilator-associated pneumonia,bronchial washing,Clinical
+GCA_002205355_1_ASM220535v1_genomic,GCA_002205355.1,ventilator-associated pneumonia,bronchial washing,Clinical
+GCA_002205375_1_ASM220537v1_genomic,GCA_002205375.1,Chiari malformation,blood,Clinical
+GCA_002208645_1_ASM220864v1_genomic,GCA_002208645.1,Comunity-adquired pneumonia,blood,Clinical
+GCA_002215345_1_ASM221534v1_genomic,GCA_002215345.1,"Clinical, Unkown",blood,Clinical
+GCA_002223805_1_ASM222380v1_genomic,GCA_002223805.1,N.A.,Halobiotic reed,Environmental
+GCA_002237405_1_ASM223740v1_genomic,GCA_002237405.1,Environmental,Open Ocean,Environmental
+GCA_002237425_1_ASM223742v1_genomic,GCA_002237425.1,Environmental,Open Ocean,Environmental
+GCA_002287725_2_ASM228772v2_genomic,GCA_002287725.2,N.A.,Dental unit waterline,Human-associated environmental
+GCA_002411865_3_ASM241186v3_genomic,GCA_002411865.3,UTI,urine,Clinical
+GCA_002442855_1_ASM244285v1_genomic,GCA_002442855.1,missing,missing,Missing
+GCA_002753655_1_ASM275365v1_genomic,GCA_002753655.1,Pnuemonia,sputum,Clinical
+GCA_002812825_1_ASM281282v1_genomic,GCA_002812825.1,Wound/Abscess,Abscess,Clinical
+GCA_002812845_1_ASM281284v1_genomic,GCA_002812845.1,Wound/Abscess,Abscess,Clinical
+GCA_002812865_1_ASM281286v1_genomic,GCA_002812865.1,"Clinical, Unknown",urine,Clinical
+GCA_002812885_1_ASM281288v1_genomic,GCA_002812885.1,"Clinical, Unknown",urine,Clinical
+GCA_002812905_2_ASM281290v2_genomic,GCA_002812905.2,"Clinical, Unknown",sputum,"Clinical, Unknown"
+GCA_002812925_3_ASM281292v3_genomic,GCA_002812925.3,"Clinical, Unknown",tracheal aspirate,"Clinical, Unknown"
+GCA_002946935_1_ASM294693v1_genomic,GCA_002946935.1,Cancer,urine,Clinical
+GCA_002968515_1_ASM296851v1_genomic,GCA_002968515.1,"Clinical, Unknown","Clinical, Unknown","Clinical, Unknown"
+GCA_002968585_1_ASM296858v1_genomic,GCA_002968585.1,"Clinical, Unknown",missing,"Clinical, Unknown"
+GCA_002968655_1_ASM296865v1_genomic,GCA_002968655.1,"Clinical, Unknown","Clinical, Unknown","Clinical, Unknown"
+GCA_002968695_1_ASM296869v1_genomic,GCA_002968695.1,missing,missing,Missing
+GCA_002968955_1_ASM296895v1_genomic,GCA_002968955.1,missing,missing,Missing
+GCA_002997005_1_ASM299700v1_genomic,GCA_002997005.1,missing,missing,Missing
+GCA_003028335_1_ASM302833v1_genomic,GCA_003028335.1,Wound,Sacrum,Clinical
+GCA_003052005_2_ASM305200v2_genomic,GCA_003052005.2,missing,"Clinical, Unknown","Clinical, Unknown"
+GCA_003060845_1_ASM306084v1_genomic,GCA_003060845.1,N.A.,soil,Environmental
+GCA_003073615_1_ASM307361v1_genomic,GCA_003073615.1,missing,missing,Missing
+GCA_003073735_1_ASM307373v1_genomic,GCA_003073735.1,"Clinical, Unknown","Clinical, Unknown","Clinical, Unknown"
+GCA_003073795_1_ASM307379v1_genomic,GCA_003073795.1,Unknown,missing,Missing
+GCA_003073895_1_ASM307389v1_genomic,GCA_003073895.1,"Clinical, Unknown","Clinical, Unknown","Clinical, Unknown"
+GCA_003193645_1_ASM319364v1_genomic,GCA_003193645.1,Unknown,missing,Missing
+GCA_003194245_1_ASM319424v1_genomic,GCA_003194245.1,N.A.,sputum,"Clinical, Unknown"
+GCA_003204335_1_ASM320433v1_genomic,GCA_003204335.1,missing,missing,Missing
+GCA_003206535_1_ASM320653v1_genomic,GCA_003206535.1,unknown,tracheal secretions,"Clinical, Unknown"
+GCA_003288335_1_ASM328833v1_genomic,GCA_003288335.1,missing,missing,Missing
+GCA_003288435_1_ASM328843v1_genomic,GCA_003288435.1,missing,missing,Missing
+GCA_003319235_1_ASM331923v1_genomic,GCA_003319235.1,N.A.,soil,Environmental
+GCA_003332705_2_ASM333270v2_genomic,GCA_003332705.2,Microbial Keratitis,eye,Clinical
+GCA_003369735_1_ASM336973v1_genomic,GCA_003369735.1,Pnuemonia,sputum,Clinical
+GCA_003369755_1_ASM336975v1_genomic,GCA_003369755.1,Pnuemonia,sputum,Clinical
+GCA_003369775_1_ASM336977v1_genomic,GCA_003369775.1,Pneumonia,sputum,Clinical
+GCA_003408495_1_ASM340849v1_genomic,GCA_003408495.1,Pnuemonia,sputum,Clinical
+GCA_003411785_2_ASM341178v2_genomic,GCA_003411785.2,Bacteremia,blood,Clinical
+GCA_003429185_1_ASM342918v1_genomic,GCA_003429185.1,Bacteremia,blood,Clinical
+GCA_003429205_1_ASM342920v1_genomic,GCA_003429205.1,Bacteremia,blood,Clinical
+GCA_003433235_1_ASM343323v1_genomic,GCA_003433235.1,Bacteremia,blood,Clinical
+GCA_003571505_1_ASM357150v1_genomic,GCA_003571505.1,missing,missing,Missing
+GCA_003571805_1_ASM357180v1_genomic,GCA_003571805.1,missing,missing,Missing
+GCA_003626935_2_ASM362693v2_genomic,GCA_003626935.2,Bacteraemia,blood,Clinical
+GCA_003641125_1_ASM364112v1_genomic,GCA_003641125.1,Other infection,blood,Clinical
+GCA_003691345_1_ASM369134v1_genomic,GCA_003691345.1,Unknown,missing,Missing
+GCA_003713085_1_ASM371308v1_genomic,GCA_003713085.1,Bacteraemia,blood,Clinical
+GCA_003716765_1_ASM371676v1_genomic,GCA_003716765.1,RTI,sputum,Clinical
+GCA_003798105_1_ASM379810v1_genomic,GCA_003798105.1,Burned,skin,Clinical
+GCA_003798125_1_ASM379812v1_genomic,GCA_003798125.1,Burned,Biopsy,Clinical
+GCA_003798145_1_ASM379814v1_genomic,GCA_003798145.1,Cardiac arrest,Bronchial aspirate,Clinical
+GCA_003812165_1_ASM381216v1_genomic,GCA_003812165.1,Unknown,Throat (pharynx),"Clinical, Unknown"
+GCA_003812885_1_ASM381288v1_genomic,GCA_003812885.1,Unknown,UCC isolate,"Clinical, Unknown"
+GCA_003812905_1_ASM381290v1_genomic,GCA_003812905.1,Unknown,UCC isolate,"Clinical, Unknown"
+GCA_003813005_1_ASM381300v1_genomic,GCA_003813005.1,"Clinical, unknown",Endotracheal aspirate,"Clinical, Unknown"
+GCA_003813025_1_ASM381302v1_genomic,GCA_003813025.1,Unknown,UCC isolate,"Clinical, Unknown"
+GCA_003950015_1_ASM395001v1_genomic,GCA_003950015.1,urinary infection,urine,Clinical
+GCA_003950235_1_ASM395023v1_genomic,GCA_003950235.1,Bacteraemia,blood,Clinical
+GCA_003950255_1_ASM395025v1_genomic,GCA_003950255.1,Bacteraemia,sputum,Clinical
+GCA_003952285_1_ASM395228v1_genomic,GCA_003952285.1,Bacteraemia,sputum,Clinical
+GCA_003952305_1_ASM395230v1_genomic,GCA_003952305.1,Bacteraemia,blood,Clinical
+GCA_003952325_1_ASM395232v1_genomic,GCA_003952325.1,Bacteraemia,blood,Clinical
+GCA_003957825_1_ASM395782v1_genomic,GCA_003957825.1,Pneumonia,bronchoalveolar lavage,Clinical
+GCA_003991465_1_ASM399146v1_genomic,GCA_003991465.1,Bacteraemia,sputum,Clinical
+GCA_004010895_1_ASM401089v1_genomic,GCA_004010895.1,Bacteraemia,sputum,Clinical
+GCA_004014755_2_ASM401475v2_genomic,GCA_004014755.2,missing,missing,Missing
+GCA_004102665_1_ASM410266v1_genomic,GCA_004102665.1,wound,wound,Clinical
+GCA_004193735_1_ASM419373v1_genomic,GCA_004193735.1,conjunctiva infection,eye,Clinical
+GCA_004291075_1_ASM429107v1_genomic,GCA_004291075.1,CF,CF,CF
+GCA_004355125_1_ASM435512v1_genomic,GCA_004355125.1,CF,Cystic Fibrosis lung sputum,CF
+GCA_004355145_1_ASM435514v1_genomic,GCA_004355145.1,Cystic Fibrosis,Cystic Fibrosis lung sputum,CF
+GCA_005305005_1_ASM530500v1_genomic,GCA_005305005.1,Other infection,Clinical,"Clinical, Unknown"
+GCA_006364735_1_ASM636473v1_genomic,GCA_006364735.1,Unknown,ATCC Isolate,Missing
+GCA_006364795_1_ASM636479v1_genomic,GCA_006364795.1,Not applicable,"Water bottle, Animal room",Animal
+GCA_006704595_2_ASM670459v2_genomic,GCA_006704595.2,unknown,sputum,"Clinical, Unknown"
+GCA_006971785_1_ASM697178v1_genomic,GCA_006971785.1,UTI,urine,Clinical
+GCA_007559065_1_ASM755906v1_genomic,GCA_007559065.1,Non-CF lung,sputum specimen,Clinical
+GCA_007559085_1_ASM755908v1_genomic,GCA_007559085.1,cerebral trauma,sputum,Clinical
+GCA_007559105_1_ASM755910v1_genomic,GCA_007559105.1,Other infection,bile specimen,Clinical
+GCA_007559125_1_ASM755912v1_genomic,GCA_007559125.1,UTI,sputum specimen,Clinical
+GCA_007833895_1_ASM783389v1_genomic,GCA_007833895.1,missing,missing,Missing
+GCA_008033725_1_ASM803372v1_genomic,GCA_008033725.1,Environmental,crude oil,Environmental
+GCA_008033745_1_ASM803374v1_genomic,GCA_008033745.1,Environmental,crude oil,Environmental
+GCA_008033765_1_ASM803376v1_genomic,GCA_008033765.1,Environmental,crude oil,Environmental
+GCA_008195485_1_ASM819548v1_genomic,GCA_008195485.1,Urinary tract infection,Urine sample,Clinical
+GCA_008245185_1_ASM824518v1_genomic,GCA_008245185.1,CF,sputum,CF
+GCA_008705235_1_ASM870523v1_genomic,GCA_008705235.1,CF,"oropharynx, sputum, or bronchoalveolar lavage",CF
+GCA_009497675_1_ASM949767v1_genomic,GCA_009497675.1,Mink Hemorrhagic pneumonia,Mink raising farm,Animal
+GCA_009498355_1_ASM949835v1_genomic,GCA_009498355.1,"Clinical, unknown",sputum,"Clinical, Unknown"
+GCA_009648875_1_ASM964887v1_genomic,GCA_009648875.1,N.A.,arugula,Environmental
+GCA_009662315_1_ASM966231v1_genomic,GCA_009662315.1,Pneumonia,Sputum-lungs,Clinical
+GCA_009664165_1_ASM966416v1_genomic,GCA_009664165.1,sepsis,urine,Clinical
+GCA_009676765_1_ASM967676v1_genomic,GCA_009676765.1,lung infection,sputum,"Clinical, Unknown"
+GCA_009676785_1_ASM967678v1_genomic,GCA_009676785.1,lung infection,sputum,"Clinical, Unknown"
+GCA_009676885_1_ASM967688v1_genomic,GCA_009676885.1,N.A.,methanogenic sludge from a potato processing plant,Environmental
+GCA_009720405_1_ASM972040v1_genomic,GCA_009720405.1,"Clinical, Unkown",adult male sputum,"Clinical, Unknown"
+GCA_009720425_1_ASM972042v1_genomic,GCA_009720425.1,"Clinical, Unkown",adult male sputum,"Clinical, Unknown"
+GCA_009867055_1_ASM986705v1_genomic,GCA_009867055.1,N.A.,Tobacco plant,Environmental
+GCA_009905195_1_ASM990519v1_genomic,GCA_009905195.1,CF,cystic fibrosis pediatric isolate,CF
+GCA_009911735_1_ASM991173v1_genomic,GCA_009911735.1,N.A.,landfill,Human-associated environmental
+GCA_011045375_1_ASM1104537v1_genomic,GCA_011045375.1,missing,missing,Missing
+GCA_011106815_1_ASM1110681v1_genomic,GCA_011106815.1,missing,urine,Clinical
+GCA_011466835_1_ASM1146683v1_genomic,GCA_011466835.1,Cystic Fibrosis,lung,CF
+GCA_012276675_1_ASM1227667v1_genomic,GCA_012276675.1,HCAP - acute pneumonia,tracheal aspirate,Clinical
+GCA_012935295_1_ASM1293529v1_genomic,GCA_012935295.1,CF,CF sputum,CF
+GCA_012971705_1_ASM1297170v1_genomic,GCA_012971705.1,N.A.,tung meal,Environmental
+GCA_013001005_1_ASM1300100v1_genomic,GCA_013001005.1,CF,sputum,CF
+GCA_013201095_1_ASM1320109v1_genomic,GCA_013201095.1,Unknown,blood,"Clinical, Unknown"
+GCA_013201115_1_ASM1320111v1_genomic,GCA_013201115.1,Unknown,blood,"Clinical, Unknown"
+GCA_013255565_1_ASM1325556v1_genomic,GCA_013255565.1,Non-CF lung,urine,Clinical
+GCA_013260445_1_ASM1326044v1_genomic,GCA_013260445.1,N.A.,plant,Environmental
+GCA_013305645_2_ASM1330564v2_genomic,GCA_013305645.2,Hematencephalon,blood,Clinical
+GCA_013305765_1_ASM1330576v1_genomic,GCA_013305765.1,N.A.,"South China Agricultural University maintained the laboratory-adapted strain of PAO1 acquired from E. Peter Greenberg, University of Washington",Missing
+GCA_013305815_1_ASM1330581v1_genomic,GCA_013305815.1,N.A.,"Integrative Microbiology Research Center, South China Agricultural University (SCAU), Tianhe District, Guangzhou China",Missing
+GCA_013305845_1_ASM1330584v1_genomic,GCA_013305845.1,N.A.,"Integrative Microbiology Research Center, South China Agricultural University (SCAU), Tianhe District, Guangzhou China",Missing
+GCA_013341295_1_ASM1334129v1_genomic,GCA_013341295.1,CF,lungs,CF
+GCA_013341315_1_ASM1334131v1_genomic,GCA_013341315.1,CF,lungs,CF
+GCA_013343315_1_ASM1334331v1_genomic,GCA_013343315.1,cystic fibrosis,lung,CF
+GCA_013343335_1_ASM1334333v1_genomic,GCA_013343335.1,cystic fibrosis,lung,CF
+GCA_013343355_1_ASM1334335v1_genomic,GCA_013343355.1,cystic fibrosis,lung,CF
+GCA_013343375_1_ASM1334337v1_genomic,GCA_013343375.1,cystic fibrosis,lung,CF
+GCA_013343395_1_ASM1334339v1_genomic,GCA_013343395.1,CF,lung,CF
+GCA_013343415_1_ASM1334341v1_genomic,GCA_013343415.1,CF,lung,CF
+GCA_013343435_1_ASM1334343v1_genomic,GCA_013343435.1,CF,lung,CF
+GCA_013343455_1_ASM1334345v1_genomic,GCA_013343455.1,cystic fibrosis,lung,CF
+GCA_013343475_1_ASM1334347v1_genomic,GCA_013343475.1,CF,lung,CF
+GCA_013343495_1_ASM1334349v1_genomic,GCA_013343495.1,CF,lung,CF
+GCA_013343515_1_ASM1334351v1_genomic,GCA_013343515.1,cystic fibrosis,lung,CF
+GCA_013343535_1_ASM1334353v1_genomic,GCA_013343535.1,CF,lung,CF
+GCA_013343555_1_ASM1334355v1_genomic,GCA_013343555.1,CF,lung,CF
+GCA_013343575_1_ASM1334357v1_genomic,GCA_013343575.1,leg ulcer,wound,Clinical
+GCA_013347245_1_ASM1334724v1_genomic,GCA_013347245.1,bacteremia,blood,Clinical
+GCA_013376775_1_ASM1337677v1_genomic,GCA_013376775.1,missing,wound,Clinical
+GCA_013393665_2_ASM1339366v2_genomic,GCA_013393665.2,Pnuemonia,respiratory,Clinical
+GCA_013393685_1_ASM1339368v1_genomic,GCA_013393685.1,peritonitis,Shunt fluid,Clinical
+GCA_013393705_1_ASM1339370v1_genomic,GCA_013393705.1,infection,sputum,Clinical
+GCA_013394455_1_ASM1339445v1_genomic,GCA_013394455.1,Pulmonary contusion,respiratory,Clinical
+GCA_013394475_2_ASM1339447v2_genomic,GCA_013394475.2,pneumonia,respiratory,Clinical
+GCA_013395035_1_ASM1339503v1_genomic,GCA_013395035.1,N.A.,sugarcane,Environmental
+GCA_013467585_1_ASM1346758v1_genomic,GCA_013467585.1,N.A.,sugarcane,Environmental
+GCA_013467605_1_ASM1346760v1_genomic,GCA_013467605.1,N.A.,sugarcane,Environmental
+GCA_014155905_1_ASM1415590v1_genomic,GCA_014155905.1,Other infection,missing,"Clinical, Unknown"
+GCA_014217315_1_ASM1421731v1_genomic,GCA_014217315.1,heart failure combined pulmonary infection,the sputum of a pneumonia patient,Clinical
+GCA_014467035_1_ASM1446703v1_genomic,GCA_014467035.1,Other infection,Draining sinus tract from infected LVAD patient,Clinical
+GCA_014490645_1_ASM1449064v1_genomic,GCA_014490645.1,missing,missing,Missing
+GCA_014672795_1_ASM1467279v1_genomic,GCA_014672795.1,N.A.,soil,Environmental
+GCA_014792125_1_ASM1479212v1_genomic,GCA_014792125.1,"Clinical, Unkown",sputum,"Clinical, Unknown"
+GCA_014854655_1_ASM1485465v1_genomic,GCA_014854655.1,N.A.,soil,Environmental
+GCA_014930935_1_ASM1493093v1_genomic,GCA_014930935.1,missing,missing,Missing
+GCA_015697465_1_ASM1569746v1_genomic,GCA_015697465.1,UTI,urine,Clinical
+GCA_015697605_1_ASM1569760v1_genomic,GCA_015697605.1,UTI,urine,Clinical
+GCA_015697645_1_ASM1569764v1_genomic,GCA_015697645.1,UTI,urine,Clinical
+GCA_015697665_1_ASM1569766v1_genomic,GCA_015697665.1,UTI,urine,Clinical
+GCA_015832055_1_ASM1583205v1_genomic,GCA_015832055.1,missing,missing,Missing
+GCA_015832075_1_ASM1583207v1_genomic,GCA_015832075.1,missing,missing,Missing
+GCA_016064595_1_ASM1606459v1_genomic,GCA_016064595.1,Chronic respiratory failure,tracheal aspirate,Clinical
+GCA_016105505_1_ASM1610550v1_genomic,GCA_016105505.1,N.A.,water,Environmental
+GCA_016105665_1_ASM1610566v1_genomic,GCA_016105665.1,N.A.,water,Environmental
+GCA_016105885_1_ASM1610588v1_genomic,GCA_016105885.1,N.A.,water,Environmental
+GCA_016107485_1_ASM1610748v1_genomic,GCA_016107485.1,missing,Cell culture,Lab
+GCA_016126955_1_ASM1612695v1_genomic,GCA_016126955.1,Unknown,missing,Missing
+GCA_016134915_1_ASM1613491v1_genomic,GCA_016134915.1,"Clinical, unknown",missing,"Clinical, Unknown"
+GCA_016584725_1_ASM1658472v1_genomic,GCA_016584725.1,COVID-19 w/ bacterial co-infection,sputum,Clinical
+GCA_016743035_1_ASM1674303v1_genomic,GCA_016743035.1,N.A.,soil,Environmental
+GCA_016743115_1_ASM1674311v1_genomic,GCA_016743115.1,bronchiectasis,sputum,Clinical
+GCA_016745115_1_ASM1674511v1_genomic,GCA_016745115.1,missing,missing,Missing
+GCA_016745135_1_ASM1674513v1_genomic,GCA_016745135.1,"Clinical, Unkown",sputum,"Clinical, Unknown"
+GCA_016745155_1_ASM1674515v1_genomic,GCA_016745155.1,"Clinical, Unkown",sputum,"Clinical, Unknown"
+GCA_016745175_1_ASM1674517v1_genomic,GCA_016745175.1,"Clinical, Unkown",urine,Clinical
+GCA_016745195_1_ASM1674519v1_genomic,GCA_016745195.1,pnuemonia,sputum,Clinical
+GCA_016811975_1_ASM1681197v1_genomic,GCA_016811975.1,Sepsis,blood,Clinical
+GCA_016864415_1_ASM1686441v1_genomic,GCA_016864415.1,acute pulmonary infection,blood,Clinical
+GCA_016923395_2_ASM1692339v2_genomic,GCA_016923395.2,not collected,urine,Clinical
+GCA_016924255_2_ASM1692425v2_genomic,GCA_016924255.2,not collected,blood,Clinical
+GCA_016924475_2_ASM1692447v2_genomic,GCA_016924475.2,Wound,wound swab,Clinical
+GCA_016924585_2_ASM1692458v2_genomic,GCA_016924585.2,not collected,missing,Missing
+GCA_016925455_1_ASM1692545v1_genomic,GCA_016925455.1,bacteremia,blood,Clinical
+GCA_016925475_1_ASM1692547v1_genomic,GCA_016925475.1,bacteremia,blood,Clinical
+GCA_017378395_1_ASM1737839v1_genomic,GCA_017378395.1,COVID-19,respiratory sample,Clinical
+GCA_017378475_1_ASM1737847v1_genomic,GCA_017378475.1,COVID-19,respiratory sample,Clinical
+GCA_017900915_1_ASM1790091v1_genomic,GCA_017900915.1,N.A.,Soil land,Environmental
+GCA_018138045_1_ASM1813804v1_genomic,GCA_018138045.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_018138065_1_ASM1813806v1_genomic,GCA_018138065.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_018141565_1_ASM1814156v1_genomic,GCA_018141565.1,urine infection,urine,Clinical
+GCA_018141625_1_ASM1814162v1_genomic,GCA_018141625.1,urine infection,urine,Clinical
+GCA_018141645_1_ASM1814164v1_genomic,GCA_018141645.1,urine infection,urine,Clinical
+GCA_018279245_1_ASM1827924v1_genomic,GCA_018279245.1,Psuedomonas infection,DTA,Clinical
+GCA_018279265_1_ASM1827926v1_genomic,GCA_018279265.1,Psuedomonas infection,DTA,Clinical
+GCA_018279285_1_ASM1827928v1_genomic,GCA_018279285.1,Psuedomonas infection,urine,Clinical
+GCA_018279305_1_ASM1827930v1_genomic,GCA_018279305.1,Pseudomonas infection,DTA,Clinical
+GCA_018409365_1_ASM1840936v1_genomic,GCA_018409365.1,none,nasal swab,"Clinical, Unknown"
+GCA_018448985_1_ASM1844898v1_genomic,GCA_018448985.1,UTI,urine,Clinical
+GCA_018598285_3_ASM1859828v3_genomic,GCA_018598285.3,Unknown,Tracheal secretion,"Clinical, Unknown"
+GCA_018986715_1_ASM1898671v1_genomic,GCA_018986715.1,"Clinical, Unkown",blood,Clinical
+GCA_019084125_2_ASM1908412v2_genomic,GCA_019084125.2,mouse inner ear infection,inner ear,Animal
+GCA_019364615_1_ASM1936461v1_genomic,GCA_019364615.1,not collected,urine,Clinical
+GCA_019378915_1_ASM1937891v1_genomic,GCA_019378915.1,N.A.,soil,Environmental
+GCA_019379355_1_ASM1937935v1_genomic,GCA_019379355.1,"severe sepsis, urinary tract infection and lung infection",blood,Clinical
+GCA_019434075_1_ASM1943407v1_genomic,GCA_019434075.1,CF,sputum,CF
+GCA_019434095_1_ASM1943409v1_genomic,GCA_019434095.1,CF,sputum,CF
+GCA_019434115_1_ASM1943411v1_genomic,GCA_019434115.1,CF,sputum,CF
+GCA_019434135_1_ASM1943413v1_genomic,GCA_019434135.1,CF,sputum,CF
+GCA_019434155_1_ASM1943415v1_genomic,GCA_019434155.1,CF,sputum,CF
+GCA_019434175_1_ASM1943417v1_genomic,GCA_019434175.1,CF,sputum,CF
+GCA_019434195_1_ASM1943419v1_genomic,GCA_019434195.1,CF,sputum,CF
+GCA_019434235_1_ASM1943423v1_genomic,GCA_019434235.1,leukemia,feces,Clinical
+GCA_019443665_1_ASM1944366v1_genomic,GCA_019443665.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019466095_1_ASM1946609v1_genomic,GCA_019466095.1,N.A.,sugarcane,Environmental
+GCA_019466145_1_ASM1946614v1_genomic,GCA_019466145.1,N.A.,soil,Environmental
+GCA_019710495_1_ASM1971049v1_genomic,GCA_019710495.1,Wound/Abscess,burn wound,Clinical
+GCA_019711215_1_ASM1971121v1_genomic,GCA_019711215.1,missing,missing,Missing
+GCA_019720855_1_ASM1972085v1_genomic,GCA_019720855.1,missing,missing,Missing
+GCA_019720875_1_ASM1972087v1_genomic,GCA_019720875.1,missing,missing,Missing
+GCA_019738995_2_ASM1973899v2_genomic,GCA_019738995.2,Wound/Abscess,burn wound,Clinical
+GCA_019857245_1_ASM1985724v1_genomic,GCA_019857245.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019857265_1_ASM1985726v1_genomic,GCA_019857265.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019857285_1_ASM1985728v1_genomic,GCA_019857285.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019857305_1_ASM1985730v1_genomic,GCA_019857305.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019857325_1_ASM1985732v1_genomic,GCA_019857325.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019857345_1_ASM1985734v1_genomic,GCA_019857345.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019857365_1_ASM1985736v1_genomic,GCA_019857365.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019857405_1_ASM1985740v1_genomic,GCA_019857405.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019857425_1_ASM1985742v1_genomic,GCA_019857425.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_019857445_1_ASM1985744v1_genomic,GCA_019857445.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019857465_1_ASM1985746v1_genomic,GCA_019857465.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019857485_1_ASM1985748v1_genomic,GCA_019857485.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019857505_1_ASM1985750v1_genomic,GCA_019857505.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019857525_1_ASM1985752v1_genomic,GCA_019857525.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019857545_1_ASM1985754v1_genomic,GCA_019857545.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019857565_1_ASM1985756v1_genomic,GCA_019857565.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019857585_1_ASM1985758v1_genomic,GCA_019857585.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019857605_1_ASM1985760v1_genomic,GCA_019857605.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019857625_1_ASM1985762v1_genomic,GCA_019857625.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019857645_1_ASM1985764v1_genomic,GCA_019857645.1,"Clinical, Unkown","Clinical, Unkown","Clinical, Unknown"
+GCA_019915445_1_ASM1991544v1_genomic,GCA_019915445.1,wound discharge,Swab from Wound,Clinical
+GCA_019915465_1_ASM1991546v1_genomic,GCA_019915465.1,"Surgical Procedures, Operative",Swab from tracheostomic tube,"Clinical, Unknown"
+GCA_019915485_1_ASM1991548v1_genomic,GCA_019915485.1,Surgical Procedures,Pleural Cavity,Clinical
+GCA_020771675_1_ASM2077167v1_genomic,GCA_020771675.1,Wound/Abscess,skin secretions,Clinical
+GCA_020771755_1_ASM2077175v1_genomic,GCA_020771755.1,Wound/Abscess,skin secretions,Clinical
+GCA_020978345_1_ASM2097834v1_genomic,GCA_020978345.1,Environmental,riverside,Environmental
+GCA_020990445_1_ASM2099044v1_genomic,GCA_020990445.1,Fever,urine,Clinical
+GCA_020990465_1_ASM2099046v1_genomic,GCA_020990465.1,Fever,urine,Clinical
+GCA_020990485_1_ASM2099048v1_genomic,GCA_020990485.1,Fever,urine,Clinical
+GCA_021166255_2_ASM2116625v2_genomic,GCA_021166255.2,CF,BAL,CF
+GCA_021166275_2_ASM2116627v2_genomic,GCA_021166275.2,CF,sputum,CF
+GCA_021166295_2_ASM2116629v2_genomic,GCA_021166295.2,CF,sputum,CF
+GCA_021166315_2_ASM2116631v2_genomic,GCA_021166315.2,CF,BAL,CF
+GCA_021166335_2_ASM2116633v2_genomic,GCA_021166335.2,CF,BAL,CF
+GCA_021166355_2_ASM2116635v2_genomic,GCA_021166355.2,CF,sputum,CF
+GCA_021166375_2_ASM2116637v2_genomic,GCA_021166375.2,CF,sputum,CF
+GCA_021184245_1_ASM2118424v1_genomic,GCA_021184245.1,CF,sputum,CF
+GCA_021184265_1_ASM2118426v1_genomic,GCA_021184265.1,Other infection,urine,Clinical
+GCA_021249245_1_ASM2124924v1_genomic,GCA_021249245.1,N.A.,soil,Environmental
+GCA_021266605_1_ASM2126660v1_genomic,GCA_021266605.1,infection,sputum,"Clinical, Unknown"
+GCA_021378395_1_ASM2137839v1_genomic,GCA_021378395.1,Other infection,Central venous catheter tip,Clinical
+GCA_021398755_1_ASM2139875v1_genomic,GCA_021398755.1,pulmonary infection,broncho alveolar lavage fluid,Clinical
+GCA_021460035_1_ASM2146003v1_genomic,GCA_021460035.1,missing,missing,Missing
+GCA_021497285_1_ASM2149728v1_genomic,GCA_021497285.1,"Clinical, unknown",unknown,"Clinical, Unknown"
+GCA_021497305_1_ASM2149730v1_genomic,GCA_021497305.1,"Clinical, unknown",sputum,"Clinical, Unknown"
+GCA_021497325_1_ASM2149732v1_genomic,GCA_021497325.1,unknown,unknown,Missing
+GCA_021497345_2_ASM2149734v2_genomic,GCA_021497345.2,unknown,unknown,Missing
+GCA_021497365_2_ASM2149736v2_genomic,GCA_021497365.2,unknown,sputum,"Clinical, Unknown"
+GCA_021497385_1_ASM2149738v1_genomic,GCA_021497385.1,unknown,urine,"Clinical, Unknown"
+GCA_021497405_1_ASM2149740v1_genomic,GCA_021497405.1,unknown,blood,"Clinical, Unknown"
+GCA_021497425_1_ASM2149742v1_genomic,GCA_021497425.1,unknown,respiratory,Missing
+GCA_021497445_1_ASM2149744v1_genomic,GCA_021497445.1,pluera tumor,sputum,"Clinical, Unknown"
+GCA_021513295_1_ASM2151329v1_genomic,GCA_021513295.1,N.A.,sputum,"Clinical, Unknown"
+GCA_021513375_1_ASM2151337v1_genomic,GCA_021513375.1,CF,sputum,CF
+GCA_021513395_1_ASM2151339v1_genomic,GCA_021513395.1,CF,sputum,CF
+GCA_021513415_1_ASM2151341v1_genomic,GCA_021513415.1,CF,sputum,CF
+GCA_021513435_1_ASM2151343v1_genomic,GCA_021513435.1,CF,sputum,CF
+GCA_021513455_1_ASM2151345v1_genomic,GCA_021513455.1,CF,sputum,CF
+GCA_021513475_1_ASM2151347v1_genomic,GCA_021513475.1,CF,sputum,CF
+GCA_021513495_1_ASM2151349v1_genomic,GCA_021513495.1,CF,sputum,CF
+GCA_021513515_1_ASM2151351v1_genomic,GCA_021513515.1,CF,sputum,CF
+GCA_021513535_1_ASM2151353v1_genomic,GCA_021513535.1,CF,sputum,CF
+GCA_021513555_1_ASM2151355v1_genomic,GCA_021513555.1,CF,sputum,CF
+GCA_021513575_1_ASM2151357v1_genomic,GCA_021513575.1,CF,sputum,CF
+GCA_021513595_1_ASM2151359v1_genomic,GCA_021513595.1,CF,sputum,CF
+GCA_021513615_1_ASM2151361v1_genomic,GCA_021513615.1,CF,sputum,CF
+GCA_021513635_1_ASM2151363v1_genomic,GCA_021513635.1,CF,sputum,CF
+GCA_021513675_1_ASM2151367v1_genomic,GCA_021513675.1,CF,sputum,CF
+GCA_021601605_3_ASM2160160v3_genomic,GCA_021601605.3,Wound/Abscess,Wound/Abscess,Clinical
+GCA_021601685_2_ASM2160168v2_genomic,GCA_021601685.2,Wound/Abscess,Wound/Abscess,Clinical
+GCA_021601745_3_ASM2160174v3_genomic,GCA_021601745.3,Wound/Abscess,skin,Clinical
+GCA_021644285_3_ASM2164428v3_genomic,GCA_021644285.3,Wound/Abscess,Wound/Abscess,Clinical
+GCA_021644425_2_ASM2164442v2_genomic,GCA_021644425.2,Wound/Abscess,Wound/Abscess,Clinical
+GCA_021644505_2_ASM2164450v2_genomic,GCA_021644505.2,Wound/Abscess,Wound/Abscess,Clinical
+GCA_021645225_2_ASM2164522v2_genomic,GCA_021645225.2,"Clinical, unknown",urine,Clinical
+GCA_021645325_2_ASM2164532v2_genomic,GCA_021645325.2,Wound/Abscess,Wound/Abscess,Clinical
+GCA_021645445_2_ASM2164544v2_genomic,GCA_021645445.2,N.A.,stool,Clinical
+GCA_021660795_4_ASM2166079v4_genomic,GCA_021660795.4,Wound/Abscess,Wound/Abscess,Clinical
+GCA_021660815_2_ASM2166081v2_genomic,GCA_021660815.2,Wound/Abscess,Wound/Abscess,Clinical
+GCA_021660875_3_ASM2166087v3_genomic,GCA_021660875.3,Wound/Abscess,Wound/Abscess,Clinical
+GCA_021661475_3_ASM2166147v3_genomic,GCA_021661475.3,Wound/Abscess,Wound/Abscess,Clinical
+GCA_021661615_2_ASM2166161v2_genomic,GCA_021661615.2,Unknown,other,Missing
+GCA_021661655_3_ASM2166165v3_genomic,GCA_021661655.3,Wound/Abscess,Wound/Abscess,Clinical
+GCA_021664795_2_ASM2166479v2_genomic,GCA_021664795.2,Wound/Abscess,Wound/Abscess,Clinical
+GCA_021666815_3_ASM2166681v3_genomic,GCA_021666815.3,Wound/Abscess,Wound/Abscess,Clinical
+GCA_021666875_3_ASM2166687v3_genomic,GCA_021666875.3,Wound/Abscess,Wound/Abscess,Clinical
+GCA_021669275_3_ASM2166927v3_genomic,GCA_021669275.3,Wound/Abscess,Wound/Abscess,Clinical
+GCA_021669335_3_ASM2166933v3_genomic,GCA_021669335.3,Wound/Abscess,Wound/Abscess,Clinical
+GCA_021669535_2_ASM2166953v2_genomic,GCA_021669535.2,"Clinical, unknown",Tissue,"Clinical, Unknown"
+GCA_022213165_2_ASM2221316v2_genomic,GCA_022213165.2,COPD,sputum from COPD patient,Clinical
+GCA_022424055_2_ASM2242405v2_genomic,GCA_022424055.2,not collected,blood,Clinical
+GCA_022453765_1_ASM2245376v1_genomic,GCA_022453765.1,N.A.,soil,Environmental
+GCA_022453825_1_ASM2245382v1_genomic,GCA_022453825.1,N.A.,polyester fabric recovered from leaf litter,Human-associated environmental
+GCA_022475555_3_ASM2247555v3_genomic,GCA_022475555.3,"Clinical, unknown",Tissue,"Clinical, Unknown"
+GCA_022559545_1_ASM2255954v1_genomic,GCA_022559545.1,cystic fibrosis,sputum,CF
+GCA_022569855_1_ASM2256985v1_genomic,GCA_022569855.1,N.A.,soil,Environmental
+GCA_022569895_1_ASM2256989v1_genomic,GCA_022569895.1,N.A.,Pepper plant,Environmental
+GCA_022569915_1_ASM2256991v1_genomic,GCA_022569915.1,N.A.,Pacific Ocean,Environmental
+GCA_022569935_1_ASM2256993v1_genomic,GCA_022569935.1,N.A.,River,Environmental
+GCA_022569975_1_ASM2256997v1_genomic,GCA_022569975.1,Keratitis,Keratitis,Clinical
+GCA_022569995_1_ASM2256999v1_genomic,GCA_022569995.1,N.A.,River,Environmental
+GCA_022570115_1_ASM2257011v1_genomic,GCA_022570115.1,Non-CF lung,Pneumonia,Clinical
+GCA_022570235_1_ASM2257023v1_genomic,GCA_022570235.1,COPD,COPD airways,Clinical
+GCA_022570415_1_ASM2257041v1_genomic,GCA_022570415.1,missing,Intubated patient,Missing
+GCA_022570435_1_ASM2257043v1_genomic,GCA_022570435.1,CF,CF lung,CF
+GCA_022570455_1_ASM2257045v1_genomic,GCA_022570455.1,COPD,COPD airways,Clinical
+GCA_022570475_1_ASM2257047v1_genomic,GCA_022570475.1,CF,CF lung,CF
+GCA_022593675_3_ASM2259367v3_genomic,GCA_022593675.3,N.A.,sputum,"Clinical, Unknown"
+GCA_022637915_1_ASM2263791v1_genomic,GCA_022637915.1,CF,"oropharynx, sputum, or bronchoalveolar lavage",CF
+GCA_022638055_1_ASM2263805v1_genomic,GCA_022638055.1,CF,"oropharynx, sputum, or bronchoalveolar lavage",CF
+GCA_022638175_1_ASM2263817v1_genomic,GCA_022638175.1,CF,"oropharynx, sputum, or bronchoalveolar lavage",CF
+GCA_022649105_1_ASM2264910v1_genomic,GCA_022649105.1,CF,"oropharynx, sputum, or bronchoalveolar lavage",CF
+GCA_022649245_1_ASM2264924v1_genomic,GCA_022649245.1,CF,"oropharynx, sputum, or bronchoalveolar lavage",CF
+GCA_022670795_1_ASM2267079v1_genomic,GCA_022670795.1,septicemia,blood,Clinical
+GCA_022699485_1_ASM2269948v1_genomic,GCA_022699485.1,missing,missing,Missing
+GCA_022699505_1_ASM2269950v1_genomic,GCA_022699505.1,missing,missing,Missing
+GCA_022699525_1_ASM2269952v1_genomic,GCA_022699525.1,missing,missing,Missing
+GCA_022700635_2_ASM2270063v2_genomic,GCA_022700635.2,Other infection,urine,Clinical
+GCA_022810825_1_ASM2281082v1_genomic,GCA_022810825.1,Cystic fibrosis,physical,CF
+GCA_022810865_1_ASM2281086v1_genomic,GCA_022810865.1,Burn wound,bloodstream,Clinical
+GCA_022810885_1_ASM2281088v1_genomic,GCA_022810885.1,Burn wound,limb,Clinical
+GCA_022810905_1_ASM2281090v1_genomic,GCA_022810905.1,Burn wound,bloodstream,Clinical
+GCA_022810925_1_ASM2281092v1_genomic,GCA_022810925.1,Burn wound,Burn,Clinical
+GCA_022810945_1_ASM2281094v1_genomic,GCA_022810945.1,Burn wound,bloodstream,Clinical
+GCA_022810965_1_ASM2281096v1_genomic,GCA_022810965.1,Burn wound,Burn,Clinical
+GCA_022810985_1_ASM2281098v1_genomic,GCA_022810985.1,Burn wound,Burn,Clinical
+GCA_022811005_1_ASM2281100v1_genomic,GCA_022811005.1,Burn wound,bloodstream,Clinical
+GCA_022811025_1_ASM2281102v1_genomic,GCA_022811025.1,Burn wound,Burn,Clinical
+GCA_022811045_1_ASM2281104v1_genomic,GCA_022811045.1,Burn wound,Burn,Clinical
+GCA_022811065_1_ASM2281106v1_genomic,GCA_022811065.1,Burn wound,bloodstream,Clinical
+GCA_022811805_1_ASM2281180v1_genomic,GCA_022811805.1,Burn wound,bloodstream,Clinical
+GCA_022870025_1_ASM2287002v1_genomic,GCA_022870025.1,missing,missing,Missing
+GCA_022870525_1_ASM2287052v1_genomic,GCA_022870525.1,Non-CF lung,Pneumonia sputum,Clinical
+GCA_022870545_1_ASM2287054v1_genomic,GCA_022870545.1,CF,Cystic fibrosis sputum,CF
+GCA_022870565_1_ASM2287056v1_genomic,GCA_022870565.1,CF,Cystic fibrosis sputum,CF
+GCA_022915975_2_ASM2291597v2_genomic,GCA_022915975.2,N.A.,urine,"Clinical, Unknown"
+GCA_022916475_3_ASM2291647v3_genomic,GCA_022916475.3,N.A.,urine,"Clinical, Unknown"
+GCA_023066825_1_ASM2306682v1_genomic,GCA_023066825.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_023066845_1_ASM2306684v1_genomic,GCA_023066845.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_023066865_1_ASM2306686v1_genomic,GCA_023066865.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_023093935_1_ASM2309393v1_genomic,GCA_023093935.1,Bacterial infectious disease,collection,"Clinical, Unknown"
+GCA_023093975_1_ASM2309397v1_genomic,GCA_023093975.1,Bacterial infectious disease,blood,"Clinical, Unknown"
+GCA_023101265_1_ASM2310126v1_genomic,GCA_023101265.1,ICU patient,rectal swab,Clinical
+GCA_023101285_1_ASM2310128v1_genomic,GCA_023101285.1,ICU patient,rectal swab,Clinical
+GCA_023101305_1_ASM2310130v1_genomic,GCA_023101305.1,N.A.,water sink surface,Human-associated environmental
+GCA_023272755_1_ASM2327275v1_genomic,GCA_023272755.1,N.A.,oil well produced fluid,Environmental
+GCA_023380065_1_ASM2338006v1_genomic,GCA_023380065.1,pnuemonia,sputum,Clinical
+GCA_023520735_1_ASM2352073v1_genomic,GCA_023520735.1,pnuemonia,BAL,Clinical
+GCA_023571485_1_ASM2357148v1_genomic,GCA_023571485.1,CF,sputum,CF
+GCA_023612335_1_ASM2361233v1_genomic,GCA_023612335.1,CF,Respiratory sample,CF
+GCA_023615765_2_ASM2361576v2_genomic,GCA_023615765.2,N.A.,urine,"Clinical, Unknown"
+GCA_023822305_1_ASM2382230v1_genomic,GCA_023822305.1,unknown,unknown,Missing
+GCA_024089395_1_ASM2408939v1_genomic,GCA_024089395.1,"Clinical, unknown","Clinical, Unknown","Clinical, Unknown"
+GCA_024126335_1_ASM2412633v1_genomic,GCA_024126335.1,Wound/Abscess,wound infection,Clinical
+GCA_024126355_1_ASM2412635v1_genomic,GCA_024126355.1,Wound/Abscess,wound infection,Clinical
+GCA_024266805_1_ASM2426680v1_genomic,GCA_024266805.1,N.A.,soil,Environmental
+GCA_024266915_1_ASM2426691v1_genomic,GCA_024266915.1,sepsis,urine,Clinical
+GCA_024266935_1_ASM2426693v1_genomic,GCA_024266935.1,pneumonia,endotracheal aspirate,Clinical
+GCA_024300845_1_ASM2430084v1_genomic,GCA_024300845.1,Hip joint infection,Drainage,Clinical
+GCA_024397355_1_ASM2439735v1_genomic,GCA_024397355.1,N.A.,soil,Environmental
+GCA_024507915_1_ASM2450791v1_genomic,GCA_024507915.1,"Clinical, unknown",missing,Missing
+GCA_024507955_1_ASM2450795v1_genomic,GCA_024507955.1,"Clinical, unknown",missing,Missing
+GCA_024584495_1_ASM2458449v1_genomic,GCA_024584495.1,respiratory tract infection,sputum,Clinical
+GCA_024652945_3_ASM2465294v3_genomic,GCA_024652945.3,urinary tract infection,catheter,Clinical
+GCA_024734795_1_ASM2473479v1_genomic,GCA_024734795.1,respiratory tract infection,swab from tracheostomy tube,Clinical
+GCA_024734815_1_ASM2473481v1_genomic,GCA_024734815.1,atherosclerosis,swab from purulent wound,Clinical
+GCA_024760445_1_ASM2476044v1_genomic,GCA_024760445.1,N.A.,groundwater,Environmental
+GCA_024803805_1_ASM2480380v1_genomic,GCA_024803805.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_024922265_2_ASM2492226v2_genomic,GCA_024922265.2,N.A.,other,Missing
+GCA_024972855_1_ASM2497285v1_genomic,GCA_024972855.1,tracheal colonization,tracheal aspirate,"Clinical, Unknown"
+GCA_025021565_1_ASM2502156v1_genomic,GCA_025021565.1,not applicable,not applicable,Missing
+GCA_025021745_1_ASM2502174v1_genomic,GCA_025021745.1,missing,missing,Missing
+GCA_025079255_1_ASM2507925v1_genomic,GCA_025079255.1,CF,CF airways,CF
+GCA_025200845_1_ASM2520084v1_genomic,GCA_025200845.1,N.A.,hospital ICU ward,Human-associated environmental
+GCA_025244965_1_ASM2524496v1_genomic,GCA_025244965.1,N.A.,groundwater,Environmental
+GCA_025263585_1_ASM2526358v1_genomic,GCA_025263585.1,missing,missing,Missing
+GCA_025263605_1_ASM2526360v1_genomic,GCA_025263605.1,missing,missing,Missing
+GCA_025263705_1_ASM2526370v1_genomic,GCA_025263705.1,missing,missing,Missing
+GCA_025398075_1_ASM2539807v1_genomic,GCA_025398075.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_025398095_1_ASM2539809v1_genomic,GCA_025398095.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_025398115_1_ASM2539811v1_genomic,GCA_025398115.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_025398135_1_ASM2539813v1_genomic,GCA_025398135.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_025398835_1_ASM2539883v1_genomic,GCA_025398835.1,fever,phlegm,Clinical
+GCA_025452135_1_ASM2545213v1_genomic,GCA_025452135.1,N.A.,Fish pond,Environmental
+GCA_025580225_2_ASM2558022v2_genomic,GCA_025580225.2,N.A.,blood,Clinical
+GCA_025723085_1_ASM2572308v1_genomic,GCA_025723085.1,sepsis,blood,Clinical
+GCA_025736955_1_ASM2573695v1_genomic,GCA_025736955.1,Other infection,ear swabs,Clinical
+GCA_025736975_1_ASM2573697v1_genomic,GCA_025736975.1,Other infection,ear swabs,Clinical
+GCA_025790885_1_ASM2579088v1_genomic,GCA_025790885.1,"Clinical, unknown",urine,Clinical
+GCA_025908315_1_ASM2590831v1_genomic,GCA_025908315.1,CF,missing,CF
+GCA_025985465_1_ASM2598546v1_genomic,GCA_025985465.1,missing,missing,Missing
+GCA_026625905_1_ASM2662590v1_genomic,GCA_026625905.1,Breast Implant Associated Infection,Breast,Clinical
+GCA_026636135_1_ASM2663613v1_genomic,GCA_026636135.1,Other infection,clinical,"Clinical, Unknown"
+GCA_026636195_1_ASM2663619v1_genomic,GCA_026636195.1,Breast Implant Associated Infection,Breast,Clinical
+GCA_026727695_1_ASM2672769v1_genomic,GCA_026727695.1,Human-associated environmental,plastic surface of detergent compartment of a washing machine,Human-associated environmental
+GCA_026727715_1_ASM2672771v1_genomic,GCA_026727715.1,Human-associated environmental,plastic surface of detergent compartment of a washing machine,Human-associated environmental
+GCA_026727735_1_ASM2672773v1_genomic,GCA_026727735.1,Human-associated environmental,plastic surface of detergent compartment of a washing machine,Human-associated environmental
+GCA_026727755_1_ASM2672775v1_genomic,GCA_026727755.1,Human-associated environmental,rubber door sealing of a washing machine,Human-associated environmental
+GCA_026870135_1_ASM2687013v1_genomic,GCA_026870135.1,Lower respiratory tract disease,lung,Clinical
+GCA_027171385_1_ASM2717138v1_genomic,GCA_027171385.1,N.A.,wastewater,Environmental
+GCA_027359235_1_ASM2735923v1_genomic,GCA_027359235.1,infection,blood,Clinical
+GCA_027570415_1_ASM2757041v1_genomic,GCA_027570415.1,CF,sputum,CF
+GCA_027570435_1_ASM2757043v1_genomic,GCA_027570435.1,CF,sputum,CF
+GCA_027570455_1_ASM2757045v1_genomic,GCA_027570455.1,CF,sputum,CF
+GCA_027570475_1_ASM2757047v1_genomic,GCA_027570475.1,CF,sputum,CF
+GCA_027570495_1_ASM2757049v1_genomic,GCA_027570495.1,CF,sputum,CF
+GCA_027570515_1_ASM2757051v1_genomic,GCA_027570515.1,CF,sputum,CF
+GCA_027570535_1_ASM2757053v1_genomic,GCA_027570535.1,CF,sputum,CF
+GCA_027570555_1_ASM2757055v1_genomic,GCA_027570555.1,CF,sputum,CF
+GCA_027570575_1_ASM2757057v1_genomic,GCA_027570575.1,CF,sputum,CF
+GCA_027570595_1_ASM2757059v1_genomic,GCA_027570595.1,CF,sputum,CF
+GCA_027570615_1_ASM2757061v1_genomic,GCA_027570615.1,CF,sputum,CF
+GCA_027570635_1_ASM2757063v1_genomic,GCA_027570635.1,CF,sputum,CF
+GCA_027570655_1_ASM2757065v1_genomic,GCA_027570655.1,CF,sputum,CF
+GCA_027570675_1_ASM2757067v1_genomic,GCA_027570675.1,CF,sputum,CF
+GCA_027570715_1_ASM2757071v1_genomic,GCA_027570715.1,CF,sputum,CF
+GCA_027570735_1_ASM2757073v1_genomic,GCA_027570735.1,CF,sputum,CF
+GCA_027570755_1_ASM2757075v1_genomic,GCA_027570755.1,CF,sputum,CF
+GCA_027570775_1_ASM2757077v1_genomic,GCA_027570775.1,CF,sputum,CF
+GCA_027570795_1_ASM2757079v1_genomic,GCA_027570795.1,CF,sputum,CF
+GCA_027570815_1_ASM2757081v1_genomic,GCA_027570815.1,CF,Cough Swab,CF
+GCA_027570835_1_ASM2757083v1_genomic,GCA_027570835.1,CF,sputum,CF
+GCA_027570855_1_ASM2757085v1_genomic,GCA_027570855.1,CF,Cough Swab,CF
+GCA_027570875_1_ASM2757087v1_genomic,GCA_027570875.1,CF,Cough Swab,CF
+GCA_027570895_1_ASM2757089v1_genomic,GCA_027570895.1,CF,Cough Swab,CF
+GCA_027570915_1_ASM2757091v1_genomic,GCA_027570915.1,CF,sputum,CF
+GCA_027570935_1_ASM2757093v1_genomic,GCA_027570935.1,CF,sputum,CF
+GCA_027570955_1_ASM2757095v1_genomic,GCA_027570955.1,CF,sputum,CF
+GCA_027570975_1_ASM2757097v1_genomic,GCA_027570975.1,CF,sputum,CF
+GCA_027570995_1_ASM2757099v1_genomic,GCA_027570995.1,CF,sputum,CF
+GCA_027571015_1_ASM2757101v1_genomic,GCA_027571015.1,CF,sputum,CF
+GCA_027571035_1_ASM2757103v1_genomic,GCA_027571035.1,CF,sputum,CF
+GCA_027571055_1_ASM2757105v1_genomic,GCA_027571055.1,CF,sputum,CF
+GCA_027571075_1_ASM2757107v1_genomic,GCA_027571075.1,CF,sputum,CF
+GCA_027571095_1_ASM2757109v1_genomic,GCA_027571095.1,CF,Cough Swab,CF
+GCA_027571115_1_ASM2757111v1_genomic,GCA_027571115.1,CF,sputum,CF
+GCA_027571135_1_ASM2757113v1_genomic,GCA_027571135.1,CF,Cough Swab,CF
+GCA_027571155_1_ASM2757115v1_genomic,GCA_027571155.1,CF,sputum,CF
+GCA_027571175_1_ASM2757117v1_genomic,GCA_027571175.1,CF,sputum,CF
+GCA_027571195_1_ASM2757119v1_genomic,GCA_027571195.1,CF,sputum,CF
+GCA_027571215_1_ASM2757121v1_genomic,GCA_027571215.1,CF,sputum,CF
+GCA_027571285_1_ASM2757128v1_genomic,GCA_027571285.1,CF,sputum,CF
+GCA_027571305_1_ASM2757130v1_genomic,GCA_027571305.1,CF,sputum,CF
+GCA_027571325_1_ASM2757132v1_genomic,GCA_027571325.1,CF,sputum,CF
+GCA_027571345_1_ASM2757134v1_genomic,GCA_027571345.1,CF,sputum,CF
+GCA_027571365_1_ASM2757136v1_genomic,GCA_027571365.1,CF,sputum,CF
+GCA_027594685_1_ASM2759468v1_genomic,GCA_027594685.1,unavailable,sputum,"Clinical, Unknown"
+GCA_027594965_1_ASM2759496v1_genomic,GCA_027594965.1,unavailable,blood,Clinical
+GCA_027594985_1_ASM2759498v1_genomic,GCA_027594985.1,"Clinical, unknown",sputum,"Clinical, Unknown"
+GCA_027595005_1_ASM2759500v1_genomic,GCA_027595005.1,"Clinical, unknown",secretion,"Clinical, Unknown"
+GCA_027595025_1_ASM2759502v1_genomic,GCA_027595025.1,missing,missing,Missing
+GCA_028053955_3_ASM2805395v3_genomic,GCA_028053955.3,"Clinical, unknown",sputum,"Clinical, Unknown"
+GCA_028366335_3_ASM2836633v3_genomic,GCA_028366335.3,N.A.,Rectal Swab,Clinical
+GCA_028366415_3_ASM2836641v3_genomic,GCA_028366415.3,N.A.,Rectal Swab,Clinical
+GCA_028366535_3_ASM2836653v3_genomic,GCA_028366535.3,N.A.,bronchoalveolar lavage,"Clinical, Unknown"
+GCA_028403965_1_ASM2840396v1_genomic,GCA_028403965.1,"Clinical, unknown",tracheal aspirate,"Clinical, Unknown"
+GCA_028403985_1_ASM2840398v1_genomic,GCA_028403985.1,"Clinical, unknown",bone,Clinical
+GCA_028404005_1_ASM2840400v1_genomic,GCA_028404005.1,"Clinical, unknown",urine,Clinical
+GCA_028404025_1_ASM2840402v1_genomic,GCA_028404025.1,"Clinical, unknown",sputum,"Clinical, Unknown"
+GCA_028404045_1_ASM2840404v1_genomic,GCA_028404045.1,"Clinical, unknown",sputum,"Clinical, Unknown"
+GCA_028404065_1_ASM2840406v1_genomic,GCA_028404065.1,"Clinical, unknown",Catheter,Clinical
+GCA_028404085_1_ASM2840408v1_genomic,GCA_028404085.1,"Clinical, unknown",tracheal aspirate,"Clinical, Unknown"
+GCA_028404105_1_ASM2840410v1_genomic,GCA_028404105.1,"Clinical, unknown",urine,Clinical
+GCA_028595525_2_ASM2859552v2_genomic,GCA_028595525.2,UTI,Urinary catheter,Clinical
+GCA_028595865_2_ASM2859586v2_genomic,GCA_028595865.2,UTI,Urinary catheter,Clinical
+GCA_028607125_1_ASM2860712v1_genomic,GCA_028607125.1,missing,missing,Missing
+GCA_028607145_1_ASM2860714v1_genomic,GCA_028607145.1,missing,missing,Missing
+GCA_028607165_1_ASM2860716v1_genomic,GCA_028607165.1,missing,missing,Missing
+GCA_028607185_1_ASM2860718v1_genomic,GCA_028607185.1,missing,missing,Missing
+GCA_028607205_1_ASM2860720v1_genomic,GCA_028607205.1,missing,missing,Missing
+GCA_028607225_1_ASM2860722v1_genomic,GCA_028607225.1,missing,missing,Missing
+GCA_028607245_1_ASM2860724v1_genomic,GCA_028607245.1,missing,missing,Missing
+GCA_028607265_1_ASM2860726v1_genomic,GCA_028607265.1,missing,missing,Missing
+GCA_028607285_1_ASM2860728v1_genomic,GCA_028607285.1,missing,missing,Missing
+GCA_028607305_1_ASM2860730v1_genomic,GCA_028607305.1,missing,missing,Missing
+GCA_028607345_1_ASM2860734v1_genomic,GCA_028607345.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028607365_1_ASM2860736v1_genomic,GCA_028607365.1,missing,missing,Missing
+GCA_028607385_1_ASM2860738v1_genomic,GCA_028607385.1,missing,missing,Missing
+GCA_028608485_1_ASM2860848v1_genomic,GCA_028608485.1,missing,missing,Missing
+GCA_028608505_1_ASM2860850v1_genomic,GCA_028608505.1,missing,missing,Missing
+GCA_028608525_1_ASM2860852v1_genomic,GCA_028608525.1,missing,missing,Missing
+GCA_028608565_1_ASM2860856v1_genomic,GCA_028608565.1,missing,missing,Missing
+GCA_028608585_1_ASM2860858v1_genomic,GCA_028608585.1,missing,missing,Missing
+GCA_028608605_1_ASM2860860v1_genomic,GCA_028608605.1,missing,missing,Missing
+GCA_028608625_1_ASM2860862v1_genomic,GCA_028608625.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028608645_1_ASM2860864v1_genomic,GCA_028608645.1,missing,missing,Missing
+GCA_028608665_1_ASM2860866v1_genomic,GCA_028608665.1,missing,missing,Missing
+GCA_028608685_1_ASM2860868v1_genomic,GCA_028608685.1,missing,missing,Missing
+GCA_028608705_1_ASM2860870v1_genomic,GCA_028608705.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028608725_1_ASM2860872v1_genomic,GCA_028608725.1,missing,missing,Missing
+GCA_028608745_1_ASM2860874v1_genomic,GCA_028608745.1,missing,missing,Missing
+GCA_028608765_1_ASM2860876v1_genomic,GCA_028608765.1,missing,missing,Missing
+GCA_028608785_1_ASM2860878v1_genomic,GCA_028608785.1,missing,missing,Missing
+GCA_028608805_1_ASM2860880v1_genomic,GCA_028608805.1,missing,missing,Missing
+GCA_028608825_1_ASM2860882v1_genomic,GCA_028608825.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028608845_1_ASM2860884v1_genomic,GCA_028608845.1,missing,missing,Missing
+GCA_028608865_1_ASM2860886v1_genomic,GCA_028608865.1,missing,missing,Missing
+GCA_028608885_1_ASM2860888v1_genomic,GCA_028608885.1,missing,missing,Missing
+GCA_028608905_1_ASM2860890v1_genomic,GCA_028608905.1,missing,missing,Missing
+GCA_028608925_1_ASM2860892v1_genomic,GCA_028608925.1,missing,missing,Missing
+GCA_028608945_1_ASM2860894v1_genomic,GCA_028608945.1,missing,missing,Missing
+GCA_028608965_1_ASM2860896v1_genomic,GCA_028608965.1,missing,missing,Missing
+GCA_028608985_1_ASM2860898v1_genomic,GCA_028608985.1,missing,missing,Missing
+GCA_028609005_1_ASM2860900v1_genomic,GCA_028609005.1,missing,missing,Missing
+GCA_028609025_1_ASM2860902v1_genomic,GCA_028609025.1,missing,missing,Missing
+GCA_028609045_1_ASM2860904v1_genomic,GCA_028609045.1,missing,missing,Missing
+GCA_028609065_1_ASM2860906v1_genomic,GCA_028609065.1,missing,missing,Missing
+GCA_028609085_1_ASM2860908v1_genomic,GCA_028609085.1,missing,missing,Missing
+GCA_028609105_1_ASM2860910v1_genomic,GCA_028609105.1,missing,missing,Missing
+GCA_028609125_1_ASM2860912v1_genomic,GCA_028609125.1,missing,missing,Missing
+GCA_028609145_1_ASM2860914v1_genomic,GCA_028609145.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028609185_1_ASM2860918v1_genomic,GCA_028609185.1,missing,missing,Missing
+GCA_028609205_1_ASM2860920v1_genomic,GCA_028609205.1,missing,missing,Missing
+GCA_028609225_1_ASM2860922v1_genomic,GCA_028609225.1,missing,missing,Missing
+GCA_028609245_1_ASM2860924v1_genomic,GCA_028609245.1,missing,missing,Missing
+GCA_028609265_1_ASM2860926v1_genomic,GCA_028609265.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028609285_1_ASM2860928v1_genomic,GCA_028609285.1,missing,missing,Missing
+GCA_028609305_1_ASM2860930v1_genomic,GCA_028609305.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028609325_1_ASM2860932v1_genomic,GCA_028609325.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028609345_1_ASM2860934v1_genomic,GCA_028609345.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028609365_1_ASM2860936v1_genomic,GCA_028609365.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028609385_1_ASM2860938v1_genomic,GCA_028609385.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028609405_1_ASM2860940v1_genomic,GCA_028609405.1,missing,missing,Missing
+GCA_028609425_1_ASM2860942v1_genomic,GCA_028609425.1,missing,missing,Missing
+GCA_028609445_1_ASM2860944v1_genomic,GCA_028609445.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028609465_1_ASM2860946v1_genomic,GCA_028609465.1,missing,missing,Missing
+GCA_028609485_1_ASM2860948v1_genomic,GCA_028609485.1,missing,missing,Missing
+GCA_028609505_1_ASM2860950v1_genomic,GCA_028609505.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028609525_1_ASM2860952v1_genomic,GCA_028609525.1,missing,missing,Missing
+GCA_028609545_1_ASM2860954v1_genomic,GCA_028609545.1,missing,missing,Missing
+GCA_028609565_1_ASM2860956v1_genomic,GCA_028609565.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028609585_1_ASM2860958v1_genomic,GCA_028609585.1,missing,missing,Missing
+GCA_028609605_1_ASM2860960v1_genomic,GCA_028609605.1,missing,missing,Missing
+GCA_028609905_1_ASM2860990v1_genomic,GCA_028609905.1,missing,missing,Missing
+GCA_028609925_1_ASM2860992v1_genomic,GCA_028609925.1,missing,missing,Missing
+GCA_028609945_1_ASM2860994v1_genomic,GCA_028609945.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028609965_1_ASM2860996v1_genomic,GCA_028609965.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028609985_1_ASM2860998v1_genomic,GCA_028609985.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028610005_1_ASM2861000v1_genomic,GCA_028610005.1,missing,missing,Missing
+GCA_028610025_1_ASM2861002v1_genomic,GCA_028610025.1,missing,missing,Missing
+GCA_028610045_1_ASM2861004v1_genomic,GCA_028610045.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028610065_1_ASM2861006v1_genomic,GCA_028610065.1,missing,missing,Missing
+GCA_028610105_1_ASM2861010v1_genomic,GCA_028610105.1,missing,missing,Missing
+GCA_028610145_1_ASM2861014v1_genomic,GCA_028610145.1,missing,missing,Missing
+GCA_028610165_1_ASM2861016v1_genomic,GCA_028610165.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_028610185_1_ASM2861018v1_genomic,GCA_028610185.1,missing,missing,Missing
+GCA_028610205_1_ASM2861020v1_genomic,GCA_028610205.1,missing,missing,Missing
+GCA_028622015_1_ASM2862201v1_genomic,GCA_028622015.1,polymicrobial infection,blood,"Clinical, Unknown"
+GCA_028622895_1_ASM2862289v1_genomic,GCA_028622895.1,N.A.,blood,Clinical
+GCA_028743595_1_ASM2874359v1_genomic,GCA_028743595.1,missing,missing,Missing
+GCA_028751785_1_ASM2875178v1_genomic,GCA_028751785.1,"Clinical, Unkown",urine,Clinical
+GCA_028961985_1_ASM2896198v1_genomic,GCA_028961985.1,N.A.,water on ISS,Environmental
+GCA_029201245_1_ASM2920124v1_genomic,GCA_029201245.1,missing,missing,Missing
+GCA_029856995_1_ASM2985699v1_genomic,GCA_029856995.1,not collected,sputum,"Clinical, Unknown"
+GCA_029857015_1_ASM2985701v1_genomic,GCA_029857015.1,not collected,sputum,"Clinical, Unknown"
+GCA_029916825_1_ASM2991682v1_genomic,GCA_029916825.1,"Clinical, Unknown","Clinical, Unknown","Clinical, Unknown"
+GCA_029958385_1_ASM2995838v1_genomic,GCA_029958385.1,"Clinical, Unknown","Clinical, Unknown","Clinical, Unknown"
+GCA_029961245_1_ASM2996124v1_genomic,GCA_029961245.1,CRPA,Wound/Abscess,Clinical
+GCA_029961265_1_ASM2996126v1_genomic,GCA_029961265.1,CRPA,Wound/Abscess,Clinical
+GCA_029961285_1_ASM2996128v1_genomic,GCA_029961285.1,CRPA,Wound/Abscess,Clinical
+GCA_029961305_1_ASM2996130v1_genomic,GCA_029961305.1,CRPA,Wound/Abscess,Clinical
+GCA_029961325_1_ASM2996132v1_genomic,GCA_029961325.1,CRPA,Wound/Abscess,Clinical
+GCA_029961345_1_ASM2996134v1_genomic,GCA_029961345.1,CRPA,Wound/Abscess,Clinical
+GCA_029961365_1_ASM2996136v1_genomic,GCA_029961365.1,CRPA,Wound/Abscess,Clinical
+GCA_029961385_1_ASM2996138v1_genomic,GCA_029961385.1,CRPA,Wound/Abscess,Clinical
+GCA_029961405_1_ASM2996140v1_genomic,GCA_029961405.1,CRPA,Wound/Abscess,Clinical
+GCA_029961425_1_ASM2996142v1_genomic,GCA_029961425.1,CRPA,Wound/Abscess,Clinical
+GCA_029961445_1_ASM2996144v1_genomic,GCA_029961445.1,CRPA,Wound/Abscess,Clinical
+GCA_029961465_1_ASM2996146v1_genomic,GCA_029961465.1,CRPA,Wound/Abscess,Clinical
+GCA_029961485_1_ASM2996148v1_genomic,GCA_029961485.1,CRPA,sputum,Clinical
+GCA_029961505_1_ASM2996150v1_genomic,GCA_029961505.1,CRPA,Wound/Abscess,Clinical
+GCA_029961525_1_ASM2996152v1_genomic,GCA_029961525.1,CRPA,Wound/Abscess,Clinical
+GCA_029961545_1_ASM2996154v1_genomic,GCA_029961545.1,CRPA,other,Clinical
+GCA_029961565_1_ASM2996156v1_genomic,GCA_029961565.1,CRPA,sputum,Clinical
+GCA_029961585_1_ASM2996158v1_genomic,GCA_029961585.1,CRPA,Wound/Abscess,Clinical
+GCA_029961605_1_ASM2996160v1_genomic,GCA_029961605.1,CRPA,Wound/Abscess,Clinical
+GCA_029961625_1_ASM2996162v1_genomic,GCA_029961625.1,CRPA,Wound/Abscess,Clinical
+GCA_029961645_1_ASM2996164v1_genomic,GCA_029961645.1,CRPA,Tissue,Clinical
+GCA_029961665_1_ASM2996166v1_genomic,GCA_029961665.1,CRPA,Wound/Abscess,Clinical
+GCA_029962145_1_ASM2996214v1_genomic,GCA_029962145.1,CRPA,Wound/Abscess,Clinical
+GCA_029962165_1_ASM2996216v1_genomic,GCA_029962165.1,CRPA,blood,Clinical
+GCA_029962185_1_ASM2996218v1_genomic,GCA_029962185.1,CRPA,Wound/Abscess,Clinical
+GCA_029962205_1_ASM2996220v1_genomic,GCA_029962205.1,CRPA,Wound/Abscess,Clinical
+GCA_030028275_1_ASM3002827v1_genomic,GCA_030028275.1,N.A.,soil,Environmental
+GCA_030034615_1_ASM3003461v1_genomic,GCA_030034615.1,Pulmonary infection,sputum,Clinical
+GCA_030034635_1_ASM3003463v1_genomic,GCA_030034635.1,Acute toxic encephalopathy,urine,Clinical
+GCA_030034655_1_ASM3003465v1_genomic,GCA_030034655.1,Chronic kidney disease,sputum,Clinical
+GCA_030034675_1_ASM3003467v1_genomic,GCA_030034675.1,Gallbladder carcinoma,sputum,Clinical
+GCA_030121855_1_ASM3012185v1_genomic,GCA_030121855.1,esophagus cancer,flegm,Clinical
+GCA_030121875_1_ASM3012187v1_genomic,GCA_030121875.1,Pulmonary infection,broncholveolr lvge fluid,Clinical
+GCA_030121895_1_ASM3012189v1_genomic,GCA_030121895.1,pneumonia,phlegm,Clinical
+GCA_030121915_1_ASM3012191v1_genomic,GCA_030121915.1,pneumonia,phlegm,Clinical
+GCA_030121935_1_ASM3012193v1_genomic,GCA_030121935.1,pneumonia,phlegm,Clinical
+GCA_030121955_1_ASM3012195v1_genomic,GCA_030121955.1,pneumonia,phlegm,Clinical
+GCA_030121975_1_ASM3012197v1_genomic,GCA_030121975.1,pneumonia,phlegm,Clinical
+GCA_030121995_1_ASM3012199v1_genomic,GCA_030121995.1,unavailable,urine,Clinical
+GCA_030122015_1_ASM3012201v1_genomic,GCA_030122015.1,Pulmonary infection,broncholveolr lvge fluid,Clinical
+GCA_030122035_1_ASM3012203v1_genomic,GCA_030122035.1,ulcer,secreta,Clinical
+GCA_030122055_1_ASM3012205v1_genomic,GCA_030122055.1,asthma,Airway lavage fluid,Clinical
+GCA_030122075_1_ASM3012207v1_genomic,GCA_030122075.1,multiple trauma,The catheter tip,Clinical
+GCA_030122095_1_ASM3012209v1_genomic,GCA_030122095.1,pnuemonia,phlegm,Clinical
+GCA_030122115_1_ASM3012211v1_genomic,GCA_030122115.1,Pulmonary infection,broncholveolr lvge fluid,Clinical
+GCA_030122135_1_ASM3012213v1_genomic,GCA_030122135.1,unavailable,unavailable,Missing
+GCA_030122155_1_ASM3012215v1_genomic,GCA_030122155.1,Other infection,phlegm,Clinical
+GCA_030179725_1_ASM3017972v1_genomic,GCA_030179725.1,"Clinical, Unknown",swab,"Clinical, Unknown"
+GCA_030179745_1_ASM3017974v1_genomic,GCA_030179745.1,"Clinical, Unknown",swab,"Clinical, Unknown"
+GCA_030179765_1_ASM3017976v1_genomic,GCA_030179765.1,N.A.,Sink Drain,Environmental
+GCA_030183355_2_NA_genomic,GCA_030183355.2,skin and soft tissue infection,Skin and soft tissue,Clinical
+GCA_030183855_2_NA_genomic,GCA_030183855.2,blood infection,blood,Clinical
+GCA_030185815_2_NA_genomic,GCA_030185815.2,UTI,urine,Clinical
+GCA_030185915_2_NA_genomic,GCA_030185915.2,respiratory infection,respiratory,"Clinical, Unknown"
+GCA_030186885_2_NA_genomic,GCA_030186885.2,respiratory infection,respiratory,"Clinical, Unknown"
+GCA_030253475_1_ASM3025347v1_genomic,GCA_030253475.1,Corneal ulcer,Left cornea scraping,Clinical
+GCA_030264075_1_ASM3026407v1_genomic,GCA_030264075.1,N.A.,Laboratory strain,Lab
+GCA_030316095_1_ASM3031609v1_genomic,GCA_030316095.1,missing,oral cavity,Clinical
+GCA_030366015_2_ASM3036601v2_genomic,GCA_030366015.2,missing,missing,Missing
+GCA_030368395_2_ASM3036839v2_genomic,GCA_030368395.2,missing,missing,Missing
+GCA_030368495_2_ASM3036849v2_genomic,GCA_030368495.2,missing,missing,Missing
+GCA_030369815_1_ASM3036981v1_genomic,GCA_030369815.1,N.A.,animal feces,Animal
+GCA_030369835_1_ASM3036983v1_genomic,GCA_030369835.1,N.A.,animal feces,Animal
+GCA_030369855_1_ASM3036985v1_genomic,GCA_030369855.1,N.A.,environmental,Environmental
+GCA_030388285_1_ASM3038828v1_genomic,GCA_030388285.1,N.A.,swine carcass composts,Animal
+GCA_030413195_1_ASM3041319v1_genomic,GCA_030413195.1,"Clinical, Unknown",sputum,"Clinical, Unknown"
+GCA_030436095_1_ASM3043609v1_genomic,GCA_030436095.1,N.A.,Secretions,"Clinical, Unknown"
+GCA_030444495_1_ASM3044449v1_genomic,GCA_030444495.1,CF,Sputum sample,CF
+GCA_030444595_1_ASM3044459v1_genomic,GCA_030444595.1,missing,missing,Missing
+GCA_030444635_1_ASM3044463v1_genomic,GCA_030444635.1,Unknown,missing,Missing
+GCA_030444655_1_ASM3044465v1_genomic,GCA_030444655.1,missing,missing,Missing
+GCA_030444675_1_ASM3044467v1_genomic,GCA_030444675.1,missing,missing,Missing
+GCA_030489625_1_ASM3048962v1_genomic,GCA_030489625.1,N.A.,sputum,"Clinical, Unknown"
+GCA_030489645_1_ASM3048964v1_genomic,GCA_030489645.1,N.A.,N.A.,Missing
+GCA_030490735_1_ASM3049073v1_genomic,GCA_030490735.1,N.A.,N.A.,Missing
+GCA_030505595_1_ASM3050559v1_genomic,GCA_030505595.1,N.A.,N.A.,Missing
+GCA_030563585_1_ASM3056358v1_genomic,GCA_030563585.1,CF,sputum,CF
+GCA_030563765_1_ASM3056376v1_genomic,GCA_030563765.1,CF,sputum,CF
+GCA_030564045_1_ASM3056404v1_genomic,GCA_030564045.1,CF,sputum,CF
+GCA_030758435_1_ASM3075843v1_genomic,GCA_030758435.1,Unknown,sputum,"Clinical, Unknown"
+GCA_030866885_1_ASM3086688v1_genomic,GCA_030866885.1,dyskinesia,sputum,Clinical
+GCA_030866905_1_ASM3086690v1_genomic,GCA_030866905.1,dyskinesia,sputum,Clinical
+GCA_030908425_1_ASM3090842v1_genomic,GCA_030908425.1,osteomyelitis,pus,Clinical
+GCA_030908445_1_ASM3090844v1_genomic,GCA_030908445.1,lung infection,sputum,"Clinical, Unknown"
+GCA_031211485_1_ASM3121148v1_genomic,GCA_031211485.1,Unknown,urine,Clinical
+GCA_031212645_1_ASM3121264v1_genomic,GCA_031212645.1,Unknown,urine,Clinical
+GCA_031218375_1_ASM3121837v1_genomic,GCA_031218375.1,Unknown,sputum,"Clinical, Unknown"
+GCA_031219395_1_ASM3121939v1_genomic,GCA_031219395.1,Pulmonary infection,sputum,Clinical
+GCA_031220265_1_ASM3122026v1_genomic,GCA_031220265.1,Unknown,Ascites,"Clinical, Unknown"
+GCA_031221745_1_ASM3122174v1_genomic,GCA_031221745.1,"Clinical, unknown",sputum,"Clinical, Unknown"
+GCA_031222225_1_ASM3122222v1_genomic,GCA_031222225.1,Unknown,Unknow,Missing
+GCA_031223175_1_ASM3122317v1_genomic,GCA_031223175.1,Unknown,sputum,"Clinical, Unknown"
+GCA_031224255_1_ASM3122425v1_genomic,GCA_031224255.1,Unknown,sputum,"Clinical, Unknown"
+GCA_031224875_1_ASM3122487v1_genomic,GCA_031224875.1,Unknown,sputum,"Clinical, Unknown"
+GCA_031326305_1_ASM3132630v1_genomic,GCA_031326305.1,multiple organ failure,sputum,Clinical
+GCA_031326325_1_ASM3132632v1_genomic,GCA_031326325.1,Non-CF lung,sputum,"Clinical, Unknown"
+GCA_031851725_1_ASM3185172v1_genomic,GCA_031851725.1,N.A.,oil produced water,Environmental
+GCA_032231025_1_ASM3223102v1_genomic,GCA_032231025.1,not collected,throat swab,"Clinical, Unknown"
+GCA_032231045_1_ASM3223104v1_genomic,GCA_032231045.1,not collected,urine,Clinical
+GCA_032231085_1_ASM3223108v1_genomic,GCA_032231085.1,not collected,wound,Clinical
+GCA_032231105_1_ASM3223110v1_genomic,GCA_032231105.1,not collected,tracheal aspirate,"Clinical, Unknown"
+GCA_032252935_1_ASM3225293v1_genomic,GCA_032252935.1,N.A.,sediment,Environmental
+GCA_032252955_1_ASM3225295v1_genomic,GCA_032252955.1,"Clinical, Unknown",sputum,"Clinical, Unknown"
+GCA_032252975_1_ASM3225297v1_genomic,GCA_032252975.1,"Clinical, Unknown",sputum,"Clinical, Unknown"
+GCA_032292255_2_ASM3229225v2_genomic,GCA_032292255.2,N.A.,Wound/Abscess,Clinical
+GCA_032463705_1_ASM3246370v1_genomic,GCA_032463705.1,Unknown,sputum,"Clinical, Unknown"
+GCA_032598925_1_ASM3259892v1_genomic,GCA_032598925.1,Infection,sputum,"Clinical, Unknown"
+GCA_032681185_1_ASM3268118v1_genomic,GCA_032681185.1,Lab,Lab,Lab
+GCA_032696765_1_ASM3269676v1_genomic,GCA_032696765.1,superficial periumbilical wound,Wound exudate,Clinical
+GCA_032699645_1_ASM3269964v1_genomic,GCA_032699645.1,"Clinical, unknown",sputum,"Clinical, Unknown"
+GCA_032761935_1_ASM3276193v1_genomic,GCA_032761935.1,bacterial infectious disease,throat swab,"Clinical, Unknown"
+GCA_032811685_1_ASM3281168v1_genomic,GCA_032811685.1,N.A.,seawater,Environmental
+GCA_032847385_1_ASM3284738v1_genomic,GCA_032847385.1,"Clinical, unknown",clinical,"Clinical, Unknown"
+GCA_032878795_1_ASM3287879v1_genomic,GCA_032878795.1,"Clinical, unknown",respiratory secretion,"Clinical, Unknown"
+GCA_032934835_1_ASM3293483v1_genomic,GCA_032934835.1,N.A.,Wound/Abscess,Clinical
+GCA_032941915_1_ASM3294191v1_genomic,GCA_032941915.1,Covid,blood,Clinical
+GCA_033108345_1_ASM3310834v1_genomic,GCA_033108345.1,"Clinical, Unknown",sputum,"Clinical, Unknown"
+GCA_033216995_1_ASM3321699v1_genomic,GCA_033216995.1,"Clinical, Unknown","Clinical, unknown","Clinical, Unknown"
+GCA_033217895_1_ASM3321789v1_genomic,GCA_033217895.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_033219075_1_ASM3321907v1_genomic,GCA_033219075.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_033219955_1_ASM3321995v1_genomic,GCA_033219955.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_033221155_1_ASM3322115v1_genomic,GCA_033221155.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_033222185_1_ASM3322218v1_genomic,GCA_033222185.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_033223225_1_ASM3322322v1_genomic,GCA_033223225.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_033224565_1_ASM3322456v1_genomic,GCA_033224565.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_033225445_1_ASM3322544v1_genomic,GCA_033225445.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_033226745_1_ASM3322674v1_genomic,GCA_033226745.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_033227745_1_ASM3322774v1_genomic,GCA_033227745.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_033228545_1_ASM3322854v1_genomic,GCA_033228545.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_033229485_1_ASM3322948v1_genomic,GCA_033229485.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_033230305_1_ASM3323030v1_genomic,GCA_033230305.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_033232085_1_ASM3323208v1_genomic,GCA_033232085.1,"Clinical, unknown","Clinical, unknown","Clinical, Unknown"
+GCA_033335935_1_ASM3333593v1_genomic,GCA_033335935.1,Keratitis,cornea,Clinical
+GCA_033374175_1_ASM3337417v1_genomic,GCA_033374175.1,N.A.,cat urine,Animal
+GCA_033375015_1_ASM3337501v1_genomic,GCA_033375015.1,N.A.,cat urine,Animal
+GCA_033375815_1_ASM3337581v1_genomic,GCA_033375815.1,N.A.,cat urine,Animal
+GCA_033392255_1_ASM3339225v1_genomic,GCA_033392255.1,missing,missing,Missing
+GCA_033393195_1_ASM3339319v1_genomic,GCA_033393195.1,missing,missing,Missing
+GCA_033394235_1_ASM3339423v1_genomic,GCA_033394235.1,missing,missing,Missing
+GCA_033395015_1_ASM3339501v1_genomic,GCA_033395015.1,missing,missing,Missing
+GCA_033541995_2_ASM3354199v2_genomic,GCA_033541995.2,missing,missing,Missing
+GCA_033547135_1_ASM3354713v1_genomic,GCA_033547135.1,missing,missing,Missing
+GCA_033615795_1_ASM3361579v1_genomic,GCA_033615795.1,missing,missing,Missing
+GCA_033807835_1_ASM3380783v1_genomic,GCA_033807835.1,N.A.,plant,Environmental
+GCA_033971305_1_ASM3397130v1_genomic,GCA_033971305.1,N.A.,lake,Environmental
+GCA_034190815_1_ASM3419081v1_genomic,GCA_034190815.1,Pneumonia,"Blood culture, respiratory secretions",Clinical
+GCA_034438375_1_ASM3443837v1_genomic,GCA_034438375.1,"Clinical, Unknown",central venous blood,"Clinical, Unknown"
+GCA_034480705_1_ASM3448070v1_genomic,GCA_034480705.1,Bloodstream infection,blood,Clinical
+GCA_034480885_1_ASM3448088v1_genomic,GCA_034480885.1,Urinary tract infection,urine,Clinical
+GCA_035197065_1_ASM3519706v1_genomic,GCA_035197065.1,CF,sputum,CF
+GCA_035197965_1_ASM3519796v1_genomic,GCA_035197965.1,lung infection,sputum,"Clinical, Unknown"
+GCA_035198885_1_ASM3519888v1_genomic,GCA_035198885.1,Skin Infection,skin,Clinical
+GCA_035205985_1_ASM3520598v1_genomic,GCA_035205985.1,pneumonia,sputum,Clinical
+GCA_035621175_1_ASM3562117v1_genomic,GCA_035621175.1,N.A.,other,Missing
+GCA_035621255_1_ASM3562125v1_genomic,GCA_035621255.1,N.A.,wastewater,Human-associated environmental
+GCA_035621395_1_ASM3562139v1_genomic,GCA_035621395.1,missing,missing,Missing
+GCA_035666215_1_ASM3566621v1_genomic,GCA_035666215.1,N.A.,terrestrial soils,Environmental
+GCA_035984435_1_ASM3598443v1_genomic,GCA_035984435.1,"Clinical, Unknown",gut microbiota,"Clinical, Unknown"
+GCA_036232065_1_ASM3623206v1_genomic,GCA_036232065.1,CF,Cystic fibrosis human lung,CF
+GCA_036232085_1_ASM3623208v1_genomic,GCA_036232085.1,CF,Cystic fibrosis human lung,CF
+GCA_036232105_1_ASM3623210v1_genomic,GCA_036232105.1,CF,Cystic fibrosis human lung,CF
+GCA_036232125_1_ASM3623212v1_genomic,GCA_036232125.1,CF,Cystic fibrosis human lung,CF
+GCA_036232145_1_ASM3623214v1_genomic,GCA_036232145.1,CF,Cystic fibrosis human lung,CF
+GCA_036232165_1_ASM3623216v1_genomic,GCA_036232165.1,CF,Cystic fibrosis human lung,CF
+GCA_036232185_1_ASM3623218v1_genomic,GCA_036232185.1,CF,Cystic fibrosis human lung,CF
+GCA_036232205_1_ASM3623220v1_genomic,GCA_036232205.1,CF,Cystic fibrosis human lung,CF
+GCA_036232225_1_ASM3623222v1_genomic,GCA_036232225.1,CF,Cystic fibrosis human lung,CF
+GCA_036232245_1_ASM3623224v1_genomic,GCA_036232245.1,CF,Cystic fibrosis human lung,CF
+GCA_036232265_1_ASM3623226v1_genomic,GCA_036232265.1,CF,Cystic fibrosis human lung,CF
+GCA_036232285_1_ASM3623228v1_genomic,GCA_036232285.1,CF,Cystic fibrosis human lung,CF
+GCA_036232305_1_ASM3623230v1_genomic,GCA_036232305.1,CF,Cystic fibrosis human lung,CF
+GCA_036232325_1_ASM3623232v1_genomic,GCA_036232325.1,CF,Cystic fibrosis human lung,CF
+GCA_036232345_1_ASM3623234v1_genomic,GCA_036232345.1,CF,Cystic fibrosis human lung,CF
+GCA_036232365_1_ASM3623236v1_genomic,GCA_036232365.1,CF,Cystic fibrosis human lung,CF
+GCA_036232385_1_ASM3623238v1_genomic,GCA_036232385.1,CF,Cystic fibrosis human lung,CF
+GCA_036232405_1_ASM3623240v1_genomic,GCA_036232405.1,CF,Cystic fibrosis human lung,CF
+GCA_036232425_1_ASM3623242v1_genomic,GCA_036232425.1,CF,Cystic fibrosis human lung,CF
+GCA_036232455_1_ASM3623245v1_genomic,GCA_036232455.1,CF,Cystic fibrosis human lung,CF
+GCA_036232495_1_ASM3623249v1_genomic,GCA_036232495.1,CF,Cystic fibrosis human lung,CF
+GCA_036232525_1_ASM3623252v1_genomic,GCA_036232525.1,CF,Cystic fibrosis human lung,CF
+GCA_036232565_1_ASM3623256v1_genomic,GCA_036232565.1,CF,Cystic fibrosis human lung,CF
+GCA_036232585_1_ASM3623258v1_genomic,GCA_036232585.1,CF,Cystic fibrosis human lung,CF
+GCA_036232605_1_ASM3623260v1_genomic,GCA_036232605.1,CF,Cystic fibrosis human lung,CF
+GCA_036232625_1_ASM3623262v1_genomic,GCA_036232625.1,CF,Cystic fibrosis human lung,CF
+GCA_036232645_1_ASM3623264v1_genomic,GCA_036232645.1,CF,Cystic fibrosis human lung,CF
+GCA_036232665_1_ASM3623266v1_genomic,GCA_036232665.1,CF,Cystic fibrosis human lung,CF
+GCA_036232685_1_ASM3623268v1_genomic,GCA_036232685.1,CF,Cystic fibrosis human lung,CF
+GCA_036232705_1_ASM3623270v1_genomic,GCA_036232705.1,CF,Cystic fibrosis human lung,CF
+GCA_036232725_1_ASM3623272v1_genomic,GCA_036232725.1,CF,Cystic fibrosis human lung,CF
+GCA_036232745_1_ASM3623274v1_genomic,GCA_036232745.1,CF,Cystic fibrosis human lung,CF
+GCA_036232765_1_ASM3623276v1_genomic,GCA_036232765.1,CF,Cystic fibrosis human lung,CF
+GCA_036232785_1_ASM3623278v1_genomic,GCA_036232785.1,CF,Cystic fibrosis human lung,CF
+GCA_036232805_1_ASM3623280v1_genomic,GCA_036232805.1,CF,Cystic fibrosis human lung,CF
+GCA_036232825_1_ASM3623282v1_genomic,GCA_036232825.1,CF,Cystic fibrosis human lung,CF
+GCA_036232845_1_ASM3623284v1_genomic,GCA_036232845.1,CF,Cystic fibrosis human lung,CF
+GCA_036232865_1_ASM3623286v1_genomic,GCA_036232865.1,CF,Cystic fibrosis human lung,CF
+GCA_036232885_1_ASM3623288v1_genomic,GCA_036232885.1,CF,Cystic fibrosis human lung,CF
+GCA_036232905_1_ASM3623290v1_genomic,GCA_036232905.1,CF,Cystic fibrosis human lung,CF
+GCA_036232925_1_ASM3623292v1_genomic,GCA_036232925.1,CF,Cystic fibrosis human lung,CF
+GCA_036232945_1_ASM3623294v1_genomic,GCA_036232945.1,CF,Cystic fibrosis human lung,CF
+GCA_036233095_1_ASM3623309v1_genomic,GCA_036233095.1,CF,Cystic fibrosis human lung,CF
+GCA_036233115_1_ASM3623311v1_genomic,GCA_036233115.1,CF,Cystic fibrosis human lung,CF
+GCA_036233135_1_ASM3623313v1_genomic,GCA_036233135.1,CF,Cystic fibrosis human lung,CF
+GCA_036233155_1_ASM3623315v1_genomic,GCA_036233155.1,CF,Cystic fibrosis human lung,CF
+GCA_036233175_1_ASM3623317v1_genomic,GCA_036233175.1,CF,Cystic fibrosis human lung,CF
+GCA_036233195_1_ASM3623319v1_genomic,GCA_036233195.1,CF,Cystic fibrosis human lung,CF
+GCA_036233215_1_ASM3623321v1_genomic,GCA_036233215.1,CF,Cystic fibrosis human lung,CF
+GCA_036233235_1_ASM3623323v1_genomic,GCA_036233235.1,CF,Cystic fibrosis human lung,CF
+GCA_036233255_1_ASM3623325v1_genomic,GCA_036233255.1,CF,Cystic fibrosis human lung,CF
+GCA_036233275_1_ASM3623327v1_genomic,GCA_036233275.1,CF,Cystic fibrosis human lung,CF
+GCA_036233295_1_ASM3623329v1_genomic,GCA_036233295.1,CF,Cystic fibrosis human lung,CF
+GCA_036233315_1_ASM3623331v1_genomic,GCA_036233315.1,CF,Cystic fibrosis human lung,CF
+GCA_036233335_1_ASM3623333v1_genomic,GCA_036233335.1,CF,Cystic fibrosis human lung,CF
+GCA_036233355_1_ASM3623335v1_genomic,GCA_036233355.1,CF,Cystic fibrosis human lung,CF
+GCA_036233375_1_ASM3623337v1_genomic,GCA_036233375.1,CF,Cystic fibrosis human lung,CF
+GCA_036233395_1_ASM3623339v1_genomic,GCA_036233395.1,CF,Cystic fibrosis human lung,CF
+GCA_036233415_1_ASM3623341v1_genomic,GCA_036233415.1,CF,Cystic fibrosis human lung,CF
+GCA_036233435_1_ASM3623343v1_genomic,GCA_036233435.1,CF,Cystic fibrosis human lung,CF
+GCA_036233455_1_ASM3623345v1_genomic,GCA_036233455.1,CF,Cystic fibrosis human lung,CF
+GCA_036233475_1_ASM3623347v1_genomic,GCA_036233475.1,CF,Cystic fibrosis human lung,CF
+GCA_036233495_1_ASM3623349v1_genomic,GCA_036233495.1,CF,Cystic fibrosis human lung,CF
+GCA_036233515_1_ASM3623351v1_genomic,GCA_036233515.1,CF,Cystic fibrosis human lung,CF
+GCA_036233535_1_ASM3623353v1_genomic,GCA_036233535.1,CF,Cystic fibrosis human lung,CF
+GCA_036233555_1_ASM3623355v1_genomic,GCA_036233555.1,CF,Cystic fibrosis human lung,CF
+GCA_036233575_1_ASM3623357v1_genomic,GCA_036233575.1,CF,Cystic fibrosis human lung,CF
+GCA_036233595_1_ASM3623359v1_genomic,GCA_036233595.1,CF,Cystic fibrosis human lung,CF
+GCA_036233615_1_ASM3623361v1_genomic,GCA_036233615.1,CF,Cystic fibrosis human lung,CF
+GCA_036233635_1_ASM3623363v1_genomic,GCA_036233635.1,CF,Cystic fibrosis human lung,CF
+GCA_036233655_1_ASM3623365v1_genomic,GCA_036233655.1,CF,Cystic fibrosis human lung,CF
+GCA_036233675_1_ASM3623367v1_genomic,GCA_036233675.1,CF,Cystic fibrosis human lung,CF
+GCA_036233695_1_ASM3623369v1_genomic,GCA_036233695.1,CF,Cystic fibrosis human lung,CF
+GCA_036233715_1_ASM3623371v1_genomic,GCA_036233715.1,CF,Cystic fibrosis human lung,CF
+GCA_036233735_1_ASM3623373v1_genomic,GCA_036233735.1,CF,Cystic fibrosis human lung,CF
+GCA_036233755_1_ASM3623375v1_genomic,GCA_036233755.1,CF,Cystic fibrosis human lung,CF
+GCA_036234315_1_ASM3623431v1_genomic,GCA_036234315.1,CF,Cystic fibrosis human lung,CF
+GCA_036236015_1_ASM3623601v1_genomic,GCA_036236015.1,CF,Cystic fibrosis human lung,CF
+GCA_036236975_1_ASM3623697v1_genomic,GCA_036236975.1,CF,Cystic fibrosis human lung,CF
+GCA_036236995_1_ASM3623699v1_genomic,GCA_036236995.1,CF,Cystic fibrosis human lung,CF
+GCA_036237015_1_ASM3623701v1_genomic,GCA_036237015.1,CF,Cystic fibrosis human lung,CF
+GCA_036237035_1_ASM3623703v1_genomic,GCA_036237035.1,CF,Cystic fibrosis human lung,CF
+GCA_036237055_1_ASM3623705v1_genomic,GCA_036237055.1,CF,Cystic fibrosis human lung,CF
+GCA_036237075_1_ASM3623707v1_genomic,GCA_036237075.1,CF,Cystic fibrosis human lung,CF
+GCA_036237095_1_ASM3623709v1_genomic,GCA_036237095.1,CF,Cystic fibrosis human lung,CF
+GCA_036237115_1_ASM3623711v1_genomic,GCA_036237115.1,CF,Cystic fibrosis human lung,CF
+GCA_036326305_1_ASM3632630v1_genomic,GCA_036326305.1,N.A.,urine,Clinical
+GCA_036417705_1_ASM3641770v1_genomic,GCA_036417705.1,"Clinical, unknown",sputum,"Clinical, Unknown"
+GCA_036417785_1_ASM3641778v1_genomic,GCA_036417785.1,"Clinical, unknown",feces,Clinical
+GCA_036417805_1_ASM3641780v1_genomic,GCA_036417805.1,"Clinical, unknown",sputum,"Clinical, Unknown"
+GCA_036417915_1_ASM3641791v1_genomic,GCA_036417915.1,"Clinical, unknown",sputum,"Clinical, Unknown"
+GCA_036417995_1_ASM3641799v1_genomic,GCA_036417995.1,"Clinical, unknown",blood,Clinical
+GCA_036418055_1_ASM3641805v1_genomic,GCA_036418055.1,"Clinical, unknown",blood,Clinical
+GCA_036418125_1_ASM3641812v1_genomic,GCA_036418125.1,"Clinical, unknown",blood,Clinical
+GCA_036418145_1_ASM3641814v1_genomic,GCA_036418145.1,Wound/Abscess,wound,Clinical
+GCA_036418185_1_ASM3641818v1_genomic,GCA_036418185.1,Wound/Abscess,wound,Clinical
+GCA_036418275_1_ASM3641827v1_genomic,GCA_036418275.1,"Clinical, unknown",tissue,"Clinical, Unknown"
+GCA_036418295_1_ASM3641829v1_genomic,GCA_036418295.1,"Clinical, unknown",rectal swab,"Clinical, Unknown"
+GCA_036542105_1_ASM3654210v1_genomic,GCA_036542105.1,N.A.,waste water,Environmental
+GCA_036776515_1_ASM3677651v1_genomic,GCA_036776515.1,"Clinical, unknown",sputum,"Clinical, Unknown"
+GCA_036835625_1_ASM3683562v1_genomic,GCA_036835625.1,pancreatitis,rectal swab,Clinical
+GCA_036872625_1_ASM3687262v1_genomic,GCA_036872625.1,Other infection,rectal swab,Clinical
+GCA_900069025_1_ASM90006902v1_genomic,GCA_900069025.1,CF,sputum,CF
+GCA_900070375_1_PAO1OR_genomic,GCA_900070375.1,Wound/Abscess,wound,Clinical
+GCA_900095805_1_PA14Or_genomic,GCA_900095805.1,N.A.,sewage water,Human-associated environmental
+GCA_900149285_1_PcyII-10_genomic,GCA_900149285.1,burn wound,burn wound,Clinical
+GCA_900185255_1_NN2_genomic,GCA_900185255.1,CF,Cystic fibrosis lung,CF
+GCA_900243355_1_RW109_genomic,GCA_900243355.1,N.A.,multiple sources,Missing
+GCA_900478745_1_32018_A01_genomic,GCA_900478745.1,Environmental,Environmental,Environmental
+GCA_900497025_1_ASM90049702v1_genomic,GCA_900497025.1,missing,missing,Missing
+GCA_900618245_1_paerg000_genomic,GCA_900618245.1,"Clinical, unknown",hospital,"Clinical, Unknown"
+GCA_900618255_1_paerg002_genomic,GCA_900618255.1,"Clinical, unknown",hospital,"Clinical, Unknown"
+GCA_900618265_1_paerg004_genomic,GCA_900618265.1,"Clinical, unknown",hospital,"Clinical, Unknown"
+GCA_900618275_1_paerg003_genomic,GCA_900618275.1,"Clinical, unknown",hospital,"Clinical, Unknown"
+GCA_900618285_1_paerg005_genomic,GCA_900618285.1,"Clinical, unknown",hospital,"Clinical, Unknown"
+GCA_900618305_1_paerg009_genomic,GCA_900618305.1,"Clinical, unknown",hospital,"Clinical, Unknown"
+GCA_900618315_1_paerg010_genomic,GCA_900618315.1,"Clinical, unknown",hospital,"Clinical, Unknown"
+GCA_900618325_1_paerg011_genomic,GCA_900618325.1,"Clinical, unknown",hospital,"Clinical, Unknown"
+GCA_900618335_1_paerg012_genomic,GCA_900618335.1,"Clinical, unknown",hospital,"Clinical, Unknown"
+GCA_900636735_1_43941_C01_genomic,GCA_900636735.1,not available,not available,Missing
+GCA_900636755_1_43941_E01_genomic,GCA_900636755.1,diseased,Blood culture,"Clinical, Unknown"
+GCA_900636975_1_45813_F01_genomic,GCA_900636975.1,Other infection,Clinical,"Clinical, Unknown"
+GCA_900637045_1_46837_C02_genomic,GCA_900637045.1,not available,not available: to be reported later,Missing
+GCA_901472545_1_36340_E01_genomic,GCA_901472545.1,N.A.,Water bottle,Human-associated environmental
+GCA_901472565_1_36340_H02_genomic,GCA_901472565.1,not available,not available: not collected,Missing
+GCA_901472595_1_36340_C01_genomic,GCA_901472595.1,MRSA,not available,Clinical
+GCA_902172305_2_Pseudomonas_aeruginosa_PAKAF_genomic,GCA_902172305.2,Lab,Lab,Lab
+GCA_902703185_1_PcyII-29_genomic,GCA_902703185.1,burn wound,burn wound,Clinical
+GCA_902703195_1_PcyII-40_genomic,GCA_902703195.1,"Clinical, unknown",clinical,"Clinical, Unknown"
+GCA_902703215_1_C7-25_genomic,GCA_902703215.1,CF,sputum,CF
+GCA_904866275_1_MINF_7A_genomic,GCA_904866275.1,"Clinical, unknown",sputum,"Clinical, Unknown"
+GCA_905071885_1_MINF_3A_genomic,GCA_905071885.1,"Clinical, unknown",catheter tip,Clinical
+GCA_951691365_2_Paer4782MK_1_genomic,GCA_951691365.2,myeloid leukemia,blood,Clinical
+GCA_951802375_2_Paer3541_1_genomic,GCA_951802375.2,"Clinical, unknown",throat culture,"Clinical, Unknown"
+GCA_951805275_2_Paer3796A_1_genomic,GCA_951805275.2,"Clinical, unknown",urine,Clinical

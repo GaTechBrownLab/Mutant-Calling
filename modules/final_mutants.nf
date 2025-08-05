@@ -1,11 +1,9 @@
 process final_mutants {
-
-    conda './envs/python_scripts.yaml'
-
+    
     publishDir "${params.outdir}/ouputs_for_graphing", mode: 'copy'
 
     input:
-    tuple val(gene_ID), path(incomplete_files), path(missing_files), path(final_mut_table), path(linking), path(muts_graphing), path(input_muts), path(scripts)
+    tuple val(gene_ID), path(incomplete_files), path(missing_files), path(final_mut_table), path(linking), path(muts_graphing), path(input_muts)
 
     output:
     tuple val(gene_ID), path("${gene_ID}/${gene_ID}_incomplete.txt"), emit: incomplete
@@ -24,8 +22,7 @@ process final_mutants {
     cat ${incomplete_files.join(' ')} > "${gene_ID}/${gene_ID}_incomplete.txt"
     cat ${missing_files.join(' ')} > "${gene_ID}/${gene_ID}_missing.txt"
 
-    python "${scripts}/reformat_muts_new_2.py" "$final_mut_table" "$gene_ID" ""${gene_ID}/${gene_ID}_incomplete.txt"" "${gene_ID}/${gene_ID}_missing.txt" "$linking" "$muts_graphing" "$input_muts"
-
+    reformat_muts_new_2.py "$final_mut_table" "$gene_ID" ""${gene_ID}/${gene_ID}_incomplete.txt"" "${gene_ID}/${gene_ID}_missing.txt" "$linking" "$muts_graphing" "$input_muts"
 
     """
 }

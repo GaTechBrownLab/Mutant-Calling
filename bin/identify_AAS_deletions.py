@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from Bio import AlignIO
 import pandas as pd
 import numpy as np

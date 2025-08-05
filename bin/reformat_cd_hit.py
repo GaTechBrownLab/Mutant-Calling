@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import pandas as pd
 import numpy as np
 import glob, os
@@ -28,14 +30,18 @@ drop = table.drop(table.columns[[0]], axis = 1)
 
 ident = drop['ID'].str.split(" ", expand = True)
 
-drop['ID'] = ident[1]
+# Rename columns
 drop['Length'] = ident[0]
+drop['ID'] = ident[1]
 drop['Status'] = ident[2]
+
+# Add percent similar if clustered
 if len(ident.columns) > 3:
     drop['Percent_similar'] = ident[3]
 else:
     drop['Percent_similar'] = ''
 
+# Reformat
 drop['ID'] = drop['ID'].str.replace('>','')
 drop['Length'] = drop['Length'].str.replace('aa,','')
 drop['Status'] = drop['Status'].str.replace('*','ref')

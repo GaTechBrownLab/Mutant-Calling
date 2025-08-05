@@ -12,6 +12,7 @@ process combine_aln {
     script:
     """
     mkdir -p ${gene_ID}/alignments
+    
     cat ${table.join(' ')} > "${gene_ID}/alignments/${gene_ID}_combined_aln.csv"
 
     """

@@ -1,7 +1,5 @@
 process blast {
-
-    conda './envs/mutant_calling_genomics.yaml'
-
+    
     cpus "${params.blast_threads}"
 
     memory '20 GB'

@@ -98,6 +98,21 @@ new_all = all[['ID', 'Mutation', 'Mut_Status', 'Mut_Type']]
 # Rename ID column
 new_all = new_all.rename(columns={'ID': 'Prot_acc'})
 
+# Read in protein to genome mappiong file
+mapping = pd.read_table(linking, sep = "\t", names=["Genome", "Prot_acc"])
+
+# Read in the LasR graphing table
+graphing_table = pd.read_table(muts_graphing, sep = ",")
+
+# Reformat protein accession for graphing table
+graphing_table['Prot_acc'] = graphing_table['Prot_acc'].str.replace(r'_1$', '', regex=True)
+
+graphing_prot = graphing_table[['Prot_acc']]
+
+graphing_genomes_merge = mapping.merge(graphing_prot, on="Prot_acc", how="inner")
+
+graphing_genomes = graphing_genomes_merge[['Genome']]
+
 missing_size = os.stat(missing).st_size
 incomplete_size = os.stat(incomplete).st_size
 
@@ -134,97 +149,7 @@ if missing_size > 0 and incomplete_size > 0:
 
     incomplete_genomes = incomplete[['Genome']]
 
-    # Read in protein to genome mappiong file
-    mapping = pd.read_table(linking, sep = "\t", names=["Genome", "Prot_acc"])
-
-    # Read in the LasR graphing table
-    graphing_table = pd.read_table(muts_graphing, sep = ",")
-
-    # Reformat protein accession for graphing table
-    graphing_table['Prot_acc'] = graphing_table['Prot_acc'].str.replace('_1', '')
-
-    graphing_prot = graphing_table[['Prot_acc']]
-
-    graphing_genomes_merge = mapping.merge(graphing_prot, on="Prot_acc", how="inner")
-
-    graphing_genomes = graphing_genomes_merge[['Genome']]
-
     all_ran = pd.concat([missing_genomes, incomplete_genomes, graphing_genomes])
-
-    all_ran['Run_status'] = "Ran"
-
-    all_ran_merge = all_ran.merge(mapping, on = "Genome", how = "outer")
-
-    all_ran_merge['Run_status'] = all_ran_merge['Run_status'].fillna('Full Deletion n to p')
-
-    # Subset all full deletions
-    full_del_rows = all_ran_merge['Run_status'].isin(['Full Deletion n to p'])
-
-    # Set full deletion status to all full deletions (between nucleotide to protein) rows
-    full_del = all_ran_merge[full_del_rows].copy()
-
-    full_del = full_del[['Genome']]
-
-    full_del['Mutation'] = 'Full Deletion n to p'
-    full_del['Mut_Status'] = 'No function'
-    full_del['Mut_Type'] = 'Full Deletion n to p'
-
-    # Merge the graphing table with the new complete file
-    graphing_merge = mapping.merge(graphing_table, how = 'inner', on = 'Prot_acc')
-
-    # Only keep columns genome, status, and cheat
-    graphing_merge = graphing_merge[['Genome', 'Status', 'Cheat']]
-
-    # Subset all WT from the complete and graphing file merge
-    wt_rows = graphing_merge['Status'].isin(['WT'])
-
-    # Set WT status to WT rows
-    wt = graphing_merge[wt_rows].copy()
-
-    wt = wt[['Genome']]
-
-    wt['Mutation'] = 'WT'
-    wt['Mut_Status'] = 'Functional'
-    wt['Mut_Type'] = 'WT'
-
-    # Subset all potential deletions (matching less than 40% to LasR)
-    pot_del_rows = graphing_merge['Status'].isin(['Potential Deletion'])
-
-    # Set potential deletion status to all potential deletion rows
-    pot_del = graphing_merge[pot_del_rows].copy()
-
-    pot_del = pot_del[['Genome']]
-
-    pot_del['Mutation'] = 'Potential Deletion'
-    pot_del['Mut_Status'] = 'No function'
-    pot_del['Mut_Type'] = 'Potential Deletion'
-
-    # Reformat protein accession of SNP/frameshift/stop codon genomes
-    new_all['Prot_acc'] = new_all['Prot_acc'].str.replace('_1', '')
-
-    # Merge the SNP/frameshift/stop codon genomes with the mapping file to get genome information
-    new_all_merge = mapping.merge(new_all, how='inner', on='Prot_acc')
-
-    # Only keep genome, mutation, mut_status, and mut_type columns
-    new_all_merge = new_all_merge[['Genome', 'Mutation', 'Mut_Status', 'Mut_Type']]
-
-    # Concatenate the SNP/frameshift/stop codon genomes with WT, potential deletion, full deletion, missing, and incomplete genomes
-    all_mut_con = pd.concat([wt, new_all_merge, pot_del, full_del, missing, incomplete])
-    # Save
-    all_mut_con.to_csv(f"{gene}/{gene}_all_functions_incomplete.csv", index = False)
-
-    # Obtain only genome and mut status
-    new_all_mut_con = all_mut_con[['Genome', 'Mut_Status']]
-
-    # Save
-    new_all_mut_con.to_csv(f"{gene}/{gene}_functions_incomplete.csv", index = False)
-
-    # Change no function to 1, functional to 0
-    new_all_mut_con['Mut_Status'] = new_all_mut_con['Mut_Status'].str.replace('No function', '1')
-    new_all_mut_con['Mut_Status'] = new_all_mut_con['Mut_Status'].str.replace('Functional', '0')
-
-    # Save
-    new_all_mut_con.to_csv(f"{gene}/{gene}_functions_pres_abs_incomplete.csv", index = False)
 elif missing_size == 0 and incomplete_size > 0:
     
     incomplete = pd.read_table(incomplete, header = None)
@@ -242,98 +167,7 @@ elif missing_size == 0 and incomplete_size > 0:
 
     incomplete_genomes = incomplete[['Genome']]
 
-    # Read in protein to genome mappiong file
-    mapping = pd.read_table(linking, sep = "\t", names=["Genome", "Prot_acc"])
-
-    # Read in the LasR graphing table
-    graphing_table = pd.read_table(muts_graphing, sep = ",")
-
-    # Reformat protein accession for graphing table
-    graphing_table['Prot_acc'] = graphing_table['Prot_acc'].str.replace('_1', '')
-
-    graphing_prot = graphing_table[['Prot_acc']]
-
-    graphing_genomes_merge = mapping.merge(graphing_prot, on="Prot_acc", how="inner")
-
-    graphing_genomes = graphing_genomes_merge[['Genome']]
-
     all_ran = pd.concat([incomplete_genomes, graphing_genomes])
-
-    all_ran['Run_status'] = "Ran"
-
-    all_ran_merge = all_ran.merge(mapping, on = "Genome", how = "outer")
-
-    all_ran_merge['Run_status'] = all_ran_merge['Run_status'].fillna('Full Deletion n to p')
-
-    # Subset all full deletions
-    full_del_rows = all_ran_merge['Run_status'].isin(['Full Deletion n to p'])
-
-    # Set full deletion status to all full deletions (between nucleotide to protein) rows
-    full_del = all_ran_merge[full_del_rows].copy()
-
-    full_del = full_del[['Genome']]
-
-    full_del['Mutation'] = 'Full Deletion n to p'
-    full_del['Mut_Status'] = 'No function'
-    full_del['Mut_Type'] = 'Full Deletion n to p'
-
-    # Merge the graphing table with the new complete file
-    graphing_merge = mapping.merge(graphing_table, how = 'inner', on = 'Prot_acc')
-
-    # Only keep columns genome, status, and cheat
-    graphing_merge = graphing_merge[['Genome', 'Status', 'Cheat']]
-
-    # Subset all WT from the complete and graphing file merge
-    wt_rows = graphing_merge['Status'].isin(['WT'])
-
-    # Set WT status to WT rows
-    wt = graphing_merge[wt_rows].copy()
-
-    wt = wt[['Genome']]
-
-    wt['Mutation'] = 'WT'
-    wt['Mut_Status'] = 'Functional'
-    wt['Mut_Type'] = 'WT'
-
-    # Subset all potential deletions (matching less than 40% to LasR)
-    pot_del_rows = graphing_merge['Status'].isin(['Potential Deletion'])
-
-    # Set potential deletion status to all potential deletion rows
-    pot_del = graphing_merge[pot_del_rows].copy()
-
-    pot_del = pot_del[['Genome']]
-
-    pot_del['Mutation'] = 'Potential Deletion'
-    pot_del['Mut_Status'] = 'No function'
-    pot_del['Mut_Type'] = 'Potential Deletion'
-
-    # Reformat protein accession of SNP/frameshift/stop codon genomes
-    new_all['Prot_acc'] = new_all['Prot_acc'].str.replace('_1', '')
-
-    # Merge the SNP/frameshift/stop codon genomes with the mapping file to get genome information
-    new_all_merge = mapping.merge(new_all, how='inner', on='Prot_acc')
-
-    # Only keep genome, mutation, mut_status, and mut_type columns
-    new_all_merge = new_all_merge[['Genome', 'Mutation', 'Mut_Status', 'Mut_Type']]
-
-    # Concatenate the SNP/frameshift/stop codon genomes with WT, potential deletion, full deletion, missing, and incomplete genomes
-    all_mut_con = pd.concat([wt, new_all_merge, pot_del, full_del, incomplete])
-    
-    # Save
-    all_mut_con.to_csv(f"{gene}/{gene}_all_functions_incomplete.csv", index = False)
-
-    # Obtain only genome and mut status
-    new_all_mut_con = all_mut_con[['Genome', 'Mut_Status']]
-
-    # Save
-    new_all_mut_con.to_csv(f"{gene}/{gene}_functions_incomplete.csv", index = False)
-
-    # Change no function to 1, functional to 0
-    new_all_mut_con['Mut_Status'] = new_all_mut_con['Mut_Status'].str.replace('No function', '1')
-    new_all_mut_con['Mut_Status'] = new_all_mut_con['Mut_Status'].str.replace('Functional', '0')
-
-    # Save
-    new_all_mut_con.to_csv(f"{gene}/{gene}_functions_pres_abs_incomplete.csv", index = False)
 elif missing_size > 0 and incomplete_size == 0:
 
     # Read in a list of missing (genomes with fully deleted LasR)
@@ -352,188 +186,96 @@ elif missing_size > 0 and incomplete_size == 0:
 
     missing_genomes = missing[['Genome']]
 
-    # Read in protein to genome mappiong file
-    mapping = pd.read_table(linking, sep = "\t", names=["Genome", "Prot_acc"])
-
-    # Read in the LasR graphing table
-    graphing_table = pd.read_table(muts_graphing, sep = ",")
-
-    # Reformat protein accession for graphing table
-    graphing_table['Prot_acc'] = graphing_table['Prot_acc'].str.replace('_1', '')
-
-    graphing_prot = graphing_table[['Prot_acc']]
-
-    graphing_genomes_merge = mapping.merge(graphing_prot, on="Prot_acc", how="inner")
-
-    graphing_genomes = graphing_genomes_merge[['Genome']]
-
     all_ran = pd.concat([missing_genomes, graphing_genomes])
-
-    all_ran['Run_status'] = "Ran"
-
-    all_ran_merge = all_ran.merge(mapping, on = "Genome", how = "outer")
-
-    all_ran_merge['Run_status'] = all_ran_merge['Run_status'].fillna('Full Deletion n to p')
-
-    # Subset all full deletions
-    full_del_rows = all_ran_merge['Run_status'].isin(['Full Deletion n to p'])
-
-    # Set full deletion status to all full deletions (between nucleotide to protein) rows
-    full_del = all_ran_merge[full_del_rows].copy()
-
-    full_del = full_del[['Genome']]
-
-    full_del['Mutation'] = 'Full Deletion n to p'
-    full_del['Mut_Status'] = 'No function'
-    full_del['Mut_Type'] = 'Full Deletion n to p'
-
-    # Merge the graphing table with the new complete file
-    graphing_merge = mapping.merge(graphing_table, how = 'inner', on = 'Prot_acc')
-
-    # Only keep columns genome, status, and cheat
-    graphing_merge = graphing_merge[['Genome', 'Status', 'Cheat']]
-
-    # Subset all WT from the complete and graphing file merge
-    wt_rows = graphing_merge['Status'].isin(['WT'])
-
-    # Set WT status to WT rows
-    wt = graphing_merge[wt_rows].copy()
-
-    wt = wt[['Genome']]
-
-    wt['Mutation'] = 'WT'
-    wt['Mut_Status'] = 'Functional'
-    wt['Mut_Type'] = 'WT'
-
-    # Subset all potential deletions (matching less than 40% to LasR)
-    pot_del_rows = graphing_merge['Status'].isin(['Potential Deletion'])
-
-    # Set potential deletion status to all potential deletion rows
-    pot_del = graphing_merge[pot_del_rows].copy()
-
-    pot_del = pot_del[['Genome']]
-
-    pot_del['Mutation'] = 'Potential Deletion'
-    pot_del['Mut_Status'] = 'No function'
-    pot_del['Mut_Type'] = 'Potential Deletion'
-
-    # Reformat protein accession of SNP/frameshift/stop codon genomes
-    new_all['Prot_acc'] = new_all['Prot_acc'].str.replace('_1', '')
-
-    # Merge the SNP/frameshift/stop codon genomes with the mapping file to get genome information
-    new_all_merge = mapping.merge(new_all, how='inner', on='Prot_acc')
-
-    # Only keep genome, mutation, mut_status, and mut_type columns
-    new_all_merge = new_all_merge[['Genome', 'Mutation', 'Mut_Status', 'Mut_Type']]
-
-    # Concatenate the SNP/frameshift/stop codon genomes with WT, potential deletion, full deletion, missing, and incomplete genomes
-    all_mut_con = pd.concat([wt, new_all_merge, pot_del, full_del, missing])
-
-    # Save
-    all_mut_con.to_csv(f"{gene}/{gene}_all_functions_incomplete.csv", index = False)
-
-    # Obtain only genome and mut status
-    new_all_mut_con = all_mut_con[['Genome', 'Mut_Status']]
-
-    # Save
-    new_all_mut_con.to_csv(f"{gene}/{gene}_functions_incomplete.csv", index = False)
-
-    # Change no function to 1, functional to 0
-    new_all_mut_con['Mut_Status'] = new_all_mut_con['Mut_Status'].str.replace('No function', '1')
-    new_all_mut_con['Mut_Status'] = new_all_mut_con['Mut_Status'].str.replace('Functional', '0')
-
-    # Save
-    new_all_mut_con.to_csv(f"{gene}/{gene}_functions_pres_abs_incomplete.csv", index = False)
 elif missing_size == 0 and incomplete_size == 0:
-    # Read in protein to genome mappiong file
-    mapping = pd.read_table(linking, sep = "\t", names=["Genome", "Prot_acc"])
-
-    # Read in the LasR graphing table
-    graphing_table = pd.read_table(muts_graphing, sep = ",")
-
-    # Reformat protein accession for graphing table
-    graphing_table['Prot_acc'] = graphing_table['Prot_acc'].str.replace('_1', '')
-
-    graphing_prot = graphing_table[['Prot_acc']]
-
-    graphing_genomes_merge = mapping.merge(graphing_prot, on="Prot_acc", how="inner")
-
-    graphing_genomes = graphing_genomes_merge[['Genome']]
-
     all_ran = graphing_genomes.copy()
 
-    all_ran['Run_status'] = "Ran"
+# Set status to ran
+all_ran['Run_status'] = "Ran"
 
-    all_ran_merge = all_ran.merge(mapping, on = "Genome", how = "outer")
+# Merge with mapping file
+all_ran_merge = all_ran.merge(mapping, on = "Genome", how = "outer")
 
-    all_ran_merge['Run_status'] = all_ran_merge['Run_status'].fillna('Full Deletion n to p')
+# Any that are missing are a full deletion
+all_ran_merge['Run_status'] = all_ran_merge['Run_status'].fillna('Full Deletion n to p')
 
-    # Subset all full deletions
-    full_del_rows = all_ran_merge['Run_status'].isin(['Full Deletion n to p'])
+# Subset all full deletions
+full_del_rows = all_ran_merge['Run_status'].isin(['Full Deletion n to p'])
 
-    # Set full deletion status to all full deletions (between nucleotide to protein) rows
-    full_del = all_ran_merge[full_del_rows].copy()
+# Set full deletion status to all full deletions (between nucleotide to protein) rows
+full_del = all_ran_merge[full_del_rows].copy()
 
-    full_del = full_del[['Genome']]
+full_del = full_del[['Genome']]
 
-    full_del['Mutation'] = 'Full Deletion n to p'
-    full_del['Mut_Status'] = 'No function'
-    full_del['Mut_Type'] = 'Full Deletion n to p'
+full_del['Mutation'] = 'Full Deletion n to p'
+full_del['Mut_Status'] = 'No function'
+full_del['Mut_Type'] = 'Full Deletion n to p'
 
-    # Merge the graphing table with the new complete file
-    graphing_merge = mapping.merge(graphing_table, how = 'inner', on = 'Prot_acc')
+# Merge the graphing table with the new complete file
+graphing_merge = mapping.merge(graphing_table, how = 'inner', on = 'Prot_acc')
 
-    # Only keep columns genome, status, and cheat
-    graphing_merge = graphing_merge[['Genome', 'Status', 'Cheat']]
+# Only keep columns genome, status, and cheat
+graphing_merge = graphing_merge[['Genome', 'Status', 'Cheat']]
 
-    # Subset all WT from the complete and graphing file merge
-    wt_rows = graphing_merge['Status'].isin(['WT'])
+# Subset all WT from the complete and graphing file merge
+wt_rows = graphing_merge['Status'].isin(['WT'])
 
-    # Set WT status to WT rows
-    wt = graphing_merge[wt_rows].copy()
+# Set WT status to WT rows
+wt = graphing_merge[wt_rows].copy()
 
-    wt = wt[['Genome']]
+wt = wt[['Genome']]
 
-    wt['Mutation'] = 'WT'
-    wt['Mut_Status'] = 'Functional'
-    wt['Mut_Type'] = 'WT'
+wt['Mutation'] = 'WT'
+wt['Mut_Status'] = 'Functional'
+wt['Mut_Type'] = 'WT'
 
-    # Subset all potential deletions (matching less than 40% to LasR)
-    pot_del_rows = graphing_merge['Status'].isin(['Potential Deletion'])
+# Subset all potential deletions (matching less than 40% to LasR)
+pot_del_rows = graphing_merge['Status'].isin(['Potential Deletion'])
 
-    # Set potential deletion status to all potential deletion rows
-    pot_del = graphing_merge[pot_del_rows].copy()
+# Set potential deletion status to all potential deletion rows
+pot_del = graphing_merge[pot_del_rows].copy()
 
-    pot_del = pot_del[['Genome']]
+pot_del = pot_del[['Genome']]
 
-    pot_del['Mutation'] = 'Potential Deletion'
-    pot_del['Mut_Status'] = 'No function'
-    pot_del['Mut_Type'] = 'Potential Deletion'
+pot_del['Mutation'] = 'Potential Deletion'
+pot_del['Mut_Status'] = 'No function'
+pot_del['Mut_Type'] = 'Potential Deletion'
 
-    # Reformat protein accession of SNP/frameshift/stop codon genomes
-    new_all['Prot_acc'] = new_all['Prot_acc'].str.replace('_1', '')
+# Reformat protein accession of SNP/frameshift/stop codon genomes
+new_all['Prot_acc'] = new_all['Prot_acc'].str.replace(r'_1$', '', regex=True)
 
-    # Merge the SNP/frameshift/stop codon genomes with the mapping file to get genome information
-    new_all_merge = mapping.merge(new_all, how='inner', on='Prot_acc')
+# Merge the SNP/frameshift/stop codon genomes with the mapping file to get genome information
+new_all_merge = mapping.merge(new_all, how='inner', on='Prot_acc')
 
-    # Only keep genome, mutation, mut_status, and mut_type columns
-    new_all_merge = new_all_merge[['Genome', 'Mutation', 'Mut_Status', 'Mut_Type']]
+# Only keep genome, mutation, mut_status, and mut_type columns
+new_all_merge = new_all_merge[['Genome', 'Mutation', 'Mut_Status', 'Mut_Type']]
 
-    # Concatenate the SNP/frameshift/stop codon genomes with WT, potential deletion, full deletion, missing, and incomplete genomes
+# Concatenate the SNP/frameshift/stop codon genomes with WT, potential deletion, full deletion, missing, and incomplete genomes
+
+if missing_size > 0 and incomplete_size > 0:
+    all_mut_con = pd.concat([wt, new_all_merge, pot_del, missing, incomplete, full_del])
+elif missing_size == 0 and incomplete_size > 0:
+    all_mut_con = pd.concat([wt, new_all_merge, pot_del, incomplete, full_del])
+elif missing_size > 0 and incomplete_size == 0:
+    all_mut_con = pd.concat([wt, new_all_merge, pot_del, missing, full_del])
+elif missing_size == 0 and incomplete_size == 0:
     all_mut_con = pd.concat([wt, new_all_merge, pot_del, full_del])
 
-    # Save
-    all_mut_con.to_csv(f"{gene}/{gene}_all_functions_incomplete.csv", index = False)
+# Remove duplicates, keeping first instance
+all_mut_con = all_mut_con.drop_duplicates(subset=['Genome'], keep='first')
 
-    # Obtain only genome and mut status
-    new_all_mut_con = all_mut_con[['Genome', 'Mut_Status']]
+# Save
+all_mut_con.to_csv(f"{gene}/{gene}_all_functions_incomplete.csv", index = False)
 
-    # Save
-    new_all_mut_con.to_csv(f"{gene}/{gene}_functions_incomplete.csv", index = False)
+# Obtain only genome and mut status
+new_all_mut_con = all_mut_con[['Genome', 'Mut_Status']]
 
-    # Change no function to 1, functional to 0
-    new_all_mut_con['Mut_Status'] = new_all_mut_con['Mut_Status'].str.replace('No function', '1')
-    new_all_mut_con['Mut_Status'] = new_all_mut_con['Mut_Status'].str.replace('Functional', '0')
+# Save
+new_all_mut_con.to_csv(f"{gene}/{gene}_functions_incomplete.csv", index = False)
 
-    # Save
-    new_all_mut_con.to_csv(f"{gene}/{gene}_functions_pres_abs_incomplete.csv", index = False)
+# Change no function to 1, functional to 0
+new_all_mut_con['Mut_Status'] = new_all_mut_con['Mut_Status'].str.replace('No function', '1')
+new_all_mut_con['Mut_Status'] = new_all_mut_con['Mut_Status'].str.replace('Functional', '0')
+
+# Save
+new_all_mut_con.to_csv(f"{gene}/{gene}_functions_pres_abs_incomplete.csv", index = False)

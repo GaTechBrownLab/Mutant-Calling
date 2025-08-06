@@ -9,7 +9,6 @@ include { compare_lengths } from './modules/compare_lengths.nf'
 include { concat_and_reformat } from './modules/concat_and_reformat.nf'
 include { combine_blast } from './modules/combine_blast.nf'
 include { make_linking_file } from './modules/make_linking_file.nf'
-// include { concat_linking_files } from './modules/concat_linking_files.nf'
 include { reformat_bed } from './modules/reformat_bed.nf'
 include { bedtools } from './modules/bedtools.nf'
 include { transeq } from './modules/transeq.nf'
@@ -69,13 +68,6 @@ workflow {
         make_linking_file(
             host_genomes_ch
         )
-
-        // collected_linking_files_ch = make_linking_file.out
-        //     .collect()
-
-        // concat_linking_files(
-        //     collected_linking_files_ch
-        // )
 
         collected_linking_files_ch =  make_linking_file.out
             .collectFile(

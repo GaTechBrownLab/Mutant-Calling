@@ -13,7 +13,7 @@ process cd_hit {
     """
     mkdir -p ${gene_ID}
 
-    cd-hit -i $prot_fasta -o ${gene_ID}/${gene_ID}_muts_cd_100.faa -c 1.00 -n 5 -s 1
+    cd-hit -i $prot_fasta -o ${gene_ID}/${gene_ID}_muts_cd_100.faa -c 1.00 -n 5 -s 1 -d 200
     
     """
 }

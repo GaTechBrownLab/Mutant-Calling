@@ -9,7 +9,7 @@ include { compare_lengths } from './modules/compare_lengths.nf'
 include { concat_and_reformat } from './modules/concat_and_reformat.nf'
 include { combine_blast } from './modules/combine_blast.nf'
 include { make_linking_file } from './modules/make_linking_file.nf'
-include { concat_linking_files } from './modules/concat_linking_files.nf'
+// include { concat_linking_files } from './modules/concat_linking_files.nf'
 include { reformat_bed } from './modules/reformat_bed.nf'
 include { bedtools } from './modules/bedtools.nf'
 include { transeq } from './modules/transeq.nf'
@@ -29,8 +29,6 @@ include { graphing_r } from './modules/graphing_r.nf'
 workflow {
     main:
         // Set input channels
-        scripts = Channel.fromPath( "./scripts" )
-
         input_genes_ch = Channel.fromPath( params.input_genes )
                 .map { file -> 
                 def id = file.baseName.replace('_nucl', '')
@@ -46,10 +44,6 @@ workflow {
         host_genomes_ch = Channel.fromPath( params.host_genomes )
                 .map { file -> tuple(file.baseName, file) }
 
-
-        WT_cutoff_ch = Channel.of(params.WT_cutoff)
-        mut_cutoff_ch = Channel.of(params.mut_cutoff)
-
         // Make blast db of all host genomes
         blast_db (
             host_genomes_ch
@@ -64,13 +58,11 @@ workflow {
         )
 
         // Identify complete, incomplete, and missing genes
-        fasta_blast_ch = blast.out.combine(input_genes_ch, by: 0)
+        fasta_blast_ch = blast.out
+            .combine(input_genes_ch, by: 0)
 
         compare_lengths(
-            fasta_blast_ch,
-            params.tolerance,
-            params.gene_proportion,
-            params.gene_difference
+            fasta_blast_ch
         )
 
         // Make linking file for downstream analysis
@@ -78,14 +70,23 @@ workflow {
             host_genomes_ch
         )
 
-        collected_linking_files_ch = make_linking_file.out.collect()
+        // collected_linking_files_ch = make_linking_file.out
+        //     .collect()
 
-        concat_linking_files(
-            collected_linking_files_ch
-        )
+        // concat_linking_files(
+        //     collected_linking_files_ch
+        // )
+
+        collected_linking_files_ch =  make_linking_file.out
+            .collectFile(
+                storeDir: "${params.outdir}/linking_file",
+                name: 'linking_file.tsv'
+            )
 
         // Concatenate and reformat host genomes
-        collected_fasta_files_ch = host_genomes_ch.map { it[1] }.collect()
+        collected_fasta_files_ch = host_genomes_ch
+            .map { it[1] }
+            .collect()
 
         concat_and_reformat(
             collected_fasta_files_ch
@@ -100,11 +101,8 @@ workflow {
         }
         
         // Create bed file from blast results
-        blast_mapping_ch = combine_blast.out
-            .combine( scripts )
-
         reformat_bed(
-            blast_mapping_ch
+            combine_blast.out
         )
 
         // Run bedtools from blast result
@@ -134,13 +132,8 @@ workflow {
         )
 
         // Filter blast results to identify WT and mutant sequences
-        blastp_mapping_ch = blastp.out
-            .combine( scripts )
-            .combine( WT_cutoff_ch )
-            .combine( mut_cutoff_ch )
-
         reformat_blast(
-            blastp_mapping_ch
+            blastp.out
         )
 
         // Filter for mutant protein sequences
@@ -157,11 +150,8 @@ workflow {
         )
 
         // Reformat cd-hit final table
-        cd_hit_script_ch = cd_hit.out.cd_hit_cluster
-            .combine( scripts )
-
         split_files(
-            cd_hit_script_ch
+            cd_hit.out.cd_hit_cluster
         )
 
         // Filter for cd-hit reference mutants
@@ -182,15 +172,14 @@ workflow {
         )
 
         // Identify amino acid subtitution mutations
-        aln_scripts = clustalo.out
+        aln_identify_AAS = clustalo.out
             .map { gene_id, file ->
                 def file_id = file.baseName.replace('_aln', '')
                 tuple(gene_id, file, file_id)
             }
-            .combine( scripts )
 
         identify_AAS(
-            aln_scripts
+            aln_identify_AAS
         )
 
         // Combine alignment csvs
@@ -202,12 +191,11 @@ workflow {
         )
         
         // Generate final table
-        combine_aln_script = combine_aln.out
+        combine_aln_split = combine_aln.out
             .combine( split_files.out.cd_hit_table, by:0 )
-            .combine( scripts )
 
         final_table(
-            combine_aln_script
+            combine_aln_split
         )
 
         // If true, generate presence absence files
@@ -231,10 +219,9 @@ workflow {
             incomplete_missing_ch = grouped_incomplete_ch
                 .combine( grouped_missing_ch, by:0 )
                 .combine( final_table.out.final_mut_table, by:0 )
-                .combine( concat_linking_files.out )
+                .combine( collected_linking_files_ch )
                 .combine( reformat_blast.out.muts_graphing, by:0 )
                 .combine( input_muts_ch, by:0 )
-                .combine( scripts)
 
             final_mutants(
                 incomplete_missing_ch
@@ -243,21 +230,9 @@ workflow {
 
         // If true, graph phylogenetic trees and bargraphs based on gene presence absence files
         if (params.graphing) {
-            iq_tree_ch = Channel.fromPath( params.tree )
-            fastani_ch = Channel.fromPath( params.fastani )
-            env_data_ch = Channel.fromPath( params.env_data )
-
-            tree_root_ch = Channel.of( params.tree_root )
-            lineage_probability_ch = Channel.of( params.lineage_probability )
 
             graphing_input = final_mutants.out.functions_incomplete
                 .combine( final_mutants.out.functions_pres_abs_incomplete, by:0 )
-                .combine( iq_tree_ch )
-                .combine( tree_root_ch )
-                .combine( fastani_ch )
-                .combine( env_data_ch )
-                .combine( lineage_probability_ch)
-                .combine( scripts )
             
             graphing_r(
                 graphing_input

@@ -1,12 +1,9 @@
 process compare_lengths {
 
-        publishDir "${params.outdir}/mutant_calling_output", mode: 'copy'
+    publishDir "${params.outdir}/mutant_calling_output", mode: 'copy'
 
     input:
         tuple val(gene_ID), path(table), path(gene_file)
-        val tolerance
-        val gene_proportion
-        val gene_difference
 
     output:
         tuple val(gene_ID), path("${gene_ID}/Complete/**"), optional: true, emit: Complete
@@ -64,13 +61,13 @@ process compare_lengths {
                 mv "$table" ${gene_ID}/Complete/
                 echo "$table" >> ${gene_ID}/Status/Complete/${table}_complete.txt
             else
-                length_threshold=\$(echo "\$length - \$length * $gene_proportion" | bc | cut -d'.' -f1)
+                length_threshold=\$(echo "\$length - \$length * $params.gene_proportion" | bc | cut -d'.' -f1)
 
                 if [ "\$col7" -ge "\$length_threshold" ] && [ "\$col6" = "\$length" ]; then
                     mv "$table" ${gene_ID}/Complete/
                     echo "$table" >> ${gene_ID}/Status/Complete/${table}_complete.txt
                 else
-                    gene_diff_threshold=\$(echo "\$length * $gene_difference" | bc | cut -d'.' -f1)
+                    gene_diff_threshold=\$(echo "\$length * $params.gene_difference" | bc | cut -d'.' -f1)
 
                     if [ "\$col7" -le \$gene_diff_threshold ]; then
                         mv "$table" ${gene_ID}/Missing/
@@ -85,8 +82,8 @@ process compare_lengths {
                             diff_col10=\$(( col10_other - x ))
                             diff_col11=\$(( col11_other - length ))
                             
-                            if (( diff_col10 >= -$tolerance && diff_col10 <= $tolerance )) && \
-                                (( diff_col11 >= -$tolerance && diff_col11 <= $tolerance )); then
+                            if (( diff_col10 >= -$params.tolerance && diff_col10 <= $params.tolerance )) && \
+                                (( diff_col11 >= -$params.tolerance && diff_col11 <= $params.tolerance )); then
                                 mv "$table" ${gene_ID}/Incomplete/
                                 echo "$table" >> ${gene_ID}/Status/Incomplete/${table}_incomplete.txt
                             else
@@ -103,8 +100,8 @@ process compare_lengths {
                             diff_col10=\$(( col10_other - x ))
                             diff_col11=\$(( col11_other - length ))
 
-                            if (( diff_col10 >= -$tolerance && diff_col10 <= $tolerance )) && \
-                                (( diff_col11 >= -$tolerance && diff_col11 <= $tolerance )); then
+                            if (( diff_col10 >= -$params.tolerance && diff_col10 <= $params.tolerance )) && \
+                                (( diff_col11 >= -$params.tolerance && diff_col11 <= $params.tolerance )); then
                                 mv "$table" ${gene_ID}/Incomplete/
                                 echo "$table" >> ${gene_ID}/Status/Incomplete/${table}_incomplete.txt
                             else

@@ -1,7 +1,5 @@
 process clustalo {
-
-    conda './envs/mutant_calling_genomics.yaml'
-
+    
     publishDir "${params.outdir}/mutant_calling_output", mode: 'copy'
 
     input:

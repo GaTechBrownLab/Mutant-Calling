@@ -1,6 +1,6 @@
 process identify_mut_clusters {
 
-        publishDir "${params.outdir}/mutant_calling_output", mode: 'copy'
+    publishDir "${params.outdir}/mutant_calling_output", mode: 'copy'
 
     input:
         tuple val(gene_ID), path(muts_accessions), path(prot_fasta)

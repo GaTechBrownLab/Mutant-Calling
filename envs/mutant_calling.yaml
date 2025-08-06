@@ -1,10 +1,15 @@
-name: graphing_r
+name: mutant_calling
 channels:
-  - conda-forge
   - bioconda
+  - conda-forge
   - defaults
   - r
 dependencies:
+  - bedtools
+  - blast
+  - cd-hit
+  - clustalo
+  - emboss
   - r-base
   - r-dplyr
   - r-tidyverse
@@ -19,3 +24,6 @@ dependencies:
   - r-ggplot2
   - r-svglite
   - r-forcats
+  - pandas
+  - numpy
+  - biopython

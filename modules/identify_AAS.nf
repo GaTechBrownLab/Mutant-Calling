@@ -1,11 +1,9 @@
 process identify_AAS {
-
-    conda './envs/python_scripts.yaml'
-
+    
     publishDir "${params.outdir}/mutant_calling_output", mode: 'copy'
 
     input:
-    tuple val(gene_ID), path(file), val(genome), path(scripts)
+    tuple val(gene_ID), path(file), val(genome)
 
     output:
     tuple val(gene_ID), path("${gene_ID}/alignments/csv/${genome}.csv")
@@ -13,6 +11,8 @@ process identify_AAS {
     script:
     """
     mkdir -p ${gene_ID}/alignments/csv
-    python "${scripts}/identify_AAS_deletions.py" "$gene_ID" "$genome" "$file"
+
+    identify_AAS_deletions.py "$gene_ID" "$genome" "$file"
+    
     """
 }

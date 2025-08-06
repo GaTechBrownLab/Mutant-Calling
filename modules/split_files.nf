@@ -1,11 +1,9 @@
 process split_files {
-
-    conda './envs/python_scripts.yaml'
-
+    
     publishDir "${params.outdir}/mutant_calling_output", mode: 'copy'
 
     input:
-        tuple val(gene_ID), path(cd_hit_clust), val(scripts)
+        tuple val(gene_ID), path(cd_hit_clust)
 
     output:
         tuple val(gene_ID), path("${gene_ID}/${gene_ID}_cd_hit_table.csv"), emit: cd_hit_table
@@ -22,7 +20,7 @@ process split_files {
         sed -i '1d' \${infile}
     done
 
-    python "${scripts}/reformat_cd_hit.py" "$gene_ID"
+    reformat_cd_hit.py "$gene_ID"
 
     # Reformat CD-Hit table
     sed -i 's/\\.\\.\\.//g' "${gene_ID}/${gene_ID}_cd_hit_table.csv"

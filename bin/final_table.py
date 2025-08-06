@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import pandas as pd
 import numpy as np
 import os, glob
@@ -9,8 +11,6 @@ if __name__ == "__main__":
     cd_hit_table = sys.argv[3]
 
 table = pd.read_csv(table, names=['ID', 'Mutation'])
-
-print(table)
 
 #Read in cd-hit final table
 cd_hit = pd.read_table(cd_hit_table, sep=",")

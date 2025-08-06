@@ -1,7 +1,5 @@
 process cd_hit {
-
-    conda './envs/mutant_calling_genomics.yaml'
-
+    
     publishDir "${params.outdir}/mutant_calling_output", mode: 'copy'
 
     input:
@@ -14,7 +12,9 @@ process cd_hit {
     script:
     """
     mkdir -p ${gene_ID}
+
     cd-hit -i $prot_fasta -o ${gene_ID}/${gene_ID}_muts_cd_100.faa -c 1.00 -n 5 -s 1
+    
     """
 }
 

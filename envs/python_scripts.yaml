@@ -1,9 +1,0 @@
-name: graphing_r
-channels:
-  - conda-forge
-  - bioconda
-  - defaults
-dependencies:
-  - pandas
-  - numpy
-  - biopython

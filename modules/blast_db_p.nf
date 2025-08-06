@@ -1,7 +1,5 @@
 process blast_db_p {
-
-    conda './envs/mutant_calling_genomics.yaml'
-
+    
     input:
         tuple val(ID), path(ref)
 

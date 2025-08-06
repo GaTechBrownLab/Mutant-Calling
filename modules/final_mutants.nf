@@ -24,5 +24,6 @@ process final_mutants {
 
     reformat_muts_new_2.py "$final_mut_table" "$gene_ID" ""${gene_ID}/${gene_ID}_incomplete.txt"" "${gene_ID}/${gene_ID}_missing.txt" "$linking" "$muts_graphing" "$input_muts"
 
+    echo "1"
     """
 }

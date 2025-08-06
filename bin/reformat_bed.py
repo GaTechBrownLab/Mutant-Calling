@@ -8,15 +8,19 @@ if __name__ == "__main__":
     input_file = sys.argv[1]
     base = sys.argv[2]
 
-table = pd.read_csv(input_file, sep = "\t", names = ['Gene', 'Prot_acc', 'Prot_acc_stripped', 'PID', 'nident', 'Gene_Length', 'Aln_length', 'evalue', 'slen', 'qstart', 'qend', 'Start', 'End', 'Strand'])
+table = pd.read_csv(input_file, sep = "\t", names = ['Genome', 'Gene', 'Prot_acc', 'Prot_acc_stripped', 'PID', 'nident', 'Gene_Length', 'Aln_length', 'evalue', 'slen', 'qstart', 'qend', 'Start', 'End', 'Strand'])
 
-table['Accession'] = table['Prot_acc'].str.extract(r'\|(.*?)\|')
+split_genome = table['Genome'].str.split("_PA", expand = True)
+
+table['Genome'] = split_genome[0]
+
+table['Accession'] = table['Prot_acc'].str.extract(r'\|(.*?)\|')[0].fillna(table['Prot_acc'])
 
 # Calculate query coverage
 table["Query_Cov"] = (table["Aln_length"]/table["Gene_Length"])*table["PID"]
 
 # Drop any rows with lower query coverage for each Accession
-table = table.sort_values('Query_Cov', ascending=False).drop_duplicates('Accession').sort_index()
+table = table.sort_values('Query_Cov', ascending=False).drop_duplicates('Genome').sort_index()
 
 # Reformat into bed file
 table_drop = table[['Accession', 'Start', 'End', 'Strand']]

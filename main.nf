@@ -22,6 +22,7 @@ include { identify_AAS } from './modules/identify_AAS.nf'
 include { combine_aln } from './modules/combine_aln.nf'
 include { final_table } from './modules/final_table.nf'
 include { final_mutants } from './modules/final_mutants.nf'
+include { final_mutants_no_patterns } from './modules/final_mutants_no_patterns.nf'
 include { graphing_r } from './modules/graphing_r.nf'
 
 // Begin main workflow
@@ -192,13 +193,7 @@ workflow {
 
         // If true, generate presence absence files
         if (params.pres_abs) {
-            // Read in mutation patterns
-            input_muts_ch = Channel.fromPath( params.input_muts )
-                .map { file -> 
-                def id = file.baseName.replace('_mut_patterns', '')
-                tuple(id, file)
-            }
-            
+
             // Generate list of genomes with incomplete gene
             grouped_incomplete_ch = compare_lengths.out.Incomplete_list
                 .groupTuple()
@@ -207,17 +202,38 @@ workflow {
             grouped_missing_ch = compare_lengths.out.Missing_list
                 .groupTuple()
 
-            // Generate presence absence tables
-            incomplete_missing_ch = grouped_incomplete_ch
-                .combine( grouped_missing_ch, by:0 )
-                .combine( final_table.out.final_mut_table, by:0 )
-                .combine( collected_linking_files_ch )
-                .combine( reformat_blast.out.muts_graphing, by:0 )
-                .combine( input_muts_ch, by:0 )
+            if (params.input_muts == null) {
+                // Generate presence absence tables
+                incomplete_missing_ch = grouped_incomplete_ch
+                    .combine( grouped_missing_ch, by:0 )
+                    .combine( final_table.out.final_mut_table, by:0 )
+                    .combine( collected_linking_files_ch )
+                    .combine( reformat_blast.out.muts_graphing, by:0 )
 
-            final_mutants(
-                incomplete_missing_ch
-            )
+                final_mutants_no_patterns(
+                    incomplete_missing_ch
+                )
+
+            } else {
+                // Read in mutation patterns
+                input_muts_ch = Channel.fromPath( params.input_muts )
+                    .map { file -> 
+                    def id = file.baseName.replace('_mut_patterns', '')
+                    tuple(id, file)
+                    }
+
+                // Generate presence absence tables
+                incomplete_missing_ch = grouped_incomplete_ch
+                    .combine( grouped_missing_ch, by:0 )
+                    .combine( final_table.out.final_mut_table, by:0 )
+                    .combine( collected_linking_files_ch )
+                    .combine( reformat_blast.out.muts_graphing, by:0 )
+                    .combine( input_muts_ch, by:0 )
+
+                final_mutants(
+                    incomplete_missing_ch
+                )
+            }
         }
 
         // If true, graph phylogenetic trees and bargraphs based on gene presence absence files

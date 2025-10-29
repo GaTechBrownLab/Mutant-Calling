@@ -6,54 +6,66 @@ import glob, os
 import sys
 
 if __name__ == "__main__":
-    base = sys.argv[1]
+     base = sys.argv[1]
+     cd_hit_cluster = sys.argv[2]
 
-data=[]
 
-# Read in split CD-Hit file
-for file in glob.glob("x*"):
-	if os.path.getsize(file) == 0:
-		print(file)
-	else:
-		f=open(file, 'r')
-		results = pd.read_table(f, header=None)
-		results['Cluster']=file
-		acc = results['Cluster'].str.split("x", expand = True)
-		results['Cluster']= acc[2]
-		data.append(results)
+# Open panaroo initial cd-hit output
+with open(f"{cd_hit_cluster}", "r") as f:
+	lines = f.read().strip().split("\n")
 
-table = pd.concat([dfi.rename({old: new for new, old in enumerate(dfi.columns)}, axis=1) for dfi in data], ignore_index=True)
-table.rename(columns = {0:'Number', 1:'ID', 2:'Cluster'}, inplace = True)
+# Split into clusters based on lines starting with ">Cluster"
+clusters = []
+current_cluster = []
+current_name = None
 
-# Reformat CD-Hit table in order to parse
-drop = table.drop(table.columns[[0]], axis = 1)
+for line in lines:
+    if line.startswith(">Cluster"):
+        # Save previous cluster if it exists
+        if current_cluster:
+            df = pd.DataFrame(current_cluster, columns=["raw"])
+            df["Cluster"] = current_name
+            clusters.append(df)
+            current_cluster = []
+        current_name = line.strip().split()[1]  # e.g., "0", "1", "2"
+    else:
+        current_cluster.append([line.strip()])
 
-ident = drop['ID'].str.split(" ", expand = True)
+# Add the last cluster
+if current_cluster:
+    df = pd.DataFrame(current_cluster, columns=["raw"])
+    df["Cluster"] = current_name
+    clusters.append(df)
 
-# Rename columns
-drop['Length'] = ident[0]
-drop['ID'] = ident[1]
-drop['Status'] = ident[2]
+# Combine all clusters into a single dataframe (optional)
+combined_df = pd.concat(clusters, ignore_index=True)
 
-# Add percent similar if clustered
-if len(ident.columns) > 3:
-    drop['Percent_similar'] = ident[3]
-else:
-    drop['Percent_similar'] = ''
+# Split to get the correct reference
+ident = combined_df['raw'].str.split(" ", expand = True)
+
+ident.rename(columns = {0:'Length', 1:'ID', 2:'Status'}, inplace = True)
+
+combined_df['ID'] = ident['ID']
+combined_df['Status'] = ident['Status']
+
+length = ident["Length"].str.split("\t", expand = True)
+
+combined_df['Length'] = length[1]
+
+combined_df_sub = combined_df[["ID", "Cluster", "Length", "Status"]]
 
 # Reformat
-drop['ID'] = drop['ID'].str.replace('>','')
-drop['Length'] = drop['Length'].str.replace('aa,','')
-drop['Status'] = drop['Status'].str.replace('*','ref')
-drop['Status'] = drop['Status'].str.replace('at','clustered')
+combined_df_sub['ID'] = combined_df_sub['ID'].str.replace('>','')
+combined_df_sub['ID'] = combined_df_sub['ID'].str.replace('...','')
+combined_df_sub['Length'] = combined_df_sub['Length'].str.replace('aa,','')
+combined_df_sub['Length'] = combined_df_sub['Length'].str.replace(',,','')
+combined_df_sub['Status'] = combined_df_sub['Status'].str.replace('*','ref')
+combined_df_sub['Status'] = combined_df_sub['Status'].str.replace('at','clustered')
 
-drop = drop[["ID", "Cluster", "Length", "Status"]]
+combined_df_sub.to_csv(f"{base}_cd_hit_table.csv", index=False)
 
-drop.to_csv(f"{base}/{base}_cd_hit_table.csv", index=False)
+combined_df_sub = combined_df_sub[combined_df_sub['Status'].str.contains("ref")]
 
-drop = drop[drop['Status'].str.contains("ref")]
+combined_df_sub = combined_df_sub.drop(combined_df_sub.columns[[1, 2, 3]], axis = 1)
 
-drop = drop.drop(drop.columns[[1, 2, 3]], axis = 1)
-
-drop.to_csv(f"{base}/{base}_muts.txt", index=False, header=False)
-
+combined_df_sub.to_csv(f"{base}_muts.txt", index=False, header=False)

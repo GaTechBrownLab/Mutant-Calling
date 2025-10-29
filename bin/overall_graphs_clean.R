@@ -110,6 +110,5 @@ plot <- ggplot(merged_wt_lin_envs_t, aes(x = Environments, y = Percent, fill = f
   theme(text = element_text(family = "Times New Roman"))
 
 bar_plot <- paste0(base, "_environment_bar.svg")
-bar_plot_file_path <- paste0(base, "/", bar_plot)
 
-ggsave(bar_plot_file_path, plot = plot, width = 10, height = 7.5, units = "in")
+ggsave(bar_plot, plot = plot, width = 10, height = 7.5, units = "in")

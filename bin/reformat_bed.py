@@ -10,6 +10,7 @@ if __name__ == "__main__":
 
 table = pd.read_csv(input_file, sep = "\t", names = ['Genome', 'Gene', 'Prot_acc', 'Prot_acc_stripped', 'PID', 'nident', 'Gene_Length', 'Aln_length', 'evalue', 'slen', 'qstart', 'qend', 'Start', 'End', 'Strand'])
 
+print(table)
 split_genome = table['Genome'].str.split("_PA", expand = True)
 
 table['Genome'] = split_genome[0]
@@ -40,5 +41,5 @@ table_drop = table_drop.apply(swap_if_negative, axis=1)
 
 table_drop['Start'] = table_drop['Start'] - 1
 
-table_drop.to_csv(f"{base}/{base}_bed.bed", sep="\t", index = False, header = False)
+table_drop.to_csv(f"{base}_bed.bed", sep="\t", index = False, header = False)
 

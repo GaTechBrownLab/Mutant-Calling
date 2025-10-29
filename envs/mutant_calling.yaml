@@ -27,3 +27,7 @@ dependencies:
   - pandas
   - numpy
   - biopython
+  - matplotlib-base
+  - networkx
+  - configargparse
+  - joblib

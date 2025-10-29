@@ -28,15 +28,15 @@ WT = table_drop[(table_drop['Query_Cov'] == float(WT_cutoff))]
 # Label mutant as those that match to query coverage between 40%-100%
 mut = table_drop[(table_drop['Query_Cov'] > float(mut_cutoff)) & (table_drop['Query_Cov'] < float(WT_cutoff))]
 
-mut.to_csv(f"{base}/{base}_muts_and_sig_diff.csv", index = False)
-WT.to_csv(f"{base}/{base}_WT.csv", index = False)
+mut.to_csv(f"{base}_muts_and_sig_diff.csv", index = False)
+WT.to_csv(f"{base}_WT.csv", index = False)
 
 # Get the accessions of just the mutants
 mut1 = mut.copy()
 
 mut1 = mut1.drop(mut1.columns[1:9], axis = 1)
 
-mut1.to_csv(f"{base}/{base}_muts_accessions.txt", index = False, header = False)
+mut1.to_csv(f"{base}_muts_accessions.txt", index = False, header = False)
 
 # Assign deletion to those with less than 40% query coverage
 deletions = table_drop.copy()
@@ -47,7 +47,7 @@ deletions1 = deletions.copy()
 
 deletions1 = deletions1.drop(deletions1.columns[1:9], axis = 1)
 
-deletions1.to_csv(f"{base}/{base}_potential_deletions_accessions.txt", index = False, header = False)
+deletions1.to_csv(f"{base}_potential_deletions_accessions.txt", index = False, header = False)
 
 # Create statuses for graphing table
 WT['Status'] = "WT"
@@ -63,5 +63,5 @@ all_las = pd.concat([las, deletions])
 
 all_las["qs_protein"] = f"{base}"
 
-all_las.to_csv(f"{base}/{base}_muts_graphing.csv", index = False)
+all_las.to_csv(f"{base}_muts_graphing.csv", index = False)
 

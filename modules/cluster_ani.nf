@@ -1,0 +1,16 @@
+process cluster_ani {
+    
+    publishDir "${params.outdir}/cluster_ani_output", mode: 'copy'
+
+    input:
+    val level
+
+    output:
+    path "${level}_output.csv"
+
+    script:
+    """
+    clusterANI.py -i "$params.fastani" -o "${level}_output.csv" -t "$level" -p 24
+    
+    """
+}

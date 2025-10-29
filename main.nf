@@ -7,7 +7,6 @@ include { blast } from './modules/blast.nf'
 include { blastp } from './modules/blastp.nf'
 include { compare_lengths } from './modules/compare_lengths.nf'
 include { concat_and_reformat } from './modules/concat_and_reformat.nf'
-include { combine_blast } from './modules/combine_blast.nf'
 include { make_linking_file } from './modules/make_linking_file.nf'
 include { reformat_bed } from './modules/reformat_bed.nf'
 include { bedtools } from './modules/bedtools.nf'
@@ -15,15 +14,15 @@ include { transeq } from './modules/transeq.nf'
 include { reformat_blast } from './modules/reformat_blast.nf'
 include { identify_mut_prot } from './modules/identify_mut_prot.nf'
 include { cd_hit } from './modules/cd_hit.nf'
-include { split_files } from './modules/split_files.nf'
 include { identify_mut_clusters } from './modules/identify_mut_clusters.nf'
 include { clustalo } from './modules/clustalo.nf'
 include { identify_AAS } from './modules/identify_AAS.nf'
-include { combine_aln } from './modules/combine_aln.nf'
 include { final_table } from './modules/final_table.nf'
 include { final_mutants } from './modules/final_mutants.nf'
 include { final_mutants_no_patterns } from './modules/final_mutants_no_patterns.nf'
 include { graphing_r } from './modules/graphing_r.nf'
+include { cluster_ani } from './modules/cluster_ani.nf'
+include { ani_cluster_function } from './modules/ani_cluster_function.nf'
 
 // Begin main workflow
 workflow {
@@ -65,6 +64,50 @@ workflow {
             fasta_blast_ch
         )
 
+        // Obtain only gene ids
+        all_gene_ids = input_genes_ch
+            .map { gene_id, file -> gene_id }
+
+        // Group the incomplete results
+        grouped_incomplete = compare_lengths.out.Incomplete_list.groupTuple()
+
+        // Write incomplete results to a list
+        incomplete_list_concat = all_gene_ids
+            .join(grouped_incomplete, remainder: true)
+            .map { gene_ID, files ->
+                def out_dir = file("${params.outdir}/mutant_calling_output/${gene_ID}")
+                out_dir.mkdirs()
+
+                def out_file = file("${out_dir}/Incomplete_output.txt")
+
+                if (files && files.size() > 0) {
+                    out_file.text = files.collect { it.text }.join()
+                } else {
+                    out_file.text = ""
+                }
+                tuple(gene_ID, out_file)
+            }
+
+        // Group the missing results
+        grouped_missing = compare_lengths.out.Missing_list.groupTuple()
+
+        // Write the missing results to a list
+        missing_list_concat = all_gene_ids
+            .join(grouped_missing, remainder: true)
+            .map { gene_ID, files ->
+                def out_dir = file("${params.outdir}/mutant_calling_output/${gene_ID}")
+                out_dir.mkdirs()
+
+                def out_file = file("${out_dir}/Missing_output.txt")
+
+                if (files && files.size() > 0) {
+                    out_file.text = files.collect { it.text }.join()
+                } else {
+                    out_file.text = ""
+                }
+                tuple(gene_ID, out_file)
+            }
+        
         // Make linking file for downstream analysis
         make_linking_file(
             host_genomes_ch
@@ -85,17 +128,31 @@ workflow {
             collected_fasta_files_ch
         )
 
-        // Concatenate blast results
-        grouped_complete_ch =  compare_lengths.out.Complete
+        // Concatenate complete blast results
+        combined_blast = compare_lengths.out.Complete
             .groupTuple()
+            .map { gene_ID, files ->
+                def out_dir = file("${params.outdir}/mutant_calling_output/${gene_ID}")
+                out_dir.mkdirs()
 
-        combine_blast{
-            grouped_complete_ch
-        }
+                def out_file = file("${out_dir}/${gene_ID}_complete_combined_blast.txt")
+
+                def combined_text = files.collect { f ->
+                    def base = f.baseName.replaceAll("_${gene_ID}\$", "")
+                    
+                    f.readLines().collect { line ->
+                        "${base}\t${line}"
+                    }.join('\n')
+                }.join('\n')
+
+                out_file.text = combined_text
+
+                tuple(gene_ID, out_file)
+            }
         
         // Create bed file from blast results
         reformat_bed(
-            combine_blast.out
+            combined_blast
         )
 
         // Run bedtools from blast result
@@ -142,13 +199,8 @@ workflow {
             identify_mut_prot.out
         )
 
-        // Reformat cd-hit final table
-        split_files(
-            cd_hit.out.cd_hit_cluster
-        )
-
         // Filter for cd-hit reference mutants
-        cluster_muts_list_fasta_ch = split_files.out.muts_list
+        cluster_muts_list_fasta_ch = cd_hit.out.muts_list
             .combine( cd_hit.out.cd_hit_fasta, by:0 )
 
         identify_mut_clusters(
@@ -176,16 +228,22 @@ workflow {
         )
 
         // Combine alignment csvs
-        grouped_complete_ch =  identify_AAS.out
-            .groupTuple()
 
-        combine_aln(
-           grouped_complete_ch 
-        )
+        combine_aln = identify_AAS.out
+            .groupTuple()
+            .map { gene_ID, files ->
+                def out_dir = file("${params.outdir}/mutant_calling_output/${gene_ID}/alignments")
+
+                def out_file = file("${out_dir}/${gene_ID}_combined_aln.csv")
+
+                out_file.text = files.collect { it.text }.join()
+
+                tuple(gene_ID, out_file)
+            }
         
         // Generate final table
-        combine_aln_split = combine_aln.out
-            .combine( split_files.out.cd_hit_table, by:0 )
+        combine_aln_split = combine_aln
+            .combine( cd_hit.out.cd_hit_table, by:0 )
 
         final_table(
             combine_aln_split
@@ -194,18 +252,10 @@ workflow {
         // If true, generate presence absence files
         if (params.pres_abs) {
 
-            // Generate list of genomes with incomplete gene
-            grouped_incomplete_ch = compare_lengths.out.Incomplete_list
-                .groupTuple()
-
-            // Generate list of genomes with missing gene
-            grouped_missing_ch = compare_lengths.out.Missing_list
-                .groupTuple()
-
             if (params.input_muts == null) {
                 // Generate presence absence tables
-                incomplete_missing_ch = grouped_incomplete_ch
-                    .combine( grouped_missing_ch, by:0 )
+                incomplete_missing_ch = incomplete_list_concat
+                    .combine( missing_list_concat, by:0 )
                     .combine( final_table.out.final_mut_table, by:0 )
                     .combine( collected_linking_files_ch )
                     .combine( reformat_blast.out.muts_graphing, by:0 )
@@ -223,8 +273,8 @@ workflow {
                     }
 
                 // Generate presence absence tables
-                incomplete_missing_ch = grouped_incomplete_ch
-                    .combine( grouped_missing_ch, by:0 )
+                incomplete_missing_ch = incomplete_list_concat
+                    .combine( missing_list_concat, by:0 )
                     .combine( final_table.out.final_mut_table, by:0 )
                     .combine( collected_linking_files_ch )
                     .combine( reformat_blast.out.muts_graphing, by:0 )
@@ -236,15 +286,50 @@ workflow {
             }
         }
 
+        if (params.ani_clusters) {
+
+            // ANI steps to channel
+            ani_values = Channel.from((0..<params.ani_steps).collect { i ->
+                    params.ani_start + i * (params.ani_end - params.ani_start) / (params.ani_steps - 1)
+                })
+                .map { String.format("%.8f", it) }
+
+            // Cluster ANI values
+            cluster_ani(
+                ani_values
+            )
+
+            collected_ani_clusters_ch =  cluster_ani.out
+                .collectFile(
+                    storeDir: "${params.outdir}/combined_ani",
+                    name: 'combined_ani_clusters.csv',
+                    keepHeader: true
+                )
+
+            if (params.input_muts == null) {
+                ani_functions_ch = final_mutants_no_patterns.out.functions_incomplete
+                    .combine( collected_ani_clusters_ch )
+
+            } else {
+                ani_functions_ch = final_mutants.out.functions_incomplete
+                    .combine( collected_ani_clusters_ch )
+            }
+
+            ani_cluster_function(
+                ani_functions_ch
+            )
+
+        }
+
         // If true, graph phylogenetic trees and bargraphs based on gene presence absence files
         if (params.graphing) {
 
             graphing_input = final_mutants.out.functions_incomplete
                 .combine( final_mutants.out.functions_pres_abs_incomplete, by:0 )
-            
+                .combine( ani_cluster_function.out.no_funct_clusters_env, by:0 )
+                
             graphing_r(
                 graphing_input
             )
         }
-
 }

@@ -262,23 +262,23 @@ elif missing_size == 0 and incomplete_size == 0:
 # Remove duplicates, keeping first instance
 all_mut_con = all_mut_con.drop_duplicates(subset=['Genome'], keep='first')
 
-all_mut_con.to_csv(f"{gene}/{gene}_funct_no_funct_alt.csv", index = False)
+all_mut_con.to_csv(f"{gene}_funct_no_funct_alt.csv", index = False)
 
 # Drop alternative function for graphing
 funct_non_funct = all_mut_con[~all_mut_con['Mut_Status'].str.contains("Alternative function", na=False)]
 
 # Save
-funct_non_funct.to_csv(f"{gene}/{gene}_all_functions_incomplete.csv", index = False)
+funct_non_funct.to_csv(f"{gene}_all_functions_incomplete.csv", index = False)
 
 # Obtain only genome and mut status
 funct_non_funct = funct_non_funct[['Genome', 'Mut_Status']]
 
 # Save
-funct_non_funct.to_csv(f"{gene}/{gene}_functions_incomplete.csv", index = False)
+funct_non_funct.to_csv(f"{gene}_functions_incomplete.csv", index = False)
 
 # Change no function to 1, functional to 0
 funct_non_funct['Mut_Status'] = funct_non_funct['Mut_Status'].str.replace('No function', '1')
 funct_non_funct['Mut_Status'] = funct_non_funct['Mut_Status'].str.replace('Functional', '0')
 
 # Save
-funct_non_funct.to_csv(f"{gene}/{gene}_functions_pres_abs_incomplete.csv", index = False)
+funct_non_funct.to_csv(f"{gene}_functions_pres_abs_incomplete.csv", index = False)

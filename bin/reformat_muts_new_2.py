@@ -265,17 +265,17 @@ elif missing_size == 0 and incomplete_size == 0:
 all_mut_con = all_mut_con.drop_duplicates(subset=['Genome'], keep='first')
 
 # Save
-all_mut_con.to_csv(f"{gene}/{gene}_all_functions_incomplete.csv", index = False)
+all_mut_con.to_csv(f"{gene}_all_functions_incomplete.csv", index = False)
 
 # Obtain only genome and mut status
 new_all_mut_con = all_mut_con[['Genome', 'Mut_Status']]
 
 # Save
-new_all_mut_con.to_csv(f"{gene}/{gene}_functions_incomplete.csv", index = False)
+new_all_mut_con.to_csv(f"{gene}_functions_incomplete.csv", index = False)
 
 # Change no function to 1, functional to 0
 new_all_mut_con['Mut_Status'] = new_all_mut_con['Mut_Status'].str.replace('No function', '1')
 new_all_mut_con['Mut_Status'] = new_all_mut_con['Mut_Status'].str.replace('Functional', '0')
 
 # Save
-new_all_mut_con.to_csv(f"{gene}/{gene}_functions_pres_abs_incomplete.csv", index = False)
+new_all_mut_con.to_csv(f"{gene}_functions_pres_abs_incomplete.csv", index = False)

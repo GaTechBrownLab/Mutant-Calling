@@ -10,6 +10,7 @@ library(randomcoloR)
 library(stats)
 library(phangorn)
 library(tidyr)
+library(ggplot2)
 
 # Read in arguments
 args <- commandArgs(trailingOnly = TRUE)
@@ -21,6 +22,7 @@ functions_pres_abs_incomplete <- args[5]
 fastani <- args[6]
 genome_annotations_classified <- args[7]
 lineage_probability <- args[8]
+no_funct_clusters_env <- args[9]
 
 # Import fonts
 font_import()
@@ -280,7 +282,7 @@ colnames(st_df) <- c("State0_Probability", "State1_Probability", "Node")
 
 # Drop those with a state 1 (mutant) probability less than 0.9
 st_df_lin <- st_df %>% filter(State1_Probability >= lineage_probability)
-
+# st_df_lin <- st_df %>% filter(State1_Probability >= 0.99)
 # Get descedents (children) of all nodes in tree, merging with tip names to only get direct downstream tips
 node_tips <- list()
 
@@ -328,9 +330,7 @@ node_tips_df_unique <- node_tips_df_cluster[!duplicated(node_tips_df_cluster), ]
 node_tips_df_unique$Lineage_Status <- "Lineage"
 
 ## Breakpoint - save lineages ##
-node_tips_df_unique_file <- paste0(base, "_lineages.rds")
-node_tips_df_unique_file_path <- paste0(base, "/", node_tips_df_unique_file)
-saveRDS(node_tips_df_unique, node_tips_df_unique_file_path)
+
 
 # Subset table
 lineage_clusters_sub <- node_tips_df_unique[c("Genome","Cluster")]
@@ -383,8 +383,6 @@ node_depth_table <- data.frame(
   Average_Node_Depth = avg_depth
 )
 
-print(node_depth_table)
-
 node_depth_file <- paste0(base, "_node_depth_table.csv")
 node_depth_file_path <- paste0(base, "/", node_depth_file)
 write.csv(node_depth_table, node_depth_file_path, row.names = FALSE)
@@ -394,13 +392,14 @@ write.csv(node_depth_table, node_depth_file_path, row.names = FALSE)
 # ----------------------------
 
 # Read in genomavars
-ANI <- read.table(fastani, header = FALSE, sep = "\t")
+ANI <- read.table(fastani, sep = ",")
+
 colnames(ANI)[1] <- "Genome1"
 colnames(ANI)[2] <- "Genome2"
 colnames(ANI)[3] <- "ANI"
 
-ANI$Genome1 <- gsub("/storage/home/hcoda1/2/emehlferber3/brownlab_shared/00_BackupData/I_Irby/Closed_PA_May_2024_Genomes/", "", ANI$Genome1)
-ANI$Genome2 <- gsub("/storage/home/hcoda1/2/emehlferber3/brownlab_shared/00_BackupData/I_Irby/Closed_PA_May_2024_Genomes/", "", ANI$Genome2)
+# ANI$Genome1 <- gsub("/storage/home/hcoda1/2/emehlferber3/brownlab_shared/00_BackupData/I_Irby/Closed_PA_May_2024_Genomes/", "", ANI$Genome1)
+# ANI$Genome2 <- gsub("/storage/home/hcoda1/2/emehlferber3/brownlab_shared/00_BackupData/I_Irby/Closed_PA_May_2024_Genomes/", "", ANI$Genome2)
 
 ANI$Genome1 <- gsub(".fna", "", ANI$Genome1)
 ANI$Genome2 <- gsub(".fna", "", ANI$Genome2)
@@ -420,9 +419,26 @@ filtered_ANI_lowest <- filtered_ANI %>%
   slice_min(ANI, with_ties = FALSE) %>%
   ungroup()
 
+filtered_ANI_lowest_sub <- filtered_ANI_lowest[c("Cluster.x", "Lineage_Status.x", "ANI")]
+
+colnames(filtered_ANI_lowest_sub)[1] <- "Cluster"
+colnames(filtered_ANI_lowest_sub)[2] <- "Lineage_Status"
+
 ANI_low_file <- paste0(base, "_lowest_ANI_cluster.csv")
 ANI_low_file_path <- paste0(base, "/", ANI_low_file)
-write.csv(filtered_ANI_lowest, ANI_low_file_path, row.names = FALSE)
+write.csv(filtered_ANI_lowest_sub, ANI_low_file_path, row.names = FALSE)
+
+ani_plot <- ggplot(filtered_ANI_lowest_sub, aes(x = ANI)) +
+  geom_histogram(fill = "red", color = "black", bins = 50) +
+  geom_vline(xintercept = 99.99, color = "black", linetype = "dashed", size = 1) +
+  xlab("ANI") +
+  ylab("Count") +
+  theme_bw()
+
+ani_plot_name <- paste0(base, "_ani_distribution.svg")
+ani_plot_file_path <- paste0(base, "/", ani_plot_name)
+
+ggsave(ani_plot_file_path, plot = ani_plot, width = 10, height = 7.5, units = "in")
 
 avg_ANI <- mean(filtered_ANI_lowest$ANI)
 
@@ -436,9 +452,66 @@ avg_ANI_file <- paste0(base, "_avg_ANI_table.csv")
 avg_ANI_file_path <- paste0(base, "/", avg_ANI_file)
 write.csv(avg_ANI_table, avg_ANI_file_path, row.names = FALSE)
 
+
+
 # ----------------------------
 # Associate lineages with environmental origins
 # ----------------------------
+
+pres_abs_merge_lin <- left_join(node_tips_df_unique, tree_data, by = "Genome")
+
+pres_abs_merge_lin_no_funct <- pres_abs_merge_lin[pres_abs_merge_lin$Mut_Status == 1, ]
+
+node_tips_df_unique_file <- paste0(base, "_lineages.csv")
+node_tips_df_unique_file_path <- paste0(base, "/", node_tips_df_unique_file)
+write.csv(pres_abs_merge_lin_no_funct, node_tips_df_unique_file_path, row.names = FALSE)
+
+meta <- read.csv(genome_annotations_classified)
+
+lineage_env_merge <- left_join(pres_abs_merge_lin_no_funct, meta, by = "Genome")
+
+lineage_env_merge_tbl <- table(lineage_env_merge$Cluster, lineage_env_merge$Group)
+
+lineage_env_merge_df <- as.data.frame(lineage_env_merge_tbl)
+
+cluster_totals_df <- lineage_env_merge_df %>%
+  group_by(Var1) %>%
+  summarise(Total = sum(Freq))
+
+lineage_env_merge_df <- lineage_env_merge_df %>%
+  left_join(cluster_totals_df, by = "Var1")
+
+lineage_env_merge_df$Proportion <- lineage_env_merge_df$Freq / lineage_env_merge_df$Total
+
+all_envs <- c("CF", "Clinical", "Clinical, Unknown", "Missing", "Environmental",
+  "Human-associated environmental", "Lab", "Animal")
+
+lineage_env_merge_df_complete <- lineage_env_merge_df %>%
+  complete(
+    Var1, Var2 = all_envs,
+    fill = list(Freq = 0, Proportion = 0)
+  )
+
+
+env_heatmap <- ggplot(lineage_env_merge_df_complete, aes(x = Var2, y = Var1, fill = Proportion)) +
+  geom_tile(color = "grey80") +
+  scale_fill_gradient(
+    low = "white",
+    high = "darkblue",
+    name = "Proportion"
+  ) +
+  geom_text(aes(label = Freq), color = "white", size = 3) +
+  labs(x = "Environment", y = "Lineage") +
+  theme_minimal(base_size = 14) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.grid = element_blank()
+  )
+
+env_heatmap_file <- paste0(base, "_environment_heatmap.svg")
+env_heatmap_file_path <- paste0(base, "/", env_heatmap_file)
+
+ggsave(env_heatmap_file_path, plot = env_heatmap, width = 10, height = 10, units = "in")
 
 # Identify terminal edges
 tip_indices <- 1:Ntip(relaxed_0)  # Tips are numbered from 1 to Ntip
@@ -485,6 +558,54 @@ svg(filename = lin_tree_name_path, width = 10, height = 10)
 
 plot.new()
 plot(relaxed_0,  edge.color = edge_colors, type = "fan", lwd = 0.5, show.tip.label = FALSE)
+tiplabels(pch = 19, col = tip_colors, cex = 0.5)
+par(family = "Times New Roman")
+legend("bottomright", inset = c(0.045, 0.07), legend = c(gene_label_wt, gene_label_mut),
+        col = c("blue", "red"), pch = 19, box.lty = 0, text.font = 1)
+legend("bottomright", legend = c(gene_label_non_lin, gene_label_lin),
+        col = c("black", "red"), lty = 1, box.lty = 0, text.font = 1)
+add.scale.bar(length = 0.1, x = -1, y = -1)
+
+dev.off ()
+
+# ----------------------------
+# Set lineages to ANI cutoff
+# ----------------------------
+
+ANI_clusters <- read.csv(no_funct_clusters_env)
+
+ANI_clusters <- ANI_clusters %>% filter(!Genome %in% zero_length_tips)
+
+ANI_clusters$Lineage_Status <- 'Lineage'
+
+# Merge terminal edges with lineage status
+edge_merge_ANI <- merge(x = tip_to_edge_df, y = ANI_clusters, by = "Genome", all = TRUE)
+
+print(edge_merge_ANI)
+
+# Fill missing lineage statuses as 'Non-lineage'
+edge_merge_ANI$Lineage_Status[is.na(edge_merge_ANI$Lineage_Status)] <- 'Non-lineage'
+
+# Subset table
+edge_merge_ANI <- edge_merge_ANI[c("edge_index", "Lineage_Status")]
+
+# Create a color map for the edges
+edge_map_ANI <- c('Lineage' = 'red', 'Non-lineage' = 'black')
+
+# Associate colors with lineage status, set default color to black
+edge_colors_ANI <- rep("black", nrow(relaxed_0$edge))
+
+# Match edge indices from the edge_merge dataframe
+edge_colors_ANI[edge_merge_ANI$edge_index] <- edge_map_ANI[as.character(edge_merge_ANI$Lineage_Status)]
+
+# Plot along with tip colors
+lin_tree_name_ANI_file <- paste0(base, "_new_lin_tree_ANI.svg")
+lin_tree_name_ANI_path <- paste0(base, "/", lin_tree_name_ANI_file)
+
+svg(filename = lin_tree_name_ANI_path, width = 10, height = 10)
+
+plot.new()
+plot(relaxed_0,  edge.color = edge_colors_ANI, type = "fan", lwd = 0.5, show.tip.label = FALSE)
 tiplabels(pch = 19, col = tip_colors, cex = 0.5)
 par(family = "Times New Roman")
 legend("bottomright", inset = c(0.045, 0.07), legend = c(gene_label_wt, gene_label_mut),

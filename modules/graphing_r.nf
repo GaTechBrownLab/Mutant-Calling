@@ -1,20 +1,26 @@
 process graphing_r {
     
-    publishDir 'results/graphing_results', mode: 'copy'
+    publishDir "${params.outdir}/graphing_results/${gene_ID}", mode: 'copy'
 
     input:
-        tuple val(gene_ID), path(functions_incomplete), path(functions_pres_abs_incomplete)
+        tuple val(gene_ID), path(functions_incomplete), path(functions_pres_abs_incomplete), path(no_funct_clusters_env)
 
     output:
         path "*"
 
     script:
     """
-    mkdir -p $gene_ID
+    Cheat_code_pruned_lineage_loop_no_BiSSE.R \
+        $params.tree \
+        $params.tree_root \
+        $gene_ID \
+        $functions_incomplete \
+        $functions_pres_abs_incomplete \
+        $params.fastani $params.env_data \
+        $params.lineage_probability \
+        $no_funct_clusters_env
 
-    Cheat_code_pruned_lineage_loop_no_BiSSE.R $params.tree $params.tree_root $gene_ID $functions_incomplete $functions_pres_abs_incomplete $params.fastani $params.env_data $params.lineage_probability
-
-    overall_graphs_clean.R $gene_ID "${gene_ID}/${gene_ID}_env.csv" "${gene_ID}/${gene_ID}_lin_env.csv"
+    overall_graphs_clean.R $gene_ID "${gene_ID}_env.csv" "${gene_ID}_lin_env.csv"
 
     """
 }

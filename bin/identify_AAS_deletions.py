@@ -88,4 +88,4 @@ df = df[['ID', 'Mutation']]
 #Merge cells based on protein ID
 merged_df = df.groupby('ID')['Mutation'].agg(lambda x: ', '.join(map(str, x))).reset_index()
 
-merged_df.to_csv(f"{base}/alignments/csv/{genome}.csv", index = False, header = False)
+merged_df.to_csv(f"{genome}.csv", index = False, header = False)

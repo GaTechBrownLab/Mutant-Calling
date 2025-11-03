@@ -24,6 +24,39 @@ include { graphing_r } from './modules/graphing_r.nf'
 include { cluster_ani } from './modules/cluster_ani.nf'
 include { ani_cluster_function } from './modules/ani_cluster_function.nf'
 
+// Function for concatenating gene lists
+def concatGeneLists(all_gene_ids, channel, suffix) {
+    def grouped = channel
+        .ifEmpty {
+            def gene_ID = ""
+            def files = ""
+
+            tuple(gene_ID, files)
+        }
+        .groupTuple()
+
+    return all_gene_ids
+        .join(grouped, remainder: true)
+            .map { gene_ID, files ->
+                def out_dir = file("${params.outdir}/mutant_calling_output/${gene_ID}")
+                // out_dir.mkdirs
+
+                def out_file = file("${out_dir}/${suffix}_output.txt")
+
+                if (gene_ID instanceof String && gene_ID.isEmpty()) {
+
+                } else if (files && files.size() > 0) {
+                    out_file.text = files.collect { it.text }.join()
+
+                    tuple(gene_ID, out_file)
+                } else {
+                    out_file.text = ""
+
+                    tuple(gene_ID, out_file)
+                }
+            }
+}
+
 // Begin main workflow
 workflow {
     main:
@@ -69,50 +102,19 @@ workflow {
             .map { gene_id, file -> gene_id }
 
         // Group the incomplete results
-        grouped_incomplete = compare_lengths.out.Incomplete_list.groupTuple()
-
-        // Write incomplete results to a list
-        incomplete_list_concat = all_gene_ids
-            .join(grouped_incomplete, remainder: true)
-            .map { gene_ID, files ->
-                def out_dir = file("${params.outdir}/mutant_calling_output/${gene_ID}")
-                out_dir.mkdirs()
-
-                def out_file = file("${out_dir}/Incomplete_output.txt")
-
-                if (files && files.size() > 0) {
-                    out_file.text = files.collect { it.text }.join()
-                } else {
-                    out_file.text = ""
-                }
-                tuple(gene_ID, out_file)
-            }
-
-        // Group the missing results
-        grouped_missing = compare_lengths.out.Missing_list.groupTuple()
-
-        // Write the missing results to a list
-        missing_list_concat = all_gene_ids
-            .join(grouped_missing, remainder: true)
-            .map { gene_ID, files ->
-                def out_dir = file("${params.outdir}/mutant_calling_output/${gene_ID}")
-                out_dir.mkdirs()
-
-                def out_file = file("${out_dir}/Missing_output.txt")
-
-                if (files && files.size() > 0) {
-                    out_file.text = files.collect { it.text }.join()
-                } else {
-                    out_file.text = ""
-                }
-                tuple(gene_ID, out_file)
-            }
+        incomplete_list_concat = concatGeneLists(all_gene_ids, (compare_lengths.out.Incomplete_list ?: Channel.empty()), "Incomplete")
         
+        // Group the missing results
+        missing_list_concat = concatGeneLists(all_gene_ids, (compare_lengths.out.Missing_list ?: Channel.empty()), "Missing")
+
+        // Group the split results
+        split_list_concat = concatGeneLists(all_gene_ids, (compare_lengths.out.Split_list ?: Channel.empty()), "Split")
+
         // Make linking file for downstream analysis
         make_linking_file(
             host_genomes_ch
         )
-
+        
         collected_linking_files_ch =  make_linking_file.out
             .collectFile(
                 storeDir: "${params.outdir}/linking_file",
@@ -133,7 +135,6 @@ workflow {
             .groupTuple()
             .map { gene_ID, files ->
                 def out_dir = file("${params.outdir}/mutant_calling_output/${gene_ID}")
-                out_dir.mkdirs()
 
                 def out_file = file("${out_dir}/${gene_ID}_complete_combined_blast.txt")
 
@@ -252,10 +253,11 @@ workflow {
         // If true, generate presence absence files
         if (params.pres_abs) {
 
-            if (params.input_muts == null) {
+            if (!params.input_muts) {
                 // Generate presence absence tables
                 incomplete_missing_ch = incomplete_list_concat
                     .combine( missing_list_concat, by:0 )
+                    .combine( split_list_concat, by:0 )
                     .combine( final_table.out.final_mut_table, by:0 )
                     .combine( collected_linking_files_ch )
                     .combine( reformat_blast.out.muts_graphing, by:0 )
@@ -275,6 +277,7 @@ workflow {
                 // Generate presence absence tables
                 incomplete_missing_ch = incomplete_list_concat
                     .combine( missing_list_concat, by:0 )
+                    .combine( split_list_concat, by:0 )
                     .combine( final_table.out.final_mut_table, by:0 )
                     .combine( collected_linking_files_ch )
                     .combine( reformat_blast.out.muts_graphing, by:0 )

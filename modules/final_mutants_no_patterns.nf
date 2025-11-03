@@ -3,7 +3,7 @@ process final_mutants_no_patterns {
     publishDir "${params.outdir}/ouputs_for_graphing/${gene_ID}", mode: 'copy'
 
     input:
-    tuple val(gene_ID), path(incomplete_files), path(missing_files), path(final_mut_table), path(linking), path(muts_graphing)
+    tuple val(gene_ID), path(incomplete_files), path(missing_files), path(split_files), path(final_mut_table), path(linking), path(muts_graphing)
 
     output:
     tuple val(gene_ID), path("${gene_ID}_functions_pres_abs_incomplete.csv"), emit: functions_pres_abs_incomplete
@@ -18,6 +18,7 @@ process final_mutants_no_patterns {
         "$gene_ID" \
         "$incomplete_files" \
         "$missing_files" \
+        "$split_files" \
         "$linking" \
         "$muts_graphing"
 

@@ -18,6 +18,7 @@ if __name__ == "__main__":
 complete=f"{gene}/Blast_gene_status/Complete"
 incomplete=f"{gene}/Blast_gene_status/Incomplete"
 missing=f"{gene}/Blast_gene_status/Missing"
+split=f"{gene}/Blast_gene_status/Split"
 
 table = pd.read_csv(blast_output, sep = "\t", names = ['Gene', 'Prot_acc', 'Prot_acc_stripped', 'PID', 'nident', 'Gene_Length', 'Aln_length', 'evalue', 'slen', 'qstart', 'qend', 'Start', 'End', 'Strand'])
 
@@ -53,16 +54,20 @@ else:
                     diff_qstart = abs(table.iloc[1]['qstart'] - table.iloc[0]['qend'])
                     diff_qend = abs(table.iloc[1]['qend'] - float(length))
 
-                    if (diff_qstart <= float(tolerance)) and (diff_qend <= float(tolerance)):
+                    if (diff_qstart <= float(tolerance)) and (diff_qend <= float(tolerance)) and table.iloc[0]['Prot_acc'] == table.iloc[1]['Prot_acc']:
                        saving_funct(incomplete, "Incomplete")
+                    elif (diff_qstart <= float(tolerance)) and (diff_qend <= float(tolerance)) and table.iloc[0]['Prot_acc'] != table.iloc[1]['Prot_acc']:
+                        saving_funct(split, "Split")
                     else:
                         saving_funct(complete, "Complete")
                 elif table.iloc[1]['qstart'] == 1:
                     diff_qstart = abs(table.iloc[0]['qstart'] - table.iloc[1]['qend'])
                     diff_qend = abs(table.iloc[0]['qend'] - float(length))
 
-                    if (diff_qstart <= float(tolerance)) and (diff_qend <= float(tolerance)):
+                    if (diff_qstart <= float(tolerance)) and (diff_qend <= float(tolerance)) and table.iloc[0]['Prot_acc'] == table.iloc[1]['Prot_acc']:
                         saving_funct(incomplete, "Incomplete")
+                    elif (diff_qstart <= float(tolerance)) and (diff_qend <= float(tolerance)) and table.iloc[0]['Prot_acc'] != table.iloc[1]['Prot_acc']:
+                        saving_funct(split, "Split")
                     else:
                         saving_funct(complete, "Complete")
                 else:

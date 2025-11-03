@@ -329,9 +329,6 @@ node_tips_df_unique <- node_tips_df_cluster[!duplicated(node_tips_df_cluster), ]
 # Set lineage status to lineage
 node_tips_df_unique$Lineage_Status <- "Lineage"
 
-## Breakpoint - save lineages ##
-
-
 # Subset table
 lineage_clusters_sub <- node_tips_df_unique[c("Genome","Cluster")]
 
@@ -351,6 +348,60 @@ tip_clusters <- lineage_clusters_sub[tip_labels, "Cluster"]  # Get clusters for 
 
 # Map colors to the clusters
 lineage_tip_colors <- cluster_colors[as.character(tip_clusters)]
+
+# ----------------------------
+# Identify WT lineages based on ancestral state reconstruction
+# ----------------------------
+
+# Drop those with a state 0 (WT) probability less than 0.9
+st_df_lin_WT <- st_df %>% filter(State0_Probability >= lineage_probability)
+
+# Get descedents (children) of all nodes in tree, merging with tip names to only get direct downstream tips
+node_tips_WT <- list()
+
+for (node in st_df_lin_WT$Node) {
+  
+  tips_for_node_list_WT <- Descendants(relaxed_0, node, type = "children")
+
+  tips_for_node_WT <- unlist(tips_for_node_list_WT)
+
+  tips_for_node_labels_WT <- relaxed_0$tip.label[tips_for_node_WT][!is.na(relaxed_0$tip.label[tips_for_node_WT])]
+
+  node_tips_WT[[paste0(node)]] <- tips_for_node_labels_WT
+  
+}
+
+# Convert the list to a dataframe
+node_tips_df_WT <- stack(node_tips_WT)
+
+# Subset dataframe
+colnames(node_tips_df_WT) <- c("Genome", "Node")
+
+# Convert to character, and numeric
+node_tips_df_WT$Node <- as.numeric(as.character(node_tips_df_WT$Node))
+
+# Create clusters from original node list - if they are sequential, assign to same cluster
+st_df_lin_WT$Node <- as.numeric(st_df_lin_WT$Node)
+
+st_df_lin_clusters_WT <- st_df_lin_WT %>%
+  arrange(Node) %>%
+  mutate(Cluster = cumsum(c(1, diff(Node) > 2)))
+
+# Subset
+st_df_lin_clusters_WT <- st_df_lin_clusters_WT[c("Node","Cluster")]
+
+# Drop duplicate rows
+st_df_lin_clusters_distinct_WT <- st_df_lin_clusters_WT %>% distinct()
+
+# Left merge, assigning all genomes to a cluster based on the nodes
+node_tips_df_cluster_WT <- left_join(node_tips_df_WT, st_df_lin_clusters_distinct_WT, by = "Node")
+
+# Remove duplicates
+node_tips_df_unique_WT <- node_tips_df_cluster_WT[!duplicated(node_tips_df_cluster_WT), ]
+
+# Set lineage status to lineage
+node_tips_df_unique_WT$Lineage_Status <- "Lineage"
+
 
 # ----------------------------
 # Node depth
@@ -452,28 +503,33 @@ avg_ANI_file <- paste0(base, "_avg_ANI_table.csv")
 avg_ANI_file_path <- paste0(base, "/", avg_ANI_file)
 write.csv(avg_ANI_table, avg_ANI_file_path, row.names = FALSE)
 
-
-
 # ----------------------------
 # Associate lineages with environmental origins
 # ----------------------------
 
+# Join cheat lineages with tree data
 pres_abs_merge_lin <- left_join(node_tips_df_unique, tree_data, by = "Genome")
 
+# Drop those that are WT (double check this)
 pres_abs_merge_lin_no_funct <- pres_abs_merge_lin[pres_abs_merge_lin$Mut_Status == 1, ]
 
+# Save mutant lineages
 node_tips_df_unique_file <- paste0(base, "_lineages.csv")
 node_tips_df_unique_file_path <- paste0(base, "/", node_tips_df_unique_file)
 write.csv(pres_abs_merge_lin_no_funct, node_tips_df_unique_file_path, row.names = FALSE)
 
+# Read in environmental data
 meta <- read.csv(genome_annotations_classified)
 
+# Join cheat lineages with environmental data
 lineage_env_merge <- left_join(pres_abs_merge_lin_no_funct, meta, by = "Genome")
 
+# Make a table with counts per environment
 lineage_env_merge_tbl <- table(lineage_env_merge$Cluster, lineage_env_merge$Group)
 
 lineage_env_merge_df <- as.data.frame(lineage_env_merge_tbl)
 
+# Group
 cluster_totals_df <- lineage_env_merge_df %>%
   group_by(Var1) %>%
   summarise(Total = sum(Freq))
@@ -481,17 +537,22 @@ cluster_totals_df <- lineage_env_merge_df %>%
 lineage_env_merge_df <- lineage_env_merge_df %>%
   left_join(cluster_totals_df, by = "Var1")
 
+# Calculate proportion
 lineage_env_merge_df$Proportion <- lineage_env_merge_df$Freq / lineage_env_merge_df$Total
 
 all_envs <- c("CF", "Clinical", "Clinical, Unknown", "Missing", "Environmental",
   "Human-associated environmental", "Lab", "Animal")
 
+# Include all environments if missing set to 0
 lineage_env_merge_df_complete <- lineage_env_merge_df %>%
   complete(
     Var1, Var2 = all_envs,
     fill = list(Freq = 0, Proportion = 0)
   )
 
+# ----------------------------
+# Environmental heatmap for lineages
+# ----------------------------
 
 env_heatmap <- ggplot(lineage_env_merge_df_complete, aes(x = Var2, y = Var1, fill = Proportion)) +
   geom_tile(color = "grey80") +
@@ -512,6 +573,10 @@ env_heatmap_file <- paste0(base, "_environment_heatmap.svg")
 env_heatmap_file_path <- paste0(base, "/", env_heatmap_file)
 
 ggsave(env_heatmap_file_path, plot = env_heatmap, width = 10, height = 10, units = "in")
+
+# ----------------------------
+# Tree figures for lineages
+# ----------------------------
 
 # Identify terminal edges
 tip_indices <- 1:Ntip(relaxed_0)  # Tips are numbered from 1 to Ntip

@@ -11,8 +11,9 @@ if __name__ == "__main__":
     gene = sys.argv[2]
     incomplete = sys.argv[3]
     missing = sys.argv[4]
-    linking = sys.argv[5]
-    muts_graphing = sys.argv[6]
+    split = sys.argv[5]
+    linking = sys.argv[6]
+    muts_graphing = sys.argv[7]
 
 # Read in LasR final mut table
 table = pd.read_table(final_mut_table, sep = ",")
@@ -111,10 +112,13 @@ graphing_genomes_merge = mapping.merge(graphing_prot, on="Prot_acc", how="inner"
 
 graphing_genomes = graphing_genomes_merge[['Genome']]
 
+# Check sizes
 missing_size = os.stat(missing).st_size
 incomplete_size = os.stat(incomplete).st_size
+split_size = os.stat(split).st_size
 
-if missing_size > 0 and incomplete_size > 0:
+# Check missing
+if missing_size > 0:
     # Read in a list of missing (genomes with fully deleted gene)
     missing = pd.read_table(missing, header = None)
 
@@ -131,6 +135,12 @@ if missing_size > 0 and incomplete_size > 0:
 
     missing_genomes = missing[['Genome']]
 
+    all_ran = pd.concat([missing_genomes, graphing_genomes])
+else:
+    all_ran = graphing_genomes.copy()
+
+# Check incomplete
+if incomplete_size > 0:
     # Read in the list of incomplete LasR (these have IS insertions)
     incomplete = pd.read_table(incomplete, header = None)
 
@@ -147,46 +157,31 @@ if missing_size > 0 and incomplete_size > 0:
 
     incomplete_genomes = incomplete[['Genome']]
 
-    all_ran = pd.concat([missing_genomes, incomplete_genomes, graphing_genomes])
-elif missing_size == 0 and incomplete_size > 0:
-    
-    incomplete = pd.read_table(incomplete, header = None)
+    all_ran = pd.concat([all_ran, incomplete_genomes])
+else:
+    all_ran = all_ran.copy()
+
+# Check split
+if split_size > 0:
+    # Read in a list of genes split on contig
+    split = pd.read_table(split, header = None)
 
     # Rename column
-    incomplete = incomplete.rename(columns={0: 'Genome'})
+    split = split.rename(columns={0: 'Genome'})
 
     # Remove extension
-    incomplete['Genome'] = incomplete['Genome'].str.replace(f'_{gene}.txt', '')
+    split['Genome'] = split['Genome'].str.replace(f'_{gene}.txt', '')
 
-    # Set IS insertion status to all incomplete LasR genomes
-    incomplete['Mutation'] = 'Insertion or disruption'
-    incomplete['Mut_Status'] = 'No function'
-    incomplete['Mut_Type'] = 'Insertion or disruption'
+    # Set status to NA
+    split['Mutation'] = 'Contig split'
+    split['Mut_Status'] = 'NA'
+    split['Mut_Type'] = 'NA'
 
-    incomplete_genomes = incomplete[['Genome']]
+    split_genomes = split[['Genome']]
 
-    all_ran = pd.concat([incomplete_genomes, graphing_genomes])
-elif missing_size > 0 and incomplete_size == 0:
-
-    # Read in a list of missing (genomes with fully deleted LasR)
-    missing = pd.read_table(missing, header = None)
-
-    # Rename column
-    missing = missing.rename(columns={0: 'Genome'})
-
-    # Remove extension
-    missing['Genome'] = missing['Genome'].str.replace(f'_{gene}.txt', '')
-
-    # Set full deletion status to all full deletions
-    missing['Mutation'] = 'Full Deletion'
-    missing['Mut_Status'] = 'No function'
-    missing['Mut_Type'] = 'Full Deletion'
-
-    missing_genomes = missing[['Genome']]
-
-    all_ran = pd.concat([missing_genomes, graphing_genomes])
-elif missing_size == 0 and incomplete_size == 0:
-    all_ran = graphing_genomes.copy()
+    all_ran = pd.concat([all_ran, split_genomes])
+else:
+    all_ran = all_ran.copy()
 
 # Set status to ran
 all_ran['Run_status'] = "Ran"
@@ -250,14 +245,21 @@ new_all_merge = new_all_merge[['Genome', 'Mutation', 'Mut_Status', 'Mut_Type']]
 
 # Concatenate the SNP/frameshift/stop codon genomes with WT, potential deletion, full deletion, missing, and incomplete genomes
 
-if missing_size > 0 and incomplete_size > 0:
-    all_mut_con = pd.concat([wt, new_all_merge, pot_del, missing, incomplete, full_del])
-elif missing_size == 0 and incomplete_size > 0:
-    all_mut_con = pd.concat([wt, new_all_merge, pot_del, incomplete, full_del])
-elif missing_size > 0 and incomplete_size == 0:
-    all_mut_con = pd.concat([wt, new_all_merge, pot_del, missing, full_del])
-elif missing_size == 0 and incomplete_size == 0:
+# Concatenate the SNP/frameshift/stop codon genomes with WT, potential deletion, full deletion, missing, incomplete, and split genomes
+if missing_size > 0:
+    all_mut_con = pd.concat([wt, new_all_merge, pot_del, full_del, missing])
+else:
     all_mut_con = pd.concat([wt, new_all_merge, pot_del, full_del])
+
+if incomplete_size > 0:
+    all_mut_con = pd.concat([all_mut_con, incomplete])
+else:
+    all_mut_con = all_mut_con.copy()
+
+if split_size > 0:
+    all_mut_con = pd.concat([all_mut_con, split])
+else:
+    all_mut_con = all_mut_con.copy()
 
 # Remove duplicates, keeping first instance
 all_mut_con = all_mut_con.drop_duplicates(subset=['Genome'], keep='first')

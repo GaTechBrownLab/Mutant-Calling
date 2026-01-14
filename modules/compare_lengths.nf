@@ -1,7 +1,7 @@
 process compare_lengths {
 
     // publishDir "${params.outdir}/mutant_calling_output", pattern: "**/Blast_gene_status/**",mode: 'copy'
-
+    tag "compare lengths ${gene_ID}"
     input:
         tuple val(gene_ID), path(table), path(gene_file)
 
@@ -19,7 +19,7 @@ process compare_lengths {
         ${gene_ID}/Blast_gene_status/Missing \
         ${gene_ID}/Blast_gene_status/Split
 
-    length=\$(sed -n '2p' ${gene_file} | tr -d '\n' | wc -c)
+    length=\$(grep -v "^>" "$gene_file" | tr -d '\n' | wc -c)
 
     compare_lengths.py \
         "\$length" \

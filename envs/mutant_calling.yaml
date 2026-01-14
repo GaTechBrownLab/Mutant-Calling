@@ -24,6 +24,8 @@ dependencies:
   - r-ggplot2
   - r-svglite
   - r-forcats
+  - r-purrr
+  - r-gt
   - pandas
   - numpy
   - biopython

@@ -357,17 +357,17 @@ workflow {
                 }
                 .groupTuple()
             
-            no_funct_clusters_env = Channel
-                .fromPath( params.no_funct_clusters )
-                .map { file_path ->
-                    def gene = file_path.parent.name
-                    tuple(gene, file_path)
-                }
-                .groupTuple()
+            // no_funct_clusters_env = Channel
+            //     .fromPath( params.no_funct_clusters )
+            //     .map { file_path ->
+            //         def gene = file_path.parent.name
+            //         tuple(gene, file_path)
+            //     }
+            //     .groupTuple()
 
             graphing_input = functions_incomplete_ch
                 .combine( functions_pres_abs_incomplete_ch, by:0 )
-                .combine( no_funct_clusters_env, by:0 )
+                .view()
             
             graphing_r(
                 graphing_input

@@ -24,6 +24,17 @@ colnames(lineage_table)[1] <- "Lineage_Status"
 # Subset all environments
 environmental_table_sub <- environmental_table[c("Mut_Status", "CF", "Clinical", "Clinical..Unknown", "Environmental",
                                       "Human.associated.environmental")]
+
+print(environmental_table_sub)
+
+environmental_table_sub <- environmental_table_sub %>%
+  mutate(
+    Clinical = coalesce(Clinical, 0) + coalesce(`Clinical..Unknown`, 0)
+  ) %>%
+  select(-`Clinical..Unknown`)
+
+print(environmental_table_sub)
+
 # Subset just WT
 WT_tbl <- environmental_table_sub %>%
   filter(grepl("0", Mut_Status))
@@ -36,6 +47,12 @@ WT_tbl <- WT_tbl[, !names(WT_tbl) %in% "Mut_Status"]
 # Subset all environments
 lineage_table_sub <- lineage_table[c("Lineage_Status", "CF", "Clinical", "Clinical..Unknown", "Environmental",
                                       "Human.associated.environmental")]
+
+lineage_table_sub <- lineage_table_sub %>%
+  mutate(
+    Clinical = coalesce(Clinical, 0) + coalesce(`Clinical..Unknown`, 0)
+  ) %>%
+  select(-`Clinical..Unknown`)
   
 # Initialize status column
 lineage_table_sub <- lineage_table_sub %>%
@@ -93,7 +110,7 @@ merged_wt_lin_envs_t <- merged_wt_lin_envs_t %>%
   mutate(Count = ifelse(Count == 0, "", Count))
   
 # Rename Clinical unknown and human associated environment
-merged_wt_lin_envs_t$Environments <- gsub("Clinical..Unknown", "Clinical U", merged_wt_lin_envs_t$Environments)
+# merged_wt_lin_envs_t$Environments <- gsub("Clinical..Unknown", "Clinical U", merged_wt_lin_envs_t$Environments)
 merged_wt_lin_envs_t$Environments <- gsub("Human.associated.environmental", "Human Assoc", merged_wt_lin_envs_t$Environments)
 
 merged_wt_lin_envs_t$Status <- gsub("_", " ", merged_wt_lin_envs_t$Status)

@@ -27,7 +27,8 @@ process compare_lengths {
         "${gene_ID}" \
         "$params.gene_proportion" \
         "$params.gene_difference" \
-        "$params.tolerance"
+        "$params.tolerance" \
+        "$params.split_tolerance"
 
 """
 }

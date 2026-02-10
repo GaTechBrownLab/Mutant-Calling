@@ -14,6 +14,7 @@ if __name__ == "__main__":
     gene_proportion = sys.argv[4]
     gene_difference = sys.argv[5]
     tolerance = sys.argv[6]
+    split_tolerance = sys.argv[7]
 
 complete=f"{gene}/Blast_gene_status/Complete"
 incomplete=f"{gene}/Blast_gene_status/Incomplete"
@@ -44,42 +45,50 @@ else:
     else:
         length_threshold = math.floor(float(length) - (float(length) * float(gene_proportion)))
 
-        print(length, gene_proportion)
-        print(length_threshold)
+        split_threshold = table.iloc[0]['slen'] - float(split_tolerance)
 
-        if table.iloc[0]['Aln_length'] >= length_threshold:
-            saving_funct(complete, "Complete")
+        if table.iloc[0]['Start'] == 1:
+            saving_funct(split, "Split")
+        elif table.iloc[0]['End'] == 1:
+            saving_funct(split, "Split")
+        elif table.iloc[0]['Start'] >= split_threshold:
+            saving_funct(split, "Split")
+        elif table.iloc[0]['End'] >= split_threshold:
+            saving_funct(split, "Split")
         else:
-            gene_diff_threshold = math.floor(float(length) * float(gene_difference))
-
-            if table.iloc[0]['Aln_length'] <= gene_diff_threshold:
-                saving_funct(missing, "Missing")
+            if table.iloc[0]['Aln_length'] >= length_threshold:
+                saving_funct(complete, "Complete")
             else:
-                if table.iloc[0]['qstart'] == 1:
-                    diff_qstart = abs(table.iloc[1]['qstart'] - table.iloc[0]['qend'])
-                    diff_qend = abs(table.iloc[1]['qend'] - float(length))
+                gene_diff_threshold = math.floor(float(length) * float(gene_difference))
 
-                    print(diff_qstart)
-                    print(diff_qend)
-                    print(float(tolerance))
-                    print(float(length))
-
-                    if (diff_qstart <= float(tolerance)) and (diff_qend <= float(tolerance)) and table.iloc[0]['Prot_acc'] == table.iloc[1]['Prot_acc']:
-                       saving_funct(incomplete, "Incomplete")
-                    elif (diff_qstart <= float(tolerance)) and (diff_qend <= float(tolerance)) and table.iloc[0]['Prot_acc'] != table.iloc[1]['Prot_acc']:
-                        saving_funct(split, "Split")
-                    else:
-                        saving_funct(complete, "Complete")
-                elif table.iloc[1]['qstart'] == 1:
-                    diff_qstart = abs(table.iloc[0]['qstart'] - table.iloc[1]['qend'])
-                    diff_qend = abs(table.iloc[0]['qend'] - float(length))
-
-                    if (diff_qstart <= float(tolerance)) and (diff_qend <= float(tolerance)) and table.iloc[0]['Prot_acc'] == table.iloc[1]['Prot_acc']:
-                        saving_funct(incomplete, "Incomplete")
-                    elif (diff_qstart <= float(tolerance)) and (diff_qend <= float(tolerance)) and table.iloc[0]['Prot_acc'] != table.iloc[1]['Prot_acc']:
-                        saving_funct(split, "Split")
-                    else:
-                        saving_funct(complete, "Complete")
+                if table.iloc[0]['Aln_length'] <= gene_diff_threshold:
+                    saving_funct(missing, "Missing")
                 else:
-                    saving_funct(complete, "Complete")
+                    if table.iloc[0]['qstart'] == 1:
+                        diff_qstart = abs(table.iloc[1]['qstart'] - table.iloc[0]['qend'])
+                        diff_qend = abs(table.iloc[1]['qend'] - float(length))
+
+                        print(diff_qstart)
+                        print(diff_qend)
+                        print(float(tolerance))
+                        print(float(length))
+
+                        if (diff_qstart <= float(tolerance)) and (diff_qend <= float(tolerance)) and table.iloc[0]['Prot_acc'] == table.iloc[1]['Prot_acc']:
+                            saving_funct(incomplete, "Incomplete")
+                        elif (diff_qstart <= float(tolerance)) and (diff_qend <= float(tolerance)) and table.iloc[0]['Prot_acc'] != table.iloc[1]['Prot_acc']:
+                            saving_funct(split,  "Split")
+                        else:
+                            saving_funct(complete, "Complete")
+                    elif table.iloc[1]['qstart'] == 1:
+                        diff_qstart = abs(table.iloc[0]['qstart'] - table.iloc[1]['qend'])
+                        diff_qend = abs(table.iloc[0]['qend'] - float(length))
+
+                        if (diff_qstart <= float(tolerance)) and (diff_qend <= float(tolerance)) and table.iloc[0]['Prot_acc'] == table.iloc[1]['Prot_acc']:
+                            saving_funct(incomplete, "Incomplete")
+                        elif (diff_qstart <= float(tolerance)) and (diff_qend <= float(tolerance)) and table.iloc[0]['Prot_acc'] != table.iloc[1]['Prot_acc']:
+                            saving_funct(split, "Split")
+                        else:
+                            saving_funct(complete, "Complete")
+                    else:
+                        saving_funct(complete, "Complete")
 

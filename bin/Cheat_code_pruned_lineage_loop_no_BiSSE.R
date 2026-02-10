@@ -23,7 +23,7 @@ functions_pres_abs_incomplete <- args[5]
 fastani <- args[6]
 genome_annotations_classified <- args[7]
 lineage_probability <- args[8]
-no_funct_clusters_env <- args[9]
+# no_funct_clusters_env <- args[9]
 
 # Import fonts
 font_import()
@@ -484,7 +484,7 @@ lin_env <- function(input, mut_status_int, type, clin) {
     lineage_env_merge <- lineage_env_merge %>%
       mutate(
         Group = ifelse(Group %in% c("Clinical", "Clinical, Unknown"),
-                      "Clinical all",
+                      "Clinical",
                       Group))
 
     print(lineage_env_merge)
@@ -507,7 +507,7 @@ lin_env <- function(input, mut_status_int, type, clin) {
   lineage_env_merge_df$Proportion <- lineage_env_merge_df$Freq / lineage_env_merge_df$Total
 
   if (clin == "clinical") {
-    all_envs <- c("CF", "Clinical all", "Missing", "Environmental",
+    all_envs <- c("CF", "Clinical", "Missing", "Environmental",
     "Human-associated environmental")
   } else {
     all_envs <- c("CF", "Clinical", "Clinical, Unknown", "Missing", "Environmental",
@@ -696,63 +696,106 @@ or_gt_clinical <- odds_ratio_all_clinical %>%
 or_gt_clinical_file <- paste0(base, "_odds_ratio_clinical.html")
 gtsave(or_gt_clinical, or_gt_clinical_file)
 
-# # ----------------------------
-# # Tree figures for lineages
-# # ----------------------------
+# ----------------------------
+# Lineage size distribution by environment
+# ----------------------------
 
-# # Identify terminal edges
-# tip_indices <- 1:Ntip(relaxed_0)  # Tips are numbered from 1 to Ntip
-# terminal_edges <- which(relaxed_0$edge[, 2] %in% tip_indices)  # Find terminal edges
+lin_bar_graph <- function(input, type) {
+  envs_lin_bar_graph <- read.csv(genome_annotations_classified)
 
-# # Create a dataframe that associates tip indices with terminal edges
-# tip_to_edge_df <- data.frame(
-#   tip_index = relaxed_0$edge[terminal_edges, 2],  # Tip index (descendant node)
-#   edge_index = terminal_edges  # Corresponding edge index
-# )
+  envs_lin_bar_graph <- envs_lin_bar_graph %>%
+    mutate(
+      Group = ifelse(Group %in% c("Clinical", "Clinical, Unknown"),
+                    "Clinical",
+                    Group))
 
-# # Associate tip labels with their terminal edges
-# tip_to_edge_df$Genome <- relaxed_0$tip.label[tip_to_edge_df$tip_index]
+  env_lin <- merge(envs_lin_bar_graph, input, by = "Genome", all = FALSE)
 
-# # Merge terminal edges with lineage status
-# edge_merge <- merge(x = tip_to_edge_df, y = cheat_lineages$tips, by = "Genome", all = TRUE)
+  count_df <- env_lin %>%
+    count(Cluster, Group) %>%
+    group_by(Cluster) %>%
+    mutate(total = sum(n)) %>%
+    ungroup() %>%
+    mutate(Cluster = reorder(Cluster, total, decreasing = TRUE))
 
-# # Fill missing lineage statuses as 'Non-lineage'
-# edge_merge$Lineage_Status[is.na(edge_merge$Lineage_Status)] <- 'Non-lineage'
+  color_map_env <- c('Clinical' = '#8B0000', 'CF' = '#DEAE21', 'Environmental' = '#3BB497', 'Human Assoc' = '#5DA2A7', 'Animal' = '#132157', 'Lab' = 'lightgray', 'Missing' = '#6C728C')
 
-# # Subset table
-# edge_merge <- edge_merge[c("edge_index", "Lineage_Status")]
+  plot <- ggplot(count_df, aes(fill=Group, y=n, x=Cluster)) + 
+    geom_bar(position="stack", stat="identity", color = "black") +
+    scale_fill_manual(
+      values = color_map_env,
+      name = "Environment"
+    ) +
+    xlab("Lineage") +
+    ylab("Lineage size") +
+    theme_bw()
 
-# # Create a color map for the edges
-# edge_map <- c('Lineage' = 'red', 'Non-lineage' = 'black')
+  plot_file <- paste0(base, "_lin_distribution_", type, "_", ".svg")
+  ggsave(plot_file, plot = plot, width = 10, height = 10, units = "in")
 
-# # Associate colors with lineage status, set default color to black
-# edge_colors <- rep("black", nrow(relaxed_0$edge))
+}
 
-# # Match edge indices from the edge_merge dataframe
-# edge_colors[edge_merge$edge_index] <- edge_map[as.character(edge_merge$Lineage_Status)]
+cheat_lin_bar_graph <- lin_bar_graph(cheat_lineages$tips, "Mutant")
+WT_lin_bar_graph <- lin_bar_graph(WT_lineages$tips, "WT")
 
-# # Plot along with tip colors
-# lin_tree_name_file <- paste0(base, "_new_lin_tree.svg")
+# ----------------------------
+# Tree figures for lineages
+# ----------------------------
 
-# gene_label_wt <- paste0(gene, " WT")
-# gene_label_mut <- paste0(gene, " Mutant")
+# Identify terminal edges
+tip_indices <- 1:Ntip(relaxed_0)  # Tips are numbered from 1 to Ntip
+terminal_edges <- which(relaxed_0$edge[, 2] %in% tip_indices)  # Find terminal edges
 
-# gene_label_non_lin <- paste0(gene, " Non-Lineage")
-# gene_label_lin <- paste0(gene, " Lineage")
+# Create a dataframe that associates tip indices with terminal edges
+tip_to_edge_df <- data.frame(
+  tip_index = relaxed_0$edge[terminal_edges, 2],  # Tip index (descendant node)
+  edge_index = terminal_edges  # Corresponding edge index
+)
 
-# svg(filename = lin_tree_name_file, width = 10, height = 10)
+# Associate tip labels with their terminal edges
+tip_to_edge_df$Genome <- relaxed_0$tip.label[tip_to_edge_df$tip_index]
 
-# plot.new()
-# plot(relaxed_0,  edge.color = edge_colors, type = "fan", lwd = 0.5, show.tip.label = FALSE)
-# tiplabels(pch = 19, col = tip_colors, cex = 0.5)
-# par(family = "Times New Roman")
-# legend("bottomright", inset = c(0.045, 0.07), legend = c(gene_label_wt, gene_label_mut),
-#         col = c("blue", "red"), pch = 19, box.lty = 0, text.font = 1)
-# legend("bottomright", legend = c(gene_label_non_lin, gene_label_lin),
-#         col = c("black", "red"), lty = 1, box.lty = 0, text.font = 1)
-# add.scale.bar(length = 0.1, x = -1, y = -1)
+# Merge terminal edges with lineage status
+edge_merge <- merge(x = tip_to_edge_df, y = cheat_lineages$tips, by = "Genome", all = TRUE)
 
-# dev.off ()
+# Fill missing lineage statuses as 'Non-lineage'
+edge_merge$Lineage_Status[is.na(edge_merge$Lineage_Status)] <- 'Non-lineage'
+
+# Subset table
+edge_merge <- edge_merge[c("edge_index", "Lineage_Status")]
+
+# Create a color map for the edges
+edge_map <- c('Lineage' = 'red', 'Non-lineage' = 'black')
+
+# Associate colors with lineage status, set default color to black
+edge_colors <- rep("black", nrow(relaxed_0$edge))
+
+# Match edge indices from the edge_merge dataframe
+edge_colors[edge_merge$edge_index] <- edge_map[as.character(edge_merge$Lineage_Status)]
+
+# Plot along with tip colors
+lin_tree_name_file <- paste0(base, "_new_lin_tree.svg")
+
+gene_label_wt <- paste0(gene, " WT")
+gene_label_mut <- paste0(gene, " Mutant")
+
+gene_label_non_lin <- paste0(gene, " Non-Lineage")
+gene_label_lin <- paste0(gene, " Lineage")
+
+svg(filename = lin_tree_name_file, width = 10, height = 10)
+
+
+plot.new()
+plot(relaxed_0,  edge.color = edge_colors, type = "fan", lwd = 0.5, show.tip.label = FALSE)
+tiplabels(pch = 19, col = tip_colors, cex = 0.5)
+par(family = "Times New Roman")
+legend("bottomright", inset = c(0.045, 0.07), legend = c(gene_label_wt, gene_label_mut),
+        col = c("blue", "red"), pch = 19, box.lty = 0, text.font = 1)
+legend("bottomright", legend = c(gene_label_non_lin, gene_label_lin),
+        col = c("black", "red"), lty = 1, box.lty = 0, text.font = 1)
+add.scale.bar(length = 0.1, x = -1, y = -1)
+
+dev.off ()
 
 # # ----------------------------
 # # Set lineages to ANI cutoff
@@ -800,112 +843,118 @@ gtsave(or_gt_clinical, or_gt_clinical_file)
 
 # dev.off ()
 
-# # Plot just lineages, without tips colors
-# lin_tree_name_no_file <- paste0(base, "_new_lin_tree_no.svg")
-# svg(filename = lin_tree_name_no_file, width = 10, height = 10)
+# Plot just lineages, without tips colors
+lin_tree_name_no_file <- paste0(base, "_new_lin_tree_no.svg")
+svg(filename = lin_tree_name_no_file, width = 10, height = 10)
 
-# plot.new()
-# plot(relaxed_0,  edge.color = edge_colors, type = "fan", lwd = 0.5, show.tip.label = FALSE)
-# par(family = "Times New Roman")
-# legend("bottomright", legend=c(gene_label_non_lin, gene_label_lin),
-#         col=c("black", "red"), lty = 1, box.lty=0, text.font=1)
-# add.scale.bar(length = 0.1, x = -1, y = -1)
+plot.new()
+plot(relaxed_0,  edge.color = edge_colors, type = "fan", lwd = 0.5, show.tip.label = FALSE)
+par(family = "Times New Roman")
+legend("bottomright", legend=c(gene_label_non_lin, gene_label_lin),
+        col=c("black", "red"), lty = 1, box.lty=0, text.font=1)
+add.scale.bar(length = 0.1, x = -1, y = -1)
 
-# dev.off ()
+dev.off ()
 
-# # Plot lineages with lineage tip colors
-# lin_tree_name_tc_file <- paste0(base, "_new_lin_tree_tip_col.svg")
+# Plot lineages with lineage tip colors
+lin_tree_name_tc_file <- paste0(base, "_new_lin_tree_tip_col.svg")
 
-# gene_label_non_lin <- paste0(gene, " Non-Lineage")
-# gene_label_lin <- paste0(gene, " Lineage")
+gene_label_non_lin <- paste0(gene, " Non-Lineage")
+gene_label_lin <- paste0(gene, " Lineage")
 
-# svg(filename = lin_tree_name_tc_file, width = 10, height = 10)
+svg(filename = lin_tree_name_tc_file, width = 10, height = 10)
 
-# plot.new()
-# plot(relaxed_0,  edge.color = edge_colors, type = "fan", lwd = 0.5, show.tip.label = FALSE)
-# tiplabels(pch = 19, col = lineage_tip_colors, cex = 0.5)
-# par(family = "Times New Roman")
-# legend("bottomright", legend=c(gene_label_non_lin, gene_label_lin),
-#         col=c("black", "red"), lty = 1, box.lty=0, text.font=1)
-# legend("right", legend = names(cluster_colors), 
-#         col = cluster_colors, pch = 19, box.lty = 0, text.font = 1, cex = 0.7,
-#         title = "Cluster")
-# add.scale.bar(length = 0.1, x = -1, y = -1)
+plot.new()
+plot(relaxed_0,  edge.color = edge_colors, type = "fan", lwd = 0.5, show.tip.label = FALSE)
+tiplabels(pch = 19, col = lineage_tip_colors, cex = 0.5)
+par(family = "Times New Roman")
+legend("bottomright", legend=c(gene_label_non_lin, gene_label_lin),
+        col=c("black", "red"), lty = 1, box.lty=0, text.font=1)
+legend("right", legend = names(cluster_colors), 
+        col = cluster_colors, pch = 19, box.lty = 0, text.font = 1, cex = 0.7,
+        title = "Cluster")
+add.scale.bar(length = 0.1, x = -1, y = -1)
 
-# dev.off ()
+dev.off ()
   
-# # Plot lineages with environments
-# # Read in metadata
-# meta <- read.csv(genome_annotations_classified)
+# Plot lineages with environments
+# Read in metadata
+meta <- read.csv(genome_annotations_classified)
 
-# funct <- read.csv(functions_incomplete)
+funct <- read.csv(functions_incomplete)
 
-# funct <- funct %>% filter(!Genome %in% zero_length_tips)
+funct <- funct %>% filter(!Genome %in% zero_length_tips)
 
-# # Merge metadata and functions
-# meta <- merge(meta,funct, by = "Genome", all = TRUE)
+# Merge metadata and functions
+meta <- merge(meta,funct, by = "Genome", all = TRUE)
 
-# # Only keep mutants
-# meta <- meta[grepl("No function", meta$Mut_Status), ]
+# Only keep mutants
+meta <- meta[grepl("No function", meta$Mut_Status), ]
 
-# # Subset table
-# meta <- meta[c("Genome","Group")]
+# Subset table
+meta <- meta[c("Genome","Group")]
 
-# # Rename envs
+meta <- meta %>%
+  mutate(
+    Group = ifelse(Group %in% c("Clinical", "Clinical, Unknown"),
+                  "Clinical",
+                  Group))
+
+# Rename envs
 # meta$Group <- gsub("Clinical, Unknown", "Clinical U", meta$Group)
-# meta$Group <- gsub("Human-assocaited environmental", "Human Assoc", meta$Group)
+meta$Group <- gsub("Human-assocaited environmental", "Human Assoc", meta$Group)
 
-# # Remove 0 length tips
-# meta <- meta %>% filter(!Genome %in% zero_length_tips)
+# Remove 0 length tips
+meta <- meta %>% filter(!Genome %in% zero_length_tips)
 
-# # Transform metadata
-# rownames(meta) <- meta[,1]
-# meta[,1] <- NULL
-# LasR_meta<-setNames(meta[,1],rownames(meta))
+# Transform metadata
+rownames(meta) <- meta[,1]
+meta[,1] <- NULL
+LasR_meta<-setNames(meta[,1],rownames(meta))
 
-# #Set metadata colors
-# color_map_env <- c('Clinical' = '#8B0000', 'Clinical U' = '#E74E00', 'CF' = '#DEAE21', 'Environmental' = '#3BB497', 'Human Assoc' = '#5DA2A7', 'Animal' = '#132157', 'Lab' = 'lightgray', 'Missing' = '#6C728C')
+#Set metadata colors
+color_map_env <- c('Clinical' = '#8B0000', 'CF' = '#DEAE21', 'Environmental' = '#3BB497', 'Human Assoc' = '#5DA2A7', 'Animal' = '#132157', 'Lab' = 'lightgray', 'Missing' = '#6C728C')
 
-# #Map colors to tips
-# tip_labels_env <- relaxed_0$tip.label
+#Map colors to tips
+tip_labels_env <- relaxed_0$tip.label
 
-# tip_states_env <- LasR_meta[tip_labels]
+tip_states_env <- LasR_meta[tip_labels]
 
-# tip_colors_env <- color_map_env[as.character(tip_states_env)]
+tip_colors_env <- color_map_env[as.character(tip_states_env)]
 
-# env_tree_name_file <- paste0(base, "_env_tree.svg")
-# svg(filename = env_tree_name_file, width = 10, height = 10)
+env_tree_name_file <- paste0(base, "_env_tree.svg")
+svg(filename = env_tree_name_file, width = 10, height = 10)
 
-# plot.new()
-# plot(relaxed_0, edge.color = edge_colors, type = "fan", lwd = 0.5, show.tip.label = FALSE)
-# tiplabels(pch = 19, col = tip_colors_env, cex = 0.5)
-# par(family = "Times New Roman")
-# legend("bottomright", inset = c(-0.065, 0.07), legend=c("Clinical", "Clinical U", "CF", "Environmental", "Human Assoc", "Animal", "Lab", "Missing"),
-#         col=c("#8B0000", "#E74E00", "#DEAE21", "#3BB497", "#5DA2A7", "#132157", "lightgray", "#6C728C"), pch=19, box.lty=0, text.font=1, cex = 0.7)
-# legend("bottomright", legend=c(gene_label_non_lin, gene_label_lin),
-#         col=c("black", "red"), lty = 1, box.lty=0, text.font=1)
-# add.scale.bar(length = 0.1, x = -1, y = -1)
+plot.new()
+plot(relaxed_0, edge.color = edge_colors, type = "fan", lwd = 0.5, show.tip.label = FALSE)
+tiplabels(pch = 19, col = tip_colors_env, cex = 0.5)
+par(family = "Times New Roman")
+legend("bottomright", inset = c(0, 0.07), legend=c("Clinical", "CF", "Environmental", "Human Assoc", "Animal", "Lab", "Missing"),
+        col=c("#8B0000", "#DEAE21", "#3BB497", "#5DA2A7", "#132157", "lightgray", "#6C728C"), pch=19, box.lty=0, text.font=1, cex = 0.7)
+legend("bottomright", legend=c(gene_label_non_lin, gene_label_lin),
+        col=c("black", "red"), lty = 1, box.lty=0, text.font=1)
+add.scale.bar(length = 0.1, x = -1, y = -1)
 
-# dev.off ()
+dev.off ()
 
-# # ----------------------------
-# # Chi-squared test for environmental association
-# # ----------------------------
+# ----------------------------
+# Chi-squared test for environmental association
+# ----------------------------
 
-# # Read in environmental data
-# env_data <- read.csv(genome_annotations_classified)
+# Read in environmental data
+env_data <- read.csv(genome_annotations_classified)
 
-# # Merge with presence absence table (already read in)
-# trait_table <- merge(env_data,tree_data, by = "Genome")
+# Merge with presence absence table (already read in)
+trait_table <- merge(env_data,tree_data, by = "Genome")
 
-# # Subset table
-# state_env <- trait_table[, c("Mut_Status", "Group")]
+# Subset table
+state_env <- trait_table[, c("Mut_Status", "Group")]
 
-# # Get basic counts overview table, and save
-# tbl <- table(state_env$Mut_Status, state_env$Group)
+# Get basic counts overview table, and save
+tbl <- table(state_env$Mut_Status, state_env$Group)
 
-# tbl_file <- paste0(base, "_env.csv")
-# write.csv(tbl, tbl_file)
+tbl_file <- paste0(base, "_env.csv")
+write.csv(tbl, tbl_file)
 
 # # Run a generalized linear model for the mutation status vs environment
 # model <- glm(Mut_Status ~ Group, data = state_env, family = "binomial")
@@ -939,45 +988,45 @@ gtsave(or_gt_clinical, or_gt_clinical_file)
 #   env_sig <- NULL
 # }
 
-# # ----------------------------
-# # Chi-squared test for lineage environmental association
-# # ----------------------------
+# ----------------------------
+# Chi-squared test for lineage environmental association
+# ----------------------------
 
-# # Only keep mutants on presence absence table
-# tree_data_muts <- tree_data %>% filter(Mut_Status == 1)
+# Only keep mutants on presence absence table
+tree_data_muts <- tree_data %>% filter(Mut_Status == 1)
 
-# # Merge inner with lineage tips list to keep just mutant lineages
-# muts_lineage_only <- merge(tree_data_muts,cheat_lineages$tips, by = "Genome", all = FALSE)
+# Merge inner with lineage tips list to keep just mutant lineages
+muts_lineage_only <- merge(tree_data_muts,cheat_lineages$tips, by = "Genome", all = FALSE)
 
-# muts_lineage_only_sub <- muts_lineage_only[c("Genome", "Node", "Lineage_Status")]
+muts_lineage_only_sub <- muts_lineage_only[c("Genome", "Node", "Lineage_Status")]
 
-# # Merge outer with lineage tips list to keep just mutant lineages
-# muts_lineage <- merge(tree_data_muts,muts_lineage_only_sub, by = "Genome", all = TRUE)
+# Merge outer with lineage tips list to keep just mutant lineages
+muts_lineage <- merge(tree_data_muts,muts_lineage_only_sub, by = "Genome", all = TRUE)
 
-# # Subset
-# muts_lineage <- muts_lineage[c("Genome", "Lineage_Status")]
+# Subset
+muts_lineage <- muts_lineage[c("Genome", "Lineage_Status")]
 
-# # If NA, replace with 0 (non lineage)
-# muts_lineage <- muts_lineage %>%
-#   mutate(Lineage_Status = ifelse(is.na(Lineage_Status), 0, Lineage_Status))
+# If NA, replace with 0 (non lineage)
+muts_lineage <- muts_lineage %>%
+  mutate(Lineage_Status = ifelse(is.na(Lineage_Status), 0, Lineage_Status))
 
-# # Merge environmental data with lineage table
-# trait_table_lin <- merge(env_data,muts_lineage, by = "Genome")
+# Merge environmental data with lineage table
+trait_table_lin <- merge(env_data,muts_lineage, by = "Genome")
 
-# # Subset
-# state_env_lin <- trait_table_lin[, c("Lineage_Status", "Group")]
+# Subset
+state_env_lin <- trait_table_lin[, c("Lineage_Status", "Group")]
 
-# # Replace lineage with 1
-# state_env_lin$Lineage_Status <- gsub("Lineage", 1, state_env_lin$Lineage_Status)
+# Replace lineage with 1
+state_env_lin$Lineage_Status <- gsub("Lineage", 1, state_env_lin$Lineage_Status)
 
-# # Make column numberic
-# state_env_lin$Lineage_Status <- as.numeric(state_env_lin$Lineage_Status)
+# Make column numberic
+state_env_lin$Lineage_Status <- as.numeric(state_env_lin$Lineage_Status)
 
-# # Get basic counts overview table, and save
-# tbl_lin <- table(state_env_lin$Lineage_Status, state_env_lin$Group)
+# Get basic counts overview table, and save
+tbl_lin <- table(state_env_lin$Lineage_Status, state_env_lin$Group)
 
-# tbl_lin_file <- paste0(base, "_lin_env.csv")
-# write.csv(tbl_lin, tbl_lin_file)
+tbl_lin_file <- paste0(base, "_lin_env.csv")
+write.csv(tbl_lin, tbl_lin_file)
 
 # # Run a generalized linear model for the lineage status vs environment
 # model_lin <- glm(Lineage_Status ~ Group, data = state_env_lin, family = "binomial")

@@ -1,4 +1,5 @@
 process cd_hit {
+    label 'light'
     tag "${gene_ID}"
     publishDir "${params.outdir}/mutant_calling_output/${gene_ID}/cd_hit_output", mode: 'copy'
 
@@ -13,7 +14,7 @@ process cd_hit {
 
     script:
     """
-    cd-hit -i $prot_fasta -o ${gene_ID}_muts_cd_100.faa -c 1.00 -n 5 -s 1 -d 200
+    cd-hit -i $prot_fasta -o ${gene_ID}_muts_cd_100.faa -c 1.00 -n 5 -s 1 -d 200 -T ${task.cpus}
 
     reformat_cd_hit.py "$gene_ID" "${gene_ID}_muts_cd_100.faa.clstr"
 

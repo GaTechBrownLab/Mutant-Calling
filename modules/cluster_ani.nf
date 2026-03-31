@@ -1,6 +1,5 @@
 process cluster_ani {
     label 'light'
-    cpus 4
     publishDir "${params.outdir}/cluster_ani_output", mode: 'copy'
 
     input:

@@ -17,10 +17,10 @@ process blast {
     blastn \
         -query $query \
         -task blastn \
-        -db "${blast_db_path}/${blast_db_path.baseName}" \
+        -db "${blast_db_path}/${blast_db_path.name}" \
         -outfmt "6 qseqid sseqid sacc pident nident qlen length evalue slen qstart qend sstart send sstrand" \
         -evalue 0.01 \
-        -num_threads $params.blast_threads \
+        -num_threads ${task.cpus} \
         > "${genome_ID}_${gene_ID}.txt"
 
     """

@@ -1,5 +1,6 @@
 process cluster_ani {
-    
+    label 'light'
+    cpus 4
     publishDir "${params.outdir}/cluster_ani_output", mode: 'copy'
 
     input:
@@ -10,7 +11,7 @@ process cluster_ani {
 
     script:
     """
-    clusterANI.py -i "$params.fastani" -o "${level}_output.csv" -t "$level" -p 24
+    clusterANI.py -i "$params.fastani" -o "${level}_output.csv" -t "$level" -p ${task.cpus}
     
     """
 }

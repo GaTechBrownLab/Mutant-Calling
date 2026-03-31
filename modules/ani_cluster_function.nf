@@ -1,5 +1,5 @@
 process ani_cluster_function {
-    
+    label 'r_graphing'
     publishDir "${params.outdir}/ani_cluster_function/${gene_ID}", mode: 'copy'
 
     input:

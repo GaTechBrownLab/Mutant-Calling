@@ -1,5 +1,5 @@
 process final_mutants_no_patterns {
-    
+    label 'r_graphing'
     publishDir "${params.outdir}/ouputs_for_graphing/${gene_ID}", mode: 'copy'
 
     input:

@@ -1,6 +1,6 @@
 process blast {
-    
-    cpus "${params.blast_threads}"
+    label 'blast'
+    tag "${gene_ID} vs ${genome_ID}"
 
     memory '20 GB'
 
@@ -17,11 +17,11 @@ process blast {
     blastn \
         -query $query \
         -task blastn \
-        -db "${blast_db_path}/${blast_db_path}" \
+        -db "${blast_db_path}/${blast_db_path.baseName}" \
         -outfmt "6 qseqid sseqid sacc pident nident qlen length evalue slen qstart qend sstart send sstrand" \
         -evalue 0.01 \
         -num_threads $params.blast_threads \
-        >> "${genome_ID}_${gene_ID}.txt"
+        > "${genome_ID}_${gene_ID}.txt"
 
     """
 }

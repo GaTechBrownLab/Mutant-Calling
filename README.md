@@ -37,8 +37,8 @@ nextflow run main.nf -with-conda --input_genes ./data/genes/*.fna --input_prots 
 
 ```mermaid
 graph TD;
-    id1[Input genome fasta files (*.fna)] ==> id2[Running blast];
-    id3[Input reference genes (*.fna)] ==> id2;
-    id4[Input reference proteins (*.faa)] ==> id2;
+    id1[Input genome fasta files (.fna)] ==> id2[Running blast];
+    id3[Input reference genes (.fna)] ==> id2;
+    id4[Input reference proteins (.faa)] ==> id2;
 
 ```

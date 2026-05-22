@@ -1,4 +1,7 @@
-process make_linking_file {
+process MAKE_LINKING_FILE {
+
+    tag "MAKE_LINKING_FILE: ${gene_ID}"
+    
     input:
     tuple val(gene_ID), path(fasta_file)
 
@@ -7,6 +10,7 @@ process make_linking_file {
 
     script:
     """
+    # Make file linking protein accessions to filenames
     grep '^>' ${fasta_file} | sed 's/^>//; s/ .*//' | awk -v id=${gene_ID} '{print id "\\t" \$0}' > ${gene_ID}_linking.tsv
     """
 }

@@ -1,4 +1,6 @@
-process cd_hit {
+process CDHIT {
+
+    tag "CDHIT: ${gene_ID}"
     
     publishDir "${params.outdir}/mutant_calling_output/${gene_ID}/cd_hit_output", mode: 'copy'
 
@@ -13,8 +15,10 @@ process cd_hit {
 
     script:
     """
+    # Run cd-hit
     cd-hit -i $prot_fasta -o ${gene_ID}_muts_cd_100.faa -c 1.00 -n 5 -s 1 -d 200
 
+    # Run reformat_cd_hit.py to reformat cd-hit
     reformat_cd_hit.py "$gene_ID" "${gene_ID}_muts_cd_100.faa.clstr"
 
     """

@@ -1,4 +1,6 @@
-process identify_AAS {
+process IDENTIFY_AAS {
+
+    tag "IDENTIFY_AAS: ${gene_ID}-${genome}"
     
     publishDir "${params.outdir}/mutant_calling_output/${gene_ID}/alignments/csv", mode: 'copy'
 
@@ -10,6 +12,7 @@ process identify_AAS {
 
     script:
     """
+    # Identify amino acid subsitutions, insertions, and deletions with identify_AAS_deletions.py
     identify_AAS_deletions.py "$gene_ID" "$genome" "$file"
     
     """

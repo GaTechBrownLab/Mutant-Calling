@@ -1,4 +1,6 @@
-process blastp {
+process BLASTP {
+    
+    tag "BLASTP: ${query}-${gene_ID}"
     
     cpus "${params.blast_threads}"
 
@@ -14,6 +16,7 @@ process blastp {
 
     script:
     """  
+    # Run blastp on all protein sequences
     blastp \
         -query $query \
         -task blastp \

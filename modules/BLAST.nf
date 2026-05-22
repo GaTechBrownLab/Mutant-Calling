@@ -1,4 +1,6 @@
-process blast {
+process BLAST {
+    
+    tag "BLAST: ${genome_ID}-${gene_ID}"
     
     cpus "${params.blast_threads}"
 
@@ -14,6 +16,7 @@ process blast {
 
     script:
     """  
+    # Run blastn for each gene of interest against each input genome
     blastn \
         -query $query \
         -task blastn \

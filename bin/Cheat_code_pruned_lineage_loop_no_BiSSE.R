@@ -65,6 +65,8 @@ tips_with_zero_length <- function(tree) {
 # Identify tips with branch length of 0
 zero_length_tips <- tips_with_zero_length(rooted_tree)
 
+print(zero_length_tips)
+
 # Subset trees
 rooted_tree <- drop.tip(rooted_tree, zero_length_tips, trim.internal = TRUE)
 

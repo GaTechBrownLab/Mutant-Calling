@@ -1,4 +1,6 @@
-process reformat_bed {
+process REFORMAT_BED {
+
+    tag "REFORMAT_BED: ${gene_ID}"
     
     publishDir "${params.outdir}/mutant_calling_output/${gene_ID}", mode: 'copy'
 
@@ -10,6 +12,7 @@ process reformat_bed {
 
     script:
     """
+    # Reformat blast output for bedtools with reformat_bed.py
     reformat_bed.py "$blast_table" "$gene_ID"
     
     """

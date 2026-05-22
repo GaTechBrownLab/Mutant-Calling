@@ -1,4 +1,6 @@
-process blast_db {
+process BLAST_DB {
+    
+    tag "BLAST_DB: ${ref}"
     
     input:
         tuple val(ID), path(ref)
@@ -8,6 +10,7 @@ process blast_db {
 
     script:
     """
+    # Make blast database of each input genome
     makeblastdb -in $ref -parse_seqids -out ${ref}_blast_db/${ref}_blast_db -dbtype nucl
 
     """

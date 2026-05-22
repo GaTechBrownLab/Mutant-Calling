@@ -1,4 +1,6 @@
-process ani_cluster_function {
+process ANI_CLUSTER_FUNCTION {
+    
+    tag "ANI_CLUSTER_FUNCTION: ${gene_ID}"
     
     publishDir "${params.outdir}/ani_cluster_function/${gene_ID}", mode: 'copy'
 
@@ -17,6 +19,7 @@ process ani_cluster_function {
     
     script:
     """
+    # Graph ANI clusters with associated gene status (function versus non-functional)
     ani_cluster_function.py "$gene_ID" "$functions" "$ani_clusters" "$params.env_data"
 
     ani_cluster_graphs.R "$gene_ID" "${gene_ID}_ANI_cluster_env_counts_status.csv" "$ani_clusters" "$params.env_data" "$functions"

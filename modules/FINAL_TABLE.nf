@@ -1,4 +1,6 @@
-process final_table {
+process FINAL_TABLE {
+
+    tag "FINAL_TABLE: ${gene_ID}"
     
     publishDir "${params.outdir}/mutant_calling_output/${gene_ID}/final_mut_tables", mode: 'copy'
 
@@ -11,6 +13,7 @@ process final_table {
 
     script:
     """
+    # Create final summary output table with final_table.py
     final_table.py "$gene_ID" "$csv" "$cd_hit_table"
     
     """

@@ -37,25 +37,25 @@ nextflow run main.nf -with-conda --input_genes ./data/genes/*.fna --input_prots 
 
 ```mermaid
 graph TD;
-    id1[/"Input genome fasta files (.fna)"/] ==> id1_1[Make blast database];
-    id3[/"Input reference genes (.fna)"/] ==> id2;
+    id1[/"`Input genome fasta files (.fna)`"/] ==> id1_1["`Make blast database`"];
+    id3[/"`Input reference genes (.fna)`"/] ==> id2;
     subgraph nuclgraph [" "]
         id1_1 ==> id2["`Run **blastn**`"];
-        id2 ==> id6[Identify complete, incomplete, and missing genes];
-        id6 ==> id7[For **complete** genes, pull the fasta sequence with **bedtools**];
-        id7 ==> id8[Translate nucleotide to protein sequence using **Transeq**]; 
+        id2 ==> id6["`Identify complete, incomplete, and missing genes`"];
+        id6 ==> id7["`For **complete** genes, pull the fasta sequence with **bedtools**`"];
+        id7 ==> id8["`Translate nucleotide to protein sequence using **Transeq**`"]; 
     end
-    id4[/"Input reference proteins (.faa)"/] ==> id5[Run **blastp**];
+    id4[/"`Input reference proteins (.faa)`"/] ==> id5["`Run **blastp**`"];
     subgraph protgraph [" "]
         id8 ==> id5;
-        id5 ==> id9[Identify WT and mutant proteins];
-        id9 ==> id10[Cluster mutant proteins with **cd-hit**];
-        id10 ==> id11[Identify a reference sequence per cluster, and align against reference genes with **clustalo**];
-        id11 ==> id12[Identify amino acid substitutions, insertions, and deletions with **biopython**]
+        id5 ==> id9["`Identify WT and mutant proteins`"];
+        id9 ==> id10["`Cluster mutant proteins with **cd-hit**`"];
+        id10 ==> id11["`Identify a reference sequence per cluster, and align against reference genes with **clustalo**`"];
+        id11 ==> id12["`Identify amino acid substitutions, insertions, and deletions with **biopython**`"]
     end
     id3 ==> id11;
-    id12 ==> id13[\"**Final output:** Assigned mutations and functionality to all genes within reference genome set"\]
-    id14[/"Input mutation patterns associated with a non-functional protein per gene"/] ==> id13
+    id12 ==> id13[\"`**Final output:** Assigned mutations and functionality to all genes within reference genome set`"\]
+    id14[/"`Input mutation patterns associated with a non-functional protein per gene`"/] ==> id13
 
 	classDef nuclsteps fill:#235e8d,font-size:25px,stroke:#000000,color:#FFFFFF;
 	class id1_1,id2,id6,id7,id8 nuclsteps;

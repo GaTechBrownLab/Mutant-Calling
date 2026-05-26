@@ -8,9 +8,10 @@ if __name__ == "__main__":
     input_file = sys.argv[1]
     base = sys.argv[2]
 
+# Read in blast results
 table = pd.read_csv(input_file, sep = "\t", names = ['Genome', 'Gene', 'Prot_acc', 'Prot_acc_stripped', 'PID', 'nident', 'Gene_Length', 'Aln_length', 'evalue', 'slen', 'qstart', 'qend', 'Start', 'End', 'Strand'])
 
-print(table)
+# Reformat protein accession
 split_genome = table['Genome'].str.split("_PA", expand = True)
 
 table['Genome'] = split_genome[0]
@@ -32,6 +33,7 @@ table_drop.insert(4, 'col2', '.')
 table_drop['Strand'] = table_drop['Strand'].str.replace('minus', '-').str.replace('plus', '+')
 
 def swap_if_negative(row):
+    """Switch start and end if blast result is on the negative strand"""
     if row['Strand'] == '-':
         row['Start'], row['End'] = row['End'], row['Start']
     return row

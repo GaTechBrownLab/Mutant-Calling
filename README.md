@@ -31,3 +31,14 @@ nextflow run main.nf -with-conda --input_genes ./data/genes/*.fna --input_prots 
     --input_muts ./data/mutation_patterns/*.txt --host_genomes ./data/hosts/*.fna
     --outdir /results --pres_abs true --graphing false
 ```
+
+## Pipeline overview
+
+
+```mermaid
+graph TD;
+    id1[Input genome fasta files - .fna] ==> id2[Running blast];
+    id3[Input reference genes - .fna] ==> id2;
+    id4[Input reference proteins - .faa] ==> id2;
+
+```

@@ -40,7 +40,7 @@ graph TD;
     id1[/"Input genome fasta files (.fna)"/] ==> id1_1[Make blast database];
     id3[/"Input reference genes (.fna)"/] ==> id2;
     subgraph nuclgraph [" "]
-        id1_1 ==> id2[Run **blastn**];
+        id1_1 ==> id2["Run **blastn**"];
         id2 ==> id6[Identify complete, incomplete, and missing genes];
         id6 ==> id7[For **complete** genes, pull the fasta sequence with **bedtools**];
         id7 ==> id8[Translate nucleotide to protein sequence using **Transeq**]; 
@@ -57,22 +57,22 @@ graph TD;
     id12 ==> id13[\"**Final output:** Assigned mutations and functionality to all genes within reference genome set"\]
     id14[/"Input mutation patterns associated with a non-functional protein per gene"/] ==> id13
 
-	classDef nuclsteps fill:#235e8d,font-size:25px,stroke:#000000;
+	classDef nuclsteps fill:#235e8d,font-size:25px,stroke:#000000,color:#FFFFFF;
 	class id1_1,id2,id6,id7,id8 nuclsteps;
 
-    classDef protsteps fill:#28885d,font-size:25px,stroke:#000000;
+    classDef protsteps fill:#28885d,font-size:25px,stroke:#000000,color:#FFFFFF;
 	class id5,id9,id10,id11,id12 protsteps;
 
-    classDef inputs fill:#132157,font-size:25px,stroke:#000000;
+    classDef inputs fill:#132157,font-size:25px,stroke:#000000,color:#FFFFFF;
     class id1,id3,id4,id14 inputs;
 
-    classDef output fill:#06402B,font-size:25px,stroke:#000000;
+    classDef output fill:#06402B,font-size:25px,stroke:#000000,color:#FFFFFF;
     class id13 output;
 
-    classDef nuclgraphcol fill:#91bfe4,font-size:25px,stroke:#000000;
+    classDef nuclgraphcol fill:#91bfe4,font-size:25px,stroke:#000000,color:#FFFFFF;
     class nuclgraph nuclgraphcol;
 
-    classDef protgraphcol fill:#96e0bf,font-size:25px,stroke:#000000;
+    classDef protgraphcol fill:#96e0bf,font-size:25px,stroke:#000000,color:#FFFFFF;
     class protgraph protgraphcol;
 
     linkStyle default stroke:black,stroke-width:2px;

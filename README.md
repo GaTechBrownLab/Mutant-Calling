@@ -40,7 +40,7 @@ graph TD;
     id1[/"Input genome fasta files (.fna)"/] ==> id1_1[Make blast database];
     id3[/"Input reference genes (.fna)"/] ==> id2;
     subgraph nuclgraph [" "]
-        id1_1 ==> id2["Run **blastn**"];
+        id1_1 ==> id2["`Run **blastn**`"];
         id2 ==> id6[Identify complete, incomplete, and missing genes];
         id6 ==> id7[For **complete** genes, pull the fasta sequence with **bedtools**];
         id7 ==> id8[Translate nucleotide to protein sequence using **Transeq**]; 

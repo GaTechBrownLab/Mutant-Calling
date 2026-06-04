@@ -55,12 +55,12 @@ combined_df['Length'] = length[1]
 combined_df_sub = combined_df[["ID", "Cluster", "Length", "Status"]]
 
 # Reformat
-combined_df_sub['ID'] = combined_df_sub['ID'].str.replace('>','')
-combined_df_sub['ID'] = combined_df_sub['ID'].str.replace('...','')
-combined_df_sub['Length'] = combined_df_sub['Length'].str.replace('aa,','')
-combined_df_sub['Length'] = combined_df_sub['Length'].str.replace(',,','')
-combined_df_sub['Status'] = combined_df_sub['Status'].str.replace('*','ref')
-combined_df_sub['Status'] = combined_df_sub['Status'].str.replace('at','clustered')
+combined_df_sub['ID'] = combined_df_sub['ID'].str.replace('>','', regex=False)
+combined_df_sub['ID'] = combined_df_sub['ID'].str.replace('...','', regex=False)
+combined_df_sub['Length'] = combined_df_sub['Length'].str.replace('aa,','', regex=False)
+combined_df_sub['Length'] = combined_df_sub['Length'].str.replace(',,','', regex=False)
+combined_df_sub['Status'] = combined_df_sub['Status'].str.replace('*','ref', regex=False)
+combined_df_sub['Status'] = combined_df_sub['Status'].str.replace('at','clustered', regex=False)
 
 combined_df_sub.to_csv(f"{base}_cd_hit_table.csv", index=False)
 

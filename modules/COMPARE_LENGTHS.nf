@@ -1,7 +1,7 @@
-process compare_lengths {
+process COMPARE_LENGTHS {
 
-    // publishDir "${params.outdir}/mutant_calling_output", pattern: "**/Blast_gene_status/**",mode: 'copy'
-    tag "compare lengths ${gene_ID}"
+    tag "COMPARE_LENGTHS: ${gene_ID}-${gene_file}"
+
     input:
         tuple val(gene_ID), path(table), path(gene_file)
 
@@ -14,13 +14,16 @@ process compare_lengths {
 
     script:
     """
+    # Make work directories for blast outputs after comparing lengths to reference
     mkdir -p ${gene_ID}/Blast_gene_status/Complete \
         ${gene_ID}/Blast_gene_status/Incomplete \
         ${gene_ID}/Blast_gene_status/Missing \
         ${gene_ID}/Blast_gene_status/Split
-
+    
+    # Obtain reference gene length
     length=\$(grep -v "^>" "$gene_file" | tr -d '\n' | wc -c)
 
+    # Run compare_lengths.py
     compare_lengths.py \
         "\$length" \
         "$table" \

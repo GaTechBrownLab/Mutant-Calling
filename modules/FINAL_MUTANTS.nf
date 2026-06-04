@@ -12,6 +12,7 @@ process final_mutants {
 
     script:
     """
+    # For identification of mutants using specific target amino acid subsitutions
     reformat_muts_new_2.py \
         "$final_mut_table" \
         "$gene_ID" \

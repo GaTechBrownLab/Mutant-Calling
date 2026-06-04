@@ -10,7 +10,8 @@ process cluster_ani {
 
     script:
     """
-    clusterANI.py -i "$params.fastani" -o "${level}_output.csv" -t "$level" -p ${task.cpus}
+    # Run clusterANI.py to cluster inputs into genomovars
+    clusterANI.py -i "$params.fastani" -o "${level}_output.csv" -t "$level" -p 24
     
     """
 }

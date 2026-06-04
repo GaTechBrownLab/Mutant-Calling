@@ -14,6 +14,7 @@ process blast {
 
     script:
     """  
+    # Run blastn for each gene of interest against each input genome
     blastn \
         -query $query \
         -task blastn \

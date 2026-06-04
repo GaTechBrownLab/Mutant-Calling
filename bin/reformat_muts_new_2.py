@@ -22,7 +22,7 @@ table = pd.read_table(final_mut_table, sep = ",")
 # Fill in mutations for clustered strains
 table['Mutation'] = table.groupby('Cluster')['Mutation'].transform(lambda x: x.ffill().bfill() if x.isna().any() else x)
 
-##This will not apply to every run, but in this case - more than 5 seqential mutations will categorize the protein as frameshift
+# More than 5 seqential amino acid mutations will categorize the protein as frameshift
 def check_sequential_numbers(mutation_str):
     if pd.isna(mutation_str):
         return False

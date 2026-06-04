@@ -1,4 +1,6 @@
-process reformat_blast {
+process REFORMAT_BLAST {
+
+    tag "REFORMAT_BLAST: ${gene_ID}"
     
     publishDir "${params.outdir}/mutant_calling_output/${gene_ID}/Blast_analysis_of_complete", mode: 'copy'
 
@@ -15,6 +17,7 @@ process reformat_blast {
 
     script:
     """
+    # Reformat blast output with reformat_blast_new.py
     reformat_blast_new.py "$blast_table" "$gene_ID" "$params.WT_cutoff" "$params.mut_cutoff"
 
     """

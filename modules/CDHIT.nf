@@ -16,6 +16,7 @@ process cd_hit {
     """
     cd-hit -i $prot_fasta -o ${gene_ID}_muts_cd_100.faa -c 1.00 -n 5 -s 1 -d 200 -T ${task.cpus}
 
+    # Run reformat_cd_hit.py to reformat cd-hit
     reformat_cd_hit.py "$gene_ID" "${gene_ID}_muts_cd_100.faa.clstr"
 
     """

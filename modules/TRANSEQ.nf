@@ -10,6 +10,7 @@ process transeq {
 
     script:
     """  
+    # Translate ORF into protein
     transeq $fasta ${gene_ID}_protein_seq.faa -frame=1 -trim=TRUE
     
     """

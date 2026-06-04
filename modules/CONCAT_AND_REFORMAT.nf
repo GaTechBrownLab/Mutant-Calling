@@ -1,4 +1,7 @@
-process concat_and_reformat {
+process CONCAT_AND_REFORMAT {
+
+    tag "CONCAT_AND_REFORMAT"
+
     input:
         path fasta_files
 
@@ -7,7 +10,10 @@ process concat_and_reformat {
 
     script:
     """
+    # Concatenate fasta files
     cat ${fasta_files.join(' ')} > all_host_genomes.fna
+
+    # Reformat fasta headers
     sed -i '/>/ s/ .*\$//' all_host_genomes.fna
 """
 }

@@ -13,6 +13,7 @@ process final_mutants_no_patterns {
 
     script:
     """
+    # For identification of mutants without specific target amino acid subsitutions
     reformat_muts_new_2_no_patterns.py \
         "$final_mut_table" \
         "$gene_ID" \

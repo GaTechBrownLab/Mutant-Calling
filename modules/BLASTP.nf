@@ -14,6 +14,7 @@ process blastp {
 
     script:
     """  
+    # Run blastp on all protein sequences
     blastp \
         -query $query \
         -task blastp \

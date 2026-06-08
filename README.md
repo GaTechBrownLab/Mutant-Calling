@@ -53,7 +53,7 @@ graph TD;
         id10 ==> id11["`Isolate the reference sequence per cluster, and align against reference genes (**clustalo**)`"];
         id11 ==> id12["`Identify amino acid substitutions, insertions, and deletions (**biopython**)`"]
     end
-    id3 ==> id11;
+    id4 ==> id11;
     id12 ==> id13[\"`**Final output:** Assigned mutations and functionality to all genes within reference genome set`"\]
     id14[/"`Input mutation patterns associated with a non-functional protein`"/] ==> id13
 

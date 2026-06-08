@@ -1,7 +1,5 @@
-process IDENTIFY_MUT_PROT {
-
-    tag "IDENTIFY_MUT_PROT: ${gene_ID}"
-
+process identify_mut_prot {
+    tag "${gene_ID}"
     publishDir "${params.outdir}/mutant_calling_output/${gene_ID}/cd_hit_output", mode: 'copy'
 
     input:

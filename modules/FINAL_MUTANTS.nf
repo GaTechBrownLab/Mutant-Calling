@@ -1,7 +1,5 @@
-process FINAL_MUTANTS {
-
-    tag "FINAL_MUTANTS: ${gene_ID}"
-    
+process final_mutants {
+    label 'r_graphing'
     publishDir "${params.outdir}/ouputs_for_graphing/${gene_ID}", mode: 'copy'
 
     input:

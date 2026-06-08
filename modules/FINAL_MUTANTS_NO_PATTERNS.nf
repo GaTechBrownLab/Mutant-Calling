@@ -1,7 +1,5 @@
-process FINAL_MUTANTS_NO_PATTERNS {
-
-    tag "FINAL_MUTANTS_NO_PATTERNS: ${gene_ID}"
-    
+process final_mutants_no_patterns {
+    label 'r_graphing'
     publishDir "${params.outdir}/ouputs_for_graphing/${gene_ID}", mode: 'copy'
 
     input:

@@ -1,7 +1,5 @@
-process GRAPHING_R {
-
-    tag "GRAPHING_R: ${gene_ID}"
-    
+process graphing_r {
+    label 'r_graphing'
     publishDir "${params.outdir}/graphing_results/${gene_ID}", mode: 'copy'
 
     input:

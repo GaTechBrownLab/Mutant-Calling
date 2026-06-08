@@ -1,7 +1,5 @@
-process CLUSTER_ANI {
-
-    tag "CLUSTER_ANI: ${level}"
-    
+process cluster_ani {
+    label 'light'
     publishDir "${params.outdir}/cluster_ani_output", mode: 'copy'
 
     input:

@@ -1,8 +1,6 @@
-process BLAST {
-    
-    tag "BLAST: ${genome_ID}-${gene_ID}"
-    
-    cpus "${params.blast_threads}"
+process blast {
+    label 'blast'
+    tag "${gene_ID} vs ${genome_ID}"
 
     memory '20 GB'
 
@@ -20,11 +18,11 @@ process BLAST {
     blastn \
         -query $query \
         -task blastn \
-        -db "${blast_db_path}/${blast_db_path}" \
+        -db "${blast_db_path}/${blast_db_path.name}" \
         -outfmt "6 qseqid sseqid sacc pident nident qlen length evalue slen qstart qend sstart send sstrand" \
         -evalue 0.01 \
-        -num_threads $params.blast_threads \
-        >> "${genome_ID}_${gene_ID}.txt"
+        -num_threads ${task.cpus} \
+        > "${genome_ID}_${gene_ID}.txt"
 
     """
 }

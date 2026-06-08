@@ -437,8 +437,8 @@ workflow {
                         keepHeader: true
                     )
 
-                if (params.input_muts == null) {
-                    ani_functions_ch = FINAL_MUTANTS_NO_PATTERNS.out.functions_incomplete
+                if (!params.input_muts || params.input_muts == 'null') {
+                    ani_functions_ch = final_mutants_no_patterns.out.functions_incomplete
                         .combine( collected_ani_clusters_ch )
 
                 } else {
@@ -455,11 +455,19 @@ workflow {
             // If true, graph phylogenetic trees and bargraphs based on gene presence absence files
             if (params.graphing) {
 
-                graphing_input = FINAL_MUTANTS.out.functions_incomplete
-                    .combine( FINAL_MUTANTS.out.functions_pres_abs_incomplete, by:0 )
-                    .combine( ANI_CLUSTER_FUNCTION.out.no_funct_clusters_env, by:0 )
-                    
-                GRAPHING_R(
+                def graphing_functions_ch = (!params.input_muts || params.input_muts == 'null')
+                    ? final_mutants_no_patterns.out.functions_incomplete
+                    : final_mutants.out.functions_incomplete
+
+                def graphing_pres_abs_ch = (!params.input_muts || params.input_muts == 'null')
+                    ? final_mutants_no_patterns.out.functions_pres_abs_incomplete
+                    : final_mutants.out.functions_pres_abs_incomplete
+
+                graphing_input = graphing_functions_ch
+                    .combine( graphing_pres_abs_ch, by:0 )
+                    .combine( ani_cluster_function.out.no_funct_clusters_env, by:0 )
+
+                graphing_r(
                     graphing_input
                 )
             }
@@ -494,7 +502,6 @@ workflow {
 
             graphing_input = functions_incomplete_ch
                 .combine( functions_pres_abs_incomplete_ch, by:0 )
-                .view()
             
             GRAPHING_R(
                 graphing_input

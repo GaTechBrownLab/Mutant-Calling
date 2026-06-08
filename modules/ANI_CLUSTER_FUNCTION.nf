@@ -1,7 +1,5 @@
-process ANI_CLUSTER_FUNCTION {
-    
-    tag "ANI_CLUSTER_FUNCTION: ${gene_ID}"
-    
+process ani_cluster_function {
+    label 'r_graphing'
     publishDir "${params.outdir}/ani_cluster_function/${gene_ID}", mode: 'copy'
 
     input:

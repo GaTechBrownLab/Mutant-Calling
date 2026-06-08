@@ -1,4 +1,4 @@
-process identify_mut_prot {
+process IDENTIFY_MUT_PROT {
     tag "${gene_ID}"
     publishDir "${params.outdir}/mutant_calling_output/${gene_ID}/cd_hit_output", mode: 'copy'
 

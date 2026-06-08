@@ -1,4 +1,4 @@
-process cluster_ani {
+process CLUSTER_ANI {
     label 'light'
     publishDir "${params.outdir}/cluster_ani_output", mode: 'copy'
 

@@ -1,4 +1,4 @@
-process blast {
+process BLAST {
     label 'blast'
     tag "${gene_ID} vs ${genome_ID}"
 

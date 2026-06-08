@@ -1,4 +1,4 @@
-process blastp {
+process BLASTP {
     label 'blast'
     tag "${gene_ID}"
 

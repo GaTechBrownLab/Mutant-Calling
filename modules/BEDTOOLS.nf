@@ -1,4 +1,4 @@
-process bedtools {
+process BEDTOOLS {
     tag "${gene_ID}"
     publishDir "${params.outdir}/mutant_calling_output/${gene_ID}", mode: 'copy'
 

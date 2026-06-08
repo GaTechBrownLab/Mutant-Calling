@@ -1,4 +1,4 @@
-process cd_hit {
+process CDHIT {
     label 'light'
     tag "${gene_ID}"
     publishDir "${params.outdir}/mutant_calling_output/${gene_ID}/cd_hit_output", mode: 'copy'

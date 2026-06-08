@@ -1,4 +1,4 @@
-process clustalo {
+process CLUSTALO {
     label 'light'
     tag "${gene_ID}"
     publishDir "${params.outdir}/mutant_calling_output/${gene_ID}/alignments/clustalo", mode: 'copy'

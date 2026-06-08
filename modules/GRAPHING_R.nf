@@ -1,4 +1,4 @@
-process graphing_r {
+process GRAPHING_R {
     label 'r_graphing'
     publishDir "${params.outdir}/graphing_results/${gene_ID}", mode: 'copy'
 

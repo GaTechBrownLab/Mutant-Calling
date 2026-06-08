@@ -1,4 +1,4 @@
-process transeq {
+process TRANSEQ {
     tag "${gene_ID}"
     publishDir "${params.outdir}/mutant_calling_output/${gene_ID}", mode: 'copy'
 

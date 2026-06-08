@@ -1,6 +1,6 @@
-process final_mutants {
+process FINAL_MUTANTS {
     label 'r_graphing'
-    publishDir "${params.outdir}/ouputs_for_graphing/${gene_ID}", mode: 'copy'
+    publishDir "${params.outdir}/final_outputs/${gene_ID}", mode: 'copy'
 
     input:
     tuple val(gene_ID), path(incomplete_files), path(missing_files), path(split_files), path(final_mut_table), path(linking), path(muts_graphing), path(input_muts)

@@ -18,8 +18,8 @@ def helpMessage() {
      Mutant-Calling
     =========================================
     Usage:
-    nextflow run main.nf -with-conda --input_genes ./data/genes/*.fna --input_prots ./data/prot/*.faa
-        --input_muts ./data/mutation_patterns/*.txt --host_genomes ./data/hosts/*.fna
+    nextflow run main.nf -with-conda --input_genes "data/genes/*.fna" --input_prots "data/prot/*.faa"
+        --input_muts "data/mutation_patterns/*.txt" --host_genomes "data/hosts/*.fna"
         --outdir /results --pres_abs true --graphing false
 
     Required arguments:
@@ -134,7 +134,7 @@ def concatGeneLists(all_gene_ids, channel, suffix) {
         .join(grouped, remainder: true)
             .map { gene_ID, files ->
                 def out_dir = file("${params.outdir}/mutant_calling_output/${gene_ID}")
-                // out_dir.mkdirs
+                // out_dir.mkdirs()
 
                 def out_file = file("${out_dir}/${suffix}_output.txt")
 
@@ -168,19 +168,19 @@ workflow {
         if (params.run_main) {
 
             // Validate parameters
-            if (params.input_genes == "${projectDir}/data/genes/*.fna") {
+            if (params.input_genes == "data/genes/*.fna") {
                 log.warn "The example data is being run, no `--input_genes` provided."
             }
             
-            if (params.input_prots == "${projectDir}/data/prot/*.faa") {
+            if (params.input_prots == "data/prot/*.faa") {
                 log.warn "The example data is being run, no `--input_prots` provided."
             }
 
-            if (params.host_genomes == "${projectDir}/data/hosts/*.fna") {
+            if (params.host_genomes == "data/hosts/*.fna") {
                 log.warn "The example data is being run, no `--host_genomes` provided."
             }
 
-            if (params.input_muts == "${projectDir}/data/mutation_patterns/*.txt" ) {
+            if (params.input_muts == "data/mutation_patterns/*.txt" ) {
                 log.warn "The example data is being run, no `--input_muts` provided."
             }
 
@@ -438,7 +438,7 @@ workflow {
                     )
 
                 if (!params.input_muts || params.input_muts == 'null') {
-                    ani_functions_ch = final_mutants_no_patterns.out.functions_incomplete
+                    ani_functions_ch = FINAL_MUTANTS_NO_PATTERNS.out.functions_incomplete
                         .combine( collected_ani_clusters_ch )
 
                 } else {
@@ -456,18 +456,18 @@ workflow {
             if (params.graphing) {
 
                 def graphing_functions_ch = (!params.input_muts || params.input_muts == 'null')
-                    ? final_mutants_no_patterns.out.functions_incomplete
-                    : final_mutants.out.functions_incomplete
+                    ? FINAL_MUTANTS_NO_PATTERNS.out.functions_incomplete
+                    : FINAL_MUTANTS.out.functions_incomplete
 
                 def graphing_pres_abs_ch = (!params.input_muts || params.input_muts == 'null')
-                    ? final_mutants_no_patterns.out.functions_pres_abs_incomplete
-                    : final_mutants.out.functions_pres_abs_incomplete
+                    ? FINAL_MUTANTS_NO_PATTERNS.out.functions_pres_abs_incomplete
+                    : FINAL_MUTANTS.out.functions_pres_abs_incomplete
 
                 graphing_input = graphing_functions_ch
                     .combine( graphing_pres_abs_ch, by:0 )
-                    .combine( ani_cluster_function.out.no_funct_clusters_env, by:0 )
+                    .combine( ANI_CLUSTER_FUNCTION.out.no_funct_clusters_env, by:0 )
 
-                graphing_r(
+                GRAPHING_R(
                     graphing_input
                 )
             }

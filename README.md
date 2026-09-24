@@ -1,6 +1,6 @@
 # Mutant-Calling
 
-This Nextflow pipeline uses identified genes or regions of interest in a reference genome to identify the status of the gene or region in a set of target genome. It then aligns to the reference, and identifies amino acid substitutions, deletions, and insertions to determine the potential functionality of the gene. If enabled, the function of the gene can be assigned and the ancestral state can be determined.
+This Nextflow pipeline uses identified genes or regions of interest in a reference genome to identify the mutational status (functional or non-functional) of the gene or region in a set of target genome. It then aligns to the reference, and identifies amino acid substitutions, deletions, and insertions to determine the potential functionality of the gene. If enabled, the function of the gene can be assigned and the ancestral state can be determined.
 
 ## Dependencies
 

@@ -24,7 +24,7 @@ nextflow pull GaTechBrownLab/Mutant-Calling
 ```
 
 ## Usage
-**Inputs**
+**Inputs**  
 Input gene fna files must be in the output {gene}_nucl.fna, and the header must be in >{gene} format. Similarily, all input proteins must be in {gene}_prot.faa, with the header >{gene}. Host genomes must have a .fna extension. Mutation patterns must be in the [Original AA][Position][New AA] format. If the second AA is variable, write it as [Original AA][Position].
 
 All example test inputs are stored in data, and the test host genomes are stored in a zip file that must be unzipped prior to running.
@@ -34,7 +34,7 @@ All example test inputs are stored in data, and the test host genomes are stored
 nextflow run main.nf -with-conda --input_genes "data/genes/*.fna" --input_prots "data/prot/*.faa" --input_muts "data/mutation_patterns/*.txt" --host_genomes "data/hosts/*.fna" --pres_abs true --graphing false
 ```
 
-**Outputs**
+**Outputs**  
 Outputs with information on the status of each gene (functional, non-functional, or alternative function) are in the final_outputs folder. All other intermediate outputs can be found in the mutant_calling_output folder.
 
 

@@ -27,7 +27,9 @@ nextflow pull GaTechBrownLab/Mutant-Calling
 **Inputs**  
 Input gene fna files must be in the output {gene}_nucl.fna, and the header must be in >{gene} format. Similarily, all input proteins must be in {gene}_prot.faa, with the header >{gene}. Host genomes must have a .fna extension. Mutation patterns must be in the [Original AA][Position][New AA] format. If the second AA is variable, write it as [Original AA][Position].
 
-All example test inputs are stored in data, and the test host genomes are stored in a zip file that must be unzipped prior to running.
+All example test inputs are stored in data, and the test host genomes are stored in a zip file that must be unzipped prior to running.  
+
+Locus tags used for "Broad environmental comparison reveals limited specificity of canonical CF pathoadaptative genes in Pseudomonas aeruginosa" can be found and ran in gene_isolation.
 
 **Basic usage:**  
 ```bash
